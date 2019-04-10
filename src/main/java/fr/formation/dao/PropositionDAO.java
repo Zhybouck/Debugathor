@@ -25,6 +25,11 @@ public class PropositionDAO implements IPropositionDAO {
 
 	private final SessionFactory sessionFactory = getSessionFactory();
 
+	
+	public PropositionDAO() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	protected SessionFactory getSessionFactory() {
 		try {
 			return (SessionFactory) new InitialContext().lookup("SessionFactory");

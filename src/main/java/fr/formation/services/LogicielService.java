@@ -3,15 +3,15 @@ package fr.formation.services;
 import java.util.List;
 
 import fr.formation.dao.ILogicielDAO;
-import fr.formation.dao.LogicielDAO;
 import fr.formation.entities.Logiciel;
 
 public class LogicielService implements IGenericService<Logiciel> {
-	ILogicielDAO logDao=new LogicielDAO();
+	ILogicielDAO logDao;
 	
-	public LogicielService(ILogicielDAO logDao) {
-		this.logDao = logDao;
+	public LogicielService() {
 	}
+
+
 
 	/* (non-Javadoc)
 	 * @see fr.formation.services.ILogicielService#persist(fr.formation.entities.Logiciel)

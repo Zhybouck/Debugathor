@@ -25,6 +25,10 @@ public class UtilisateurDAO implements IUtilisateurDAO {
 
 	private final SessionFactory sessionFactory = getSessionFactory();
 
+	public UtilisateurDAO() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	protected SessionFactory getSessionFactory() {
 		try {
 			return (SessionFactory) new InitialContext().lookup("SessionFactory");

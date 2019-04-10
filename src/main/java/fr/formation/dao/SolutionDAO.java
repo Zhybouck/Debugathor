@@ -25,6 +25,10 @@ public class SolutionDAO implements ISolutionDAO {
 
 	private final SessionFactory sessionFactory = getSessionFactory();
 
+	public SolutionDAO() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	protected SessionFactory getSessionFactory() {
 		try {
 			return (SessionFactory) new InitialContext().lookup("SessionFactory");

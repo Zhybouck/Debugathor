@@ -28,15 +28,18 @@ public class LogicielDAO implements ILogicielDAO {
 
 	private static final Log log = LogFactory.getLog(LogicielDAO.class);
 
-	private final SessionFactory sessionFactory = getSessionFactory();
+	SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
 
-	protected SessionFactory getSessionFactory() {
-		try {
-			return HibernateUtils.getSessionFactory();
-		} catch (Exception e) {
-			log.error("Could not locate SessionFactory in JNDI", e);
-			throw new IllegalStateException("Could not locate SessionFactory in JNDI");
-		}
+//	protected SessionFactory getSessionFactory() {
+//		try {
+//			return HibernateUtils.getSessionFactory();
+//		} catch (Exception e) {
+//			log.error("Could not locate SessionFactory in JNDI", e);
+//			throw new IllegalStateException("Could not locate SessionFactory in JNDI");
+//		}
+//	}
+	public LogicielDAO() {
+		// TODO Auto-generated constructor stub
 	}
 
 	/*
@@ -201,16 +204,16 @@ public class LogicielDAO implements ILogicielDAO {
 //		criteria.from(Logiciels);
 //		List<Logiciel> liste = session.createQuery(criteria).getResultList();
 //		return liste;
-        Session session = sessionFactory.openSession();
+		Session session = sessionFactory.openSession();
 
-        // create Criteria
-        CriteriaQuery<Logiciel> criteriaQuery = session.getCriteriaBuilder().createQuery(Logiciel.class);
-        criteriaQuery.from(Logiciel.class);
+		// create Criteria
+		CriteriaQuery<Logiciel> criteriaQuery = session.getCriteriaBuilder().createQuery(Logiciel.class);
+		criteriaQuery.from(Logiciel.class);
 
-        List<Logiciel> liste = session.createQuery(criteriaQuery).getResultList();
-        session.close();
+		List<Logiciel> liste = session.createQuery(criteriaQuery).getResultList();
+		session.close();
 
-        return liste;
+		return liste;
 //	    try
 //	    {
 //	        return sessionFactory.getCurrentSession().createCriteria(Logiciel.class).list();
