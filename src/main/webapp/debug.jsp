@@ -1,7 +1,7 @@
 <%@ page pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page
-	import="fr.formation.dao.ILogicielDAO,fr.formation.dao.LogicielHome,fr.formation.beans.Logiciel,java.util.ArrayList"%>
+	import="fr.formation.dao.ILogicielDAO,fr.formation.dao.LogicielDAO,fr.formation.entities.Logiciel,java.util.ArrayList"%>
 <html>
 <head>
 <meta charset="ISO-8859-1">

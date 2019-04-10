@@ -2,9 +2,7 @@ package fr.formation.dao;
 
 import java.util.List;
 
-import org.hibernate.Session;
-
-import fr.formation.beans.Logiciel;
+import fr.formation.entities.Logiciel;
 
 public interface ILogicielDAO {
 

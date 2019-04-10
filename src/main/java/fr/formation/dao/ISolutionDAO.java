@@ -2,22 +2,22 @@ package fr.formation.dao;
 
 import java.util.List;
 
-import fr.formation.beans.Logiciel;
+import fr.formation.entities.Solution;
 
 public interface ISolutionDAO {
 
-	void persist(Logiciel transientInstance);
+	void persist(Solution transientInstance);
 
-	void attachDirty(Logiciel instance);
+	void attachDirty(Solution instance);
 
-	void attachClean(Logiciel instance);
+	void attachClean(Solution instance);
 
-	void delete(Logiciel persistentInstance);
+	void delete(Solution persistentInstance);
 
-	Logiciel merge(Logiciel detachedInstance);
+	Solution merge(Solution detachedInstance);
 
-	Logiciel findById(int id);
+	Solution findById(java.lang.Integer id);
 
-	List<Logiciel> findByExample(Logiciel instance);
+	List<Solution> findByExample(Solution instance);
 
 }

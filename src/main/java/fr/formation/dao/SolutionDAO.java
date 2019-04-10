@@ -12,16 +12,16 @@ import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
 
-import fr.formation.beans.Solution;
+import fr.formation.entities.Solution;
 
 /**
  * Home object for domain model class Solution.
  * @see fr.formation.dao.Solution
  * @author Hibernate Tools
  */
-public class SolutionHome {
+public class SolutionDAO implements ISolutionDAO {
 
-	private static final Log log = LogFactory.getLog(SolutionHome.class);
+	private static final Log log = LogFactory.getLog(SolutionDAO.class);
 
 	private final SessionFactory sessionFactory = getSessionFactory();
 
@@ -34,6 +34,10 @@ public class SolutionHome {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see fr.formation.dao.ISolutionDAO#persist(fr.formation.entities.Solution)
+	 */
+	@Override
 	public void persist(Solution transientInstance) {
 		log.debug("persisting Solution instance");
 		try {
@@ -45,6 +49,10 @@ public class SolutionHome {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see fr.formation.dao.ISolutionDAO#attachDirty(fr.formation.entities.Solution)
+	 */
+	@Override
 	public void attachDirty(Solution instance) {
 		log.debug("attaching dirty Solution instance");
 		try {
@@ -56,6 +64,10 @@ public class SolutionHome {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see fr.formation.dao.ISolutionDAO#attachClean(fr.formation.entities.Solution)
+	 */
+	@Override
 	public void attachClean(Solution instance) {
 		log.debug("attaching clean Solution instance");
 		try {
@@ -67,6 +79,10 @@ public class SolutionHome {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see fr.formation.dao.ISolutionDAO#delete(fr.formation.entities.Solution)
+	 */
+	@Override
 	public void delete(Solution persistentInstance) {
 		log.debug("deleting Solution instance");
 		try {
@@ -78,6 +94,10 @@ public class SolutionHome {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see fr.formation.dao.ISolutionDAO#merge(fr.formation.entities.Solution)
+	 */
+	@Override
 	public Solution merge(Solution detachedInstance) {
 		log.debug("merging Solution instance");
 		try {
@@ -90,6 +110,10 @@ public class SolutionHome {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see fr.formation.dao.ISolutionDAO#findById(java.lang.Integer)
+	 */
+	@Override
 	public Solution findById(java.lang.Integer id) {
 		log.debug("getting Solution instance with id: " + id);
 		try {
@@ -106,6 +130,10 @@ public class SolutionHome {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see fr.formation.dao.ISolutionDAO#findByExample(fr.formation.entities.Solution)
+	 */
+	@Override
 	public List<Solution> findByExample(Solution instance) {
 		log.debug("finding Solution instance by example");
 		try {

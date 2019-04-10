@@ -12,16 +12,16 @@ import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
 
-import fr.formation.beans.Utilisateur;
+import fr.formation.entities.Utilisateur;
 
 /**
  * Home object for domain model class Utilisateur.
  * @see fr.formation.dao.Utilisateur
  * @author Hibernate Tools
  */
-public class UtilisateurHome implements IUtilisateurDAO {
+public class UtilisateurDAO implements IUtilisateurDAO {
 
-	private static final Log log = LogFactory.getLog(UtilisateurHome.class);
+	private static final Log log = LogFactory.getLog(UtilisateurDAO.class);
 
 	private final SessionFactory sessionFactory = getSessionFactory();
 

@@ -2,7 +2,7 @@ package fr.formation.dao;
 
 import java.util.List;
 
-import fr.formation.beans.Utilisateur;
+import fr.formation.entities.Utilisateur;
 
 public interface IUtilisateurDAO {
 

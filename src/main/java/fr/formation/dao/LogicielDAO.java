@@ -15,7 +15,7 @@ import org.hibernate.LockMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import fr.formation.beans.Logiciel;
+import fr.formation.entities.Logiciel;
 import fr.formation.utils.HibernateUtils;
 
 /**
@@ -24,9 +24,9 @@ import fr.formation.utils.HibernateUtils;
  * @see fr.formation.dao.Logiciel
  * @author Hibernate Tools
  */
-public class LogicielHome implements ISolutionDAO, ILogicielDAO {
+public class LogicielDAO implements ILogicielDAO {
 
-	private static final Log log = LogFactory.getLog(LogicielHome.class);
+	private static final Log log = LogFactory.getLog(LogicielDAO.class);
 
 	private final SessionFactory sessionFactory = getSessionFactory();
 

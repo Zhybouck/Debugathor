@@ -9,12 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.hibernate.Session;
-
-import fr.formation.beans.Logiciel;
 import fr.formation.dao.ILogicielDAO;
-import fr.formation.dao.LogicielHome;
-import fr.formation.utils.HibernateUtils;
+import fr.formation.dao.LogicielDAO;
+import fr.formation.entities.Logiciel;
 
 /**
  * Servlet implementation class ServletDebugathor
@@ -34,7 +31,7 @@ public class ServletDebugathor extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ILogicielDAO dao= new LogicielHome();
+		ILogicielDAO dao= new LogicielDAO();
 		List<Logiciel> ls= dao.getAll();
 		for(Logiciel  l: ls) {
 			System.out.println(l.toString());

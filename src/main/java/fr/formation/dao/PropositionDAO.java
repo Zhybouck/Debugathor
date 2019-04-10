@@ -12,16 +12,16 @@ import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
 
-import fr.formation.beans.Proposition;
+import fr.formation.entities.Proposition;
 
 /**
  * Home object for domain model class Proposition.
  * @see fr.formation.dao.Proposition
  * @author Hibernate Tools
  */
-public class PropositionHome implements IPropositionDAO {
+public class PropositionDAO implements IPropositionDAO {
 
-	private static final Log log = LogFactory.getLog(PropositionHome.class);
+	private static final Log log = LogFactory.getLog(PropositionDAO.class);
 
 	private final SessionFactory sessionFactory = getSessionFactory();
 
@@ -139,5 +139,11 @@ public class PropositionHome implements IPropositionDAO {
 			log.error("find by example failed", re);
 			throw re;
 		}
+	}
+
+	@Override
+	public List<Proposition> getAll() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

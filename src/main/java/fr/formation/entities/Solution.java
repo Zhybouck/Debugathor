@@ -1,4 +1,4 @@
-package fr.formation.beans;
+package fr.formation.entities;
 // Generated 5 avr. 2019 11:02:06 by Hibernate Tools 5.1.10.Final
 
 import java.util.Date;

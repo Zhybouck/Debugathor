@@ -1,14 +1,14 @@
 package fr.formation.controller;
 
-import fr.formation.beans.Logiciel;
 import fr.formation.dao.ILogicielDAO;
-import fr.formation.dao.LogicielHome;
+import fr.formation.dao.LogicielDAO;
+import fr.formation.entities.Logiciel;
 
-public class App {
+public class ControllerLogiciel {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		ILogicielDAO dao= new LogicielHome();
+		ILogicielDAO dao= new LogicielDAO();
 		Logiciel l = dao.findById(1);
 		System.out.println(l);
 	}

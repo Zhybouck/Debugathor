@@ -2,7 +2,7 @@ package fr.formation.dao;
 
 import java.util.List;
 
-import fr.formation.beans.Proposition;
+import fr.formation.entities.Proposition;
 
 public interface IPropositionDAO {
 
@@ -19,5 +19,7 @@ public interface IPropositionDAO {
 	Proposition findById(int id);
 
 	List<Proposition> findByExample(Proposition instance);
+
+	List<Proposition> getAll();
 
 }
