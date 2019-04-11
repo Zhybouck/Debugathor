@@ -5,7 +5,7 @@ import java.util.List;
 import fr.formation.dao.ILogicielDAO;
 import fr.formation.entities.Logiciel;
 
-public class LogicielService implements IGenericService<Logiciel> {
+public class LogicielService implements ILogicielService {
 	ILogicielDAO logDao;
 	
 	public LogicielService() {
@@ -16,11 +16,17 @@ public class LogicielService implements IGenericService<Logiciel> {
 	/* (non-Javadoc)
 	 * @see fr.formation.services.ILogicielService#persist(fr.formation.entities.Logiciel)
 	 */
+	/* (non-Javadoc)
+	 * @see fr.formation.services.ILogicielService#persist(fr.formation.entities.Logiciel)
+	 */
 	@Override
 	public void persist(Logiciel transientInstance) {
 		logDao.persist(transientInstance);
 	}
 
+	/* (non-Javadoc)
+	 * @see fr.formation.services.ILogicielService#attachDirty(fr.formation.entities.Logiciel)
+	 */
 	/* (non-Javadoc)
 	 * @see fr.formation.services.ILogicielService#attachDirty(fr.formation.entities.Logiciel)
 	 */
@@ -33,12 +39,18 @@ public class LogicielService implements IGenericService<Logiciel> {
 	/* (non-Javadoc)
 	 * @see fr.formation.services.ILogicielService#attachClean(fr.formation.entities.Logiciel)
 	 */
+	/* (non-Javadoc)
+	 * @see fr.formation.services.ILogicielService#attachClean(fr.formation.entities.Logiciel)
+	 */
 	@Override
 	public void attachClean(Logiciel instance) {
 		logDao.attachClean(instance);
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see fr.formation.services.ILogicielService#delete(fr.formation.entities.Logiciel)
+	 */
 	/* (non-Javadoc)
 	 * @see fr.formation.services.ILogicielService#delete(fr.formation.entities.Logiciel)
 	 */
@@ -51,11 +63,17 @@ public class LogicielService implements IGenericService<Logiciel> {
 	/* (non-Javadoc)
 	 * @see fr.formation.services.ILogicielService#merge(fr.formation.entities.Logiciel)
 	 */
+	/* (non-Javadoc)
+	 * @see fr.formation.services.ILogicielService#merge(fr.formation.entities.Logiciel)
+	 */
 	@Override
 	public Logiciel merge(Logiciel detachedInstance) {
 		return logDao.merge(detachedInstance);
 	}
 
+	/* (non-Javadoc)
+	 * @see fr.formation.services.ILogicielService#findById(int)
+	 */
 	/* (non-Javadoc)
 	 * @see fr.formation.services.ILogicielService#findById(int)
 	 */
@@ -67,11 +85,17 @@ public class LogicielService implements IGenericService<Logiciel> {
 	/* (non-Javadoc)
 	 * @see fr.formation.services.ILogicielService#findByExample(fr.formation.entities.Logiciel)
 	 */
+	/* (non-Javadoc)
+	 * @see fr.formation.services.ILogicielService#findByExample(fr.formation.entities.Logiciel)
+	 */
 	@Override
 	public List<Logiciel> findByExample(Logiciel instance) {
 		return logDao.findByExample(instance);
 	}
 
+	/* (non-Javadoc)
+	 * @see fr.formation.services.ILogicielService#getAll()
+	 */
 	/* (non-Javadoc)
 	 * @see fr.formation.services.ILogicielService#getAll()
 	 */

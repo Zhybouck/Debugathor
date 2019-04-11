@@ -144,4 +144,16 @@ public class UtilisateurDAO implements IUtilisateurDAO {
 			throw re;
 		}
 	}
+
+	@Override
+	public Utilisateur findById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Utilisateur> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

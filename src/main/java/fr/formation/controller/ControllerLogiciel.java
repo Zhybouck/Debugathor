@@ -1,5 +1,7 @@
 package fr.formation.controller;
 
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -11,12 +13,17 @@ import fr.formation.services.LogicielService;
 public class ControllerLogiciel {
 
 	public static void main(String[] args) {
-		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		LogicielService empserv = (LogicielService) context.getBean("ServiceLogiciel");
+//		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+//		LogicielService empserv = (LogicielService) context.getBean("ServiceLogiciel");
 		// TODO Auto-generated method stub
 		ILogicielDAO dao= new LogicielDAO();
-		Logiciel l = dao.findById(1);
-		System.out.println(l);
+		List<Logiciel> exemple = dao.getAll();
+		for(Logiciel l : exemple) {
+			System.out.println(l);
+		}
+//		ILogicielDAO dao= new LogicielDAO();
+//		Logiciel l = dao.findById(1);
+//		System.out.println(l);
 	}
 	
 }

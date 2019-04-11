@@ -118,7 +118,7 @@ public class SolutionDAO implements ISolutionDAO {
 	 * @see fr.formation.dao.ISolutionDAO#findById(java.lang.Integer)
 	 */
 	@Override
-	public Solution findById(java.lang.Integer id) {
+	public Solution findById(int id) {
 		log.debug("getting Solution instance with id: " + id);
 		try {
 			Solution instance = (Solution) sessionFactory.getCurrentSession().get("fr.formation.dao.Solution", id);
@@ -149,5 +149,12 @@ public class SolutionDAO implements ISolutionDAO {
 			log.error("find by example failed", re);
 			throw re;
 		}
+	}
+
+
+	@Override
+	public List<Solution> getAll() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
