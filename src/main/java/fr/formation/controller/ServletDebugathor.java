@@ -10,8 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.formation.dao.ILogicielDAO;
+import fr.formation.dao.IPropositionDAO;
+import fr.formation.dao.ISolutionDAO;
+import fr.formation.dao.IUtilisateurDAO;
 import fr.formation.dao.LogicielDAO;
+import fr.formation.dao.PropositionDAO;
+import fr.formation.dao.SolutionDAO;
+import fr.formation.dao.UtilisateurDAO;
 import fr.formation.entities.Logiciel;
+import fr.formation.entities.Proposition;
+import fr.formation.entities.Solution;
+import fr.formation.entities.Utilisateur;
 
 /**
  * Servlet implementation class ServletDebugathor
@@ -31,12 +40,18 @@ public class ServletDebugathor extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ILogicielDAO dao= new LogicielDAO();
-		List<Logiciel> ls= dao.getAll();
-		for(Logiciel  l: ls) {
-			System.out.println(l.toString());
-		}
-		request.setAttribute("liste", ls);
+		ILogicielDAO daol= new LogicielDAO();
+		ISolutionDAO daos= new SolutionDAO();
+		IUtilisateurDAO daou = new UtilisateurDAO();
+		IPropositionDAO daop= new PropositionDAO();
+		List<Logiciel> ll= daol.getAll();
+//		List<Solution> ls= daos.getAll();
+//		List<Utilisateur> lu= daou.getAll();
+//		List<Proposition> lp= daop.getAll();
+		request.setAttribute("ll", ll);
+//		request.setAttribute("ls", ls);
+//		request.setAttribute("lu", lu);
+//		request.setAttribute("lp", lp);
 		request.getRequestDispatcher("debug.jsp").forward(request, response);
 	}
 

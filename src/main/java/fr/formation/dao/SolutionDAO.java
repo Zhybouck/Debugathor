@@ -11,22 +11,26 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
 
 import fr.formation.entities.Solution;
+import fr.formation.utils.HibernateUtils;
 
 /**
  * Home object for domain model class Solution.
  * @see fr.formation.dao.Solution
  * @author Hibernate Tools
  */
+
+@Repository
 public class SolutionDAO implements ISolutionDAO {
 
 	private static final Log log = LogFactory.getLog(SolutionDAO.class);
 
-	private final SessionFactory sessionFactory = getSessionFactory();
+	SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
 
 	public SolutionDAO() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	protected SessionFactory getSessionFactory() {

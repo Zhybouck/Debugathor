@@ -34,7 +34,6 @@ public class Utilisateur implements java.io.Serializable {
 	private String poste;
 	private String rang;
 	private Set<Solution> solutions = new HashSet<Solution>(0);
-	private Set<Proposition> propositions = new HashSet<Proposition>(0);
 
 	public Utilisateur() {
 	}
@@ -49,7 +48,7 @@ public class Utilisateur implements java.io.Serializable {
 	}
 
 	public Utilisateur(String mdp, String prenom, String nom, Date dateInsc, String poste, String rang,
-			Set<Solution> solutions, Set<Proposition> propositions) {
+			Set<Solution> solutions) {
 		this.mdp = mdp;
 		this.prenom = prenom;
 		this.nom = nom;
@@ -57,7 +56,6 @@ public class Utilisateur implements java.io.Serializable {
 		this.poste = poste;
 		this.rang = rang;
 		this.solutions = solutions;
-		this.propositions = propositions;
 	}
 
 	@Id
@@ -136,20 +134,10 @@ public class Utilisateur implements java.io.Serializable {
 		this.solutions = solutions;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utilisateur")
-	public Set<Proposition> getPropositions() {
-		return this.propositions;
-	}
-
-	public void setPropositions(Set<Proposition> propositions) {
-		this.propositions = propositions;
-	}
-
 	@Override
 	public String toString() {
 		return "Utilisateur [idUtilisateur=" + idUtilisateur + ", mdp=" + mdp + ", prenom=" + prenom + ", nom=" + nom
-				+ ", dateInsc=" + dateInsc + ", poste=" + poste + ", rang=" + rang + ", solutions=" + solutions
-				+ ", propositions=" + propositions + "]";
+				+ ", dateInsc=" + dateInsc + ", poste=" + poste + ", rang=" + rang + ", solutions=" + solutions;
 	}
 	
 	

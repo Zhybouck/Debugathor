@@ -2,15 +2,21 @@ package fr.formation.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import fr.formation.dao.IUtilisateurDAO;
 import fr.formation.dao.UtilisateurDAO;
 import fr.formation.entities.Utilisateur;
 
+@Service
 public class UtilisateurService implements IGenericService<Utilisateur>, IUtilisateurService {
 	IUtilisateurDAO utilDao = new UtilisateurDAO();
 
 	public UtilisateurService(IUtilisateurDAO utilisateurDao) {
 		utilDao = utilisateurDao;
+	}
+
+	public UtilisateurService() {
 	}
 
 	/* (non-Javadoc)

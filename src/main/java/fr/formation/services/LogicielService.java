@@ -2,9 +2,12 @@ package fr.formation.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import fr.formation.dao.ILogicielDAO;
 import fr.formation.entities.Logiciel;
 
+@Service
 public class LogicielService implements ILogicielService {
 	ILogicielDAO logDao;
 	

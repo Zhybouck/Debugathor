@@ -3,10 +3,8 @@ package fr.formation.dao;
 
 import static org.hibernate.criterion.Example.create;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 
 import org.apache.commons.logging.Log;
@@ -14,6 +12,7 @@ import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
 
 import fr.formation.entities.Logiciel;
 import fr.formation.utils.HibernateUtils;
@@ -24,6 +23,8 @@ import fr.formation.utils.HibernateUtils;
  * @see fr.formation.dao.Logiciel
  * @author Hibernate Tools
  */
+
+@Repository
 public class LogicielDAO implements ILogicielDAO {
 
 	private static final Log log = LogFactory.getLog(LogicielDAO.class);
@@ -39,7 +40,6 @@ public class LogicielDAO implements ILogicielDAO {
 //		}
 //	}
 	public LogicielDAO() {
-		// TODO Auto-generated constructor stub
 	}
 
 	/*

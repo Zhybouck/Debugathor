@@ -11,19 +11,22 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
 
 import fr.formation.entities.Proposition;
+import fr.formation.utils.HibernateUtils;
 
 /**
  * Home object for domain model class Proposition.
  * @see fr.formation.dao.Proposition
  * @author Hibernate Tools
  */
+@Repository
 public class PropositionDAO implements IPropositionDAO {
 
 	private static final Log log = LogFactory.getLog(PropositionDAO.class);
 
-	private final SessionFactory sessionFactory = getSessionFactory();
+	SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
 
 	
 	public PropositionDAO() {

@@ -11,19 +11,23 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
 
 import fr.formation.entities.Utilisateur;
+import fr.formation.utils.HibernateUtils;
 
 /**
  * Home object for domain model class Utilisateur.
  * @see fr.formation.dao.Utilisateur
  * @author Hibernate Tools
  */
+
+@Repository
 public class UtilisateurDAO implements IUtilisateurDAO {
 
 	private static final Log log = LogFactory.getLog(UtilisateurDAO.class);
 
-	private final SessionFactory sessionFactory = getSessionFactory();
+	SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
 
 	public UtilisateurDAO() {
 		// TODO Auto-generated constructor stub

@@ -25,7 +25,6 @@ public class Proposition implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	private int idProposition;
 	private Solution solution;
-	private Utilisateur utilisateur;
 	private String prop;
 	private Date dateProp;
 
@@ -35,14 +34,12 @@ public class Proposition implements java.io.Serializable {
 	public Proposition(int idProposition, Solution solution, Utilisateur utilisateur, String prop) {
 		this.idProposition = idProposition;
 		this.solution = solution;
-		this.utilisateur = utilisateur;
 		this.prop = prop;
 	}
 
 	public Proposition(int idProposition, Solution solution, Utilisateur utilisateur, String prop, Date dateProp) {
 		this.idProposition = idProposition;
 		this.solution = solution;
-		this.utilisateur = utilisateur;
 		this.prop = prop;
 		this.dateProp = dateProp;
 	}
@@ -68,15 +65,6 @@ public class Proposition implements java.io.Serializable {
 		this.solution = solution;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Utilisateur_IdUtilisateur", nullable = false)
-	public Utilisateur getUtilisateur() {
-		return this.utilisateur;
-	}
-
-	public void setUtilisateur(Utilisateur utilisateur) {
-		this.utilisateur = utilisateur;
-	}
 
 	@Column(name = "Prop", nullable = false)
 	public String getProp() {
@@ -99,7 +87,7 @@ public class Proposition implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "Proposition [idProposition=" + idProposition + ", solution=" + solution + ", utilisateur=" + utilisateur
+		return "Proposition [idProposition=" + idProposition + ", solution=" + solution
 				+ ", prop=" + prop + ", dateProp=" + dateProp + "]";
 	}
 	

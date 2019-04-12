@@ -2,15 +2,21 @@ package fr.formation.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import fr.formation.dao.ISolutionDAO;
 import fr.formation.dao.SolutionDAO;
 import fr.formation.entities.Solution;
 
+@Service
 public class SolutionService implements ISolutionService{
 	ISolutionDAO solDao= new SolutionDAO();
 	
 	public SolutionService(ISolutionDAO solDao) {
 		this.solDao = solDao;
+	}
+
+	public SolutionService() {
 	}
 
 	/* (non-Javadoc)

@@ -1,53 +1,53 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- <?xml version="1.0" encoding="UTF-8"?> -->
+<!-- <beans xmlns="http://www.springframework.org/schema/beans" -->
+<!-- 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" -->
+<!-- 	xsi:schemaLocation="http://www.springframework.org/schema/beans -->
+<!--         https://www.springframework.org/schema/beans/spring-beans.xsd"> -->
 
 
-	<bean id="ServiceLogiciel"
-		class="fr.formation.services.LogicielService">
+<!-- 	<bean id="ServiceLogiciel" -->
+<!-- 		class="fr.formation.services.LogicielService"> -->
 		<!-- utiliser property pour injecter par setter -->
 <!-- 		<property name="logDao" ref="LogicielDao"/> -->
 		<!-- injection par constructeur -->
-		<constructor-arg ref="logDao" />
-	</bean>
-	<bean id="logDao" class="fr.formation.dao.LogicielDAO" />
+<!-- 		<constructor-arg ref="logDao" /> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="logDao" class="fr.formation.dao.LogicielDAO" /> -->
 	<!-- scopes : singleton (par défaut), prototype(une fois déclaré le bean 
 		n'est plus géré par spring. Il faut le détruire manuellement) -->
 
 
 
-	<bean id="ServiceProposition"
-		class="fr.formation.services.PropositionService">
+<!-- 	<bean id="ServiceProposition" -->
+<!-- 		class="fr.formation.services.PropositionService"> -->
 		<!-- utiliser property pour injecter par setter -->
 		<!-- <property name="deptDao" ref="DepartmentDao"/> -->
 		<!-- injection par constructeur -->
-		<constructor-arg ref="propDao" />
-	</bean>
-	<bean id="propDao"
-		class="fr.formation.dao.PropositionDAO" />
+<!-- 		<constructor-arg ref="propDao" /> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="propDao" -->
+<!-- 		class="fr.formation.dao.PropositionDAO" /> -->
 
 
 
-	<bean id="ServiceSolution"
-		class="fr.formation.services.SolutionService">
+<!-- 	<bean id="ServiceSolution" -->
+<!-- 		class="fr.formation.services.SolutionService"> -->
 		<!-- utiliser property pour injecter par setter -->
 		<!-- <property name="deptDao" ref="DepartmentDao"/> -->
 		<!-- injection par constructeur -->
-		<constructor-arg ref="solDao" />
-	</bean>
-	<bean id="solDao"
-		class="fr.formation.dao.UtilisateurDAO" />
+<!-- 		<constructor-arg ref="solDao" /> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="solDao" -->
+<!-- 		class="fr.formation.dao.UtilisateurDAO" /> -->
 
 
 
-	<bean id="ServiceUtilisateur"
-		class="fr.formation.services.UtilisateurService">
+<!-- 	<bean id="ServiceUtilisateur" -->
+<!-- 		class="fr.formation.services.UtilisateurService"> -->
 		<!-- utiliser property pour injecter par setter -->
 		<!-- <property name="deptDao" ref="DepartmentDao"/> -->
 		<!-- injection par constructeur -->
-		<constructor-arg ref="utilDao" />
-	</bean>
-	<bean id="utilDao" class="fr.formation.dao.UtilisateurDAO" />
-</beans>
+<!-- 		<constructor-arg ref="utilDao" /> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="utilDao" class="fr.formation.dao.UtilisateurDAO" /> -->
+<!-- </beans> -->

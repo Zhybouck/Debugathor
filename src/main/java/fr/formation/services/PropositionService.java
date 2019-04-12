@@ -2,14 +2,22 @@ package fr.formation.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import fr.formation.dao.IPropositionDAO;
 import fr.formation.dao.PropositionDAO;
 import fr.formation.entities.Proposition;;
 
+@Service
 public class PropositionService implements IPropositionService{
 
 	IPropositionDAO propDao=new PropositionDAO();
 	
+	
+	
+	public PropositionService() {
+	}
+
 	public PropositionService(IPropositionDAO propDao) {
 		this.propDao = propDao;
 	}
