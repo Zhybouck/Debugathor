@@ -5,13 +5,17 @@ import static org.hibernate.criterion.Example.create;
 
 import java.util.List;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.HibernateException;
 import org.hibernate.LockMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
 import fr.formation.entities.Logiciel;
@@ -158,22 +162,22 @@ public class LogicielDAO implements ILogicielDAO {
 	 * 
 	 * @see fr.formation.dao.ILogicielDAO#findById(int)
 	 */
-	public Logiciel findById(int id) {
-		log.debug("getting Logiciel instance with id: " + id);
-		try {
-			sessionFactory.getCurrentSession().getTransaction().begin();
-			Logiciel instance = (Logiciel) sessionFactory.getCurrentSession().get(Logiciel.class.getName(), id);
-			if (instance == null) {
-				log.debug("get successful, no instance found");
-			} else {
-				log.debug("get successful, instance found");
-			}
-			return instance;
-		} catch (RuntimeException re) {
-			log.error("get failed", re);
-			throw re;
-		}
-	}
+//	public Logiciel findById(int id) {
+//		log.debug("getting Logiciel instance with id: " + id);
+//		try {
+//			sessionFactory.getCurrentSession().getTransaction().begin();
+//			Logiciel instance = (Logiciel) sessionFactory.getCurrentSession().get(Logiciel.class.getName(), id);
+//			if (instance == null) {
+//				log.debug("get successful, no instance found");
+//			} else {
+//				log.debug("get successful, instance found");
+//			}
+//			return instance;
+//		} catch (RuntimeException re) {
+//			log.error("get failed", re);
+//			throw re;
+//		}
+//	}
 
 	/*
 	 * (non-Javadoc)
@@ -222,5 +226,48 @@ public class LogicielDAO implements ILogicielDAO {
 //	    }
 	}
 
+	@Override
+	public Logiciel findById(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		Transaction tx = session.getTransaction();
+		Logiciel logiciel = null;
 
+		try {
+			tx.begin();
+			logiciel = session.get(Logiciel.class, id);
+			tx.commit();
+		} catch (HibernateException e) {
+			log.error(e.getLocalizedMessage());
+			if (tx != null) {
+				try {
+					tx.rollback();
+				} catch (Exception e1) {
+					log.error("Rollback : " + e.getLocalizedMessage());
+				}
+			}
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+		return logiciel;
+	}
+
+	@Override
+	public List<Logiciel> findByName(String name) {
+		Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+		session.getTransaction().begin();
+
+		// create Criteria
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<Logiciel> criteriaQuery = builder.createQuery(Logiciel.class);
+		Root<Logiciel> root = criteriaQuery.from(Logiciel.class);
+		CriteriaQuery<Logiciel> select = criteriaQuery.select(root);
+		criteriaQuery.select(root.get("nomLogiciel"));
+		List<Logiciel> liste = session.createQuery(criteriaQuery).getResultList();
+		session.close();
+
+		return liste;
+	}
 }

@@ -18,6 +18,7 @@ import fr.formation.utils.HibernateUtils;
 
 /**
  * Home object for domain model class Utilisateur.
+ * 
  * @see fr.formation.dao.Utilisateur
  * @author Hibernate Tools
  */
@@ -32,7 +33,7 @@ public class UtilisateurDAO implements IUtilisateurDAO {
 	public UtilisateurDAO() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	protected SessionFactory getSessionFactory() {
 		try {
 			return (SessionFactory) new InitialContext().lookup("SessionFactory");
@@ -42,7 +43,9 @@ public class UtilisateurDAO implements IUtilisateurDAO {
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see fr.formation.dao.IUtilisateurDAO#persist(fr.formation.beans.Utilisateur)
 	 */
 	public void persist(Utilisateur transientInstance) {
@@ -56,8 +59,11 @@ public class UtilisateurDAO implements IUtilisateurDAO {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.dao.IUtilisateurDAO#attachDirty(fr.formation.beans.Utilisateur)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * fr.formation.dao.IUtilisateurDAO#attachDirty(fr.formation.beans.Utilisateur)
 	 */
 	public void attachDirty(Utilisateur instance) {
 		log.debug("attaching dirty Utilisateur instance");
@@ -70,8 +76,11 @@ public class UtilisateurDAO implements IUtilisateurDAO {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.dao.IUtilisateurDAO#attachClean(fr.formation.beans.Utilisateur)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * fr.formation.dao.IUtilisateurDAO#attachClean(fr.formation.beans.Utilisateur)
 	 */
 	public void attachClean(Utilisateur instance) {
 		log.debug("attaching clean Utilisateur instance");
@@ -84,7 +93,9 @@ public class UtilisateurDAO implements IUtilisateurDAO {
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see fr.formation.dao.IUtilisateurDAO#delete(fr.formation.beans.Utilisateur)
 	 */
 	public void delete(Utilisateur persistentInstance) {
@@ -98,7 +109,9 @@ public class UtilisateurDAO implements IUtilisateurDAO {
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see fr.formation.dao.IUtilisateurDAO#merge(fr.formation.beans.Utilisateur)
 	 */
 	public Utilisateur merge(Utilisateur detachedInstance) {
@@ -113,7 +126,9 @@ public class UtilisateurDAO implements IUtilisateurDAO {
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see fr.formation.dao.IUtilisateurDAO#findById(java.lang.Integer)
 	 */
 	public Utilisateur findById(java.lang.Integer id) {
@@ -133,8 +148,11 @@ public class UtilisateurDAO implements IUtilisateurDAO {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.dao.IUtilisateurDAO#findByExample(fr.formation.beans.Utilisateur)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see fr.formation.dao.IUtilisateurDAO#findByExample(fr.formation.beans.
+	 * Utilisateur)
 	 */
 	public List<Utilisateur> findByExample(Utilisateur instance) {
 		log.debug("finding Utilisateur instance by example");
@@ -176,5 +194,6 @@ public class UtilisateurDAO implements IUtilisateurDAO {
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
 			throw re;
+		}
 	}
-	}}
+}

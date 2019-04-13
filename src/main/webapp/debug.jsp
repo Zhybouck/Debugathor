@@ -11,10 +11,10 @@
 	<table border="2">
 		<c:forEach items="${ll}" var="logiciel">
 			<tr>
-				<td><c:out value="${logiciel.idLogiciel}" /></td>
-				<td><c:out value="${logiciel.version}" /></td>
-				<td><c:out value="${logiciel.nomLogiciel}" /></td>
-				<td><c:out value="${logiciel.solutions}" /></td>
+				<td><c:out value="${ll.idLogiciel}" /></td>
+				<td><c:out value="${ll.version}" /></td>
+				<td><c:out value="${ll.nomLogiciel}" /></td>
+				<td><c:out value="${ll.solutions}" /></td>
 			<tr>
 		</c:forEach>
 	</table>

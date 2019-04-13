@@ -44,7 +44,7 @@ public class ServletDebugathor extends HttpServlet {
 		ISolutionDAO daos= new SolutionDAO();
 		IUtilisateurDAO daou = new UtilisateurDAO();
 		IPropositionDAO daop= new PropositionDAO();
-		List<Logiciel> ll= daol.getAll();
+		List<Logiciel> ll= daol.findByName("eclipse");
 //		List<Solution> ls= daos.getAll();
 //		List<Utilisateur> lu= daou.getAll();
 //		List<Proposition> lp= daop.getAll();
@@ -61,7 +61,7 @@ public class ServletDebugathor extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		System.out.println("fin de méthode post");
+		System.out.println("fin de mï¿½thode post");
 	}
 
 }
