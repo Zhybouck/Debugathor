@@ -178,6 +178,22 @@ public class LogicielDAO implements ILogicielDAO {
 //			throw re;
 //		}
 //	}
+	public Logiciel findById(Integer id) {
+		log.debug("getting Logiciel instance with id: " + id);
+		try {
+			sessionFactory.getCurrentSession().getTransaction().begin();
+			Logiciel instance = (Logiciel) sessionFactory.getCurrentSession().get(Logiciel.class.getName(), id);
+			if (instance == null) {
+				log.debug("get successful, no instance found");
+			} else {
+				log.debug("get successful, instance found");
+			}
+			return instance;
+		} catch (RuntimeException re) {
+			log.error("get failed", re);
+			throw re;
+		}
+	}
 
 	/*
 	 * (non-Javadoc)

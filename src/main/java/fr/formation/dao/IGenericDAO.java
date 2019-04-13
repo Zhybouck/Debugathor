@@ -14,7 +14,7 @@ public interface IGenericDAO<T> {
 
 	T merge(T detachedInstance);
 
-	T findById(int id);
+	T findById(Integer id);
 
 	List<T> findByExample(T instance);
 

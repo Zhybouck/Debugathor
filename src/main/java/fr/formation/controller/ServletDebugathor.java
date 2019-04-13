@@ -47,11 +47,14 @@ public class ServletDebugathor extends HttpServlet {
 		List<Logiciel> ll= daol.findByName("eclipse");
 //		List<Solution> ls= daos.getAll();
 //		List<Utilisateur> lu= daou.getAll();
+		Utilisateur user = daou.findById(1);
 //		List<Proposition> lp= daop.getAll();
 		request.setAttribute("ll", ll);
 //		request.setAttribute("ls", ls);
 //		request.setAttribute("lu", lu);
 //		request.setAttribute("lp", lp);
+		request.setAttribute("user", user);
+		System.out.println(user);
 		request.getRequestDispatcher("debug.jsp").forward(request, response);
 	}
 

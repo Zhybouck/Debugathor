@@ -6,11 +6,15 @@ import static org.hibernate.criterion.Example.create;
 import java.util.List;
 
 import javax.naming.InitialContext;
+import javax.persistence.criteria.CriteriaQuery;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.HibernateException;
 import org.hibernate.LockMode;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
 import fr.formation.entities.Utilisateur;
@@ -42,6 +46,15 @@ public class UtilisateurDAO implements IUtilisateurDAO {
 			throw new IllegalStateException("Could not locate SessionFactory in JNDI");
 		}
 	}
+
+//	protected SessionFactory getSessionFactory() {
+//		try {
+//			return (SessionFactory) new InitialContext().lookup("SessionFactory");
+//		} catch (Exception e) {
+//			log.error("Could not locate SessionFactory in JNDI", e);
+//			throw new IllegalStateException("Could not locate SessionFactory in JNDI");
+//		}
+//	}
 
 	/*
 	 * (non-Javadoc)
@@ -133,19 +146,31 @@ public class UtilisateurDAO implements IUtilisateurDAO {
 	 */
 	public Utilisateur findById(java.lang.Integer id) {
 		log.debug("getting Utilisateur instance with id: " + id);
+		Session session = sessionFactory.getCurrentSession();
+		Transaction tx = session.getTransaction();
+		Utilisateur user = null;
+
 		try {
-			Utilisateur instance = (Utilisateur) sessionFactory.getCurrentSession().get("fr.formation.dao.Utilisateur",
-					id);
-			if (instance == null) {
-				log.debug("get successful, no instance found");
-			} else {
-				log.debug("get successful, instance found");
+			tx.begin();
+			user = session.get(Utilisateur.class, id);
+			tx.commit();
+		} catch (HibernateException e) {
+			log.error(e.getLocalizedMessage());
+			if (tx != null) {
+				try {
+					tx.rollback();
+				} catch (Exception e1) {
+					log.error("Rollback : " + e.getLocalizedMessage());
+				}
 			}
-			return instance;
-		} catch (RuntimeException re) {
-			log.error("get failed", re);
-			throw re;
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+			}
 		}
+		return user;
+
 	}
 
 	/*
@@ -165,12 +190,6 @@ public class UtilisateurDAO implements IUtilisateurDAO {
 			log.error("find by example failed", re);
 			throw re;
 		}
-	}
-
-	@Override
-	public Utilisateur findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override

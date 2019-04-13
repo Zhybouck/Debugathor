@@ -81,7 +81,7 @@ public class LogicielService implements ILogicielService {
 	 * @see fr.formation.services.ILogicielService#findById(int)
 	 */
 	@Override
-	public Logiciel findById(int id) {
+	public Logiciel findById(Integer id) {
 		return logDao.findById(id);
 	}
 

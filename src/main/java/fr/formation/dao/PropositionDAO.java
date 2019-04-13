@@ -116,7 +116,7 @@ public class PropositionDAO implements IPropositionDAO {
 	/* (non-Javadoc)
 	 * @see fr.formation.dao.IPropositionDAO#findById(int)
 	 */
-	public Proposition findById(int id) {
+	public Proposition findById(Integer id) {
 		log.debug("getting Proposition instance with id: " + id);
 		try {
 			Proposition instance = (Proposition) sessionFactory.getCurrentSession().get("fr.formation.dao.Proposition",
