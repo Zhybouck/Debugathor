@@ -221,4 +221,10 @@ public class LogicielDAO implements ILogicielDAO {
 //	        return new ArrayList<>();
 //	    }
 	}
+
+	@Override
+	public Logiciel getByName(String mail) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

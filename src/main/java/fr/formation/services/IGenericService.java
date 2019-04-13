@@ -19,4 +19,6 @@ public interface IGenericService<T> {
 	List<T> findByExample(T instance);
 
 	List<T> getAll();
+	
+	T getbyName(String nom);
 }

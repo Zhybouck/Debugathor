@@ -19,4 +19,6 @@ public interface IGenericDAO<T> {
 	List<T> findByExample(T instance);
 
 	List<T> getAll();
+	
+	T getByName(String nom);
 }

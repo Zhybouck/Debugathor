@@ -106,4 +106,12 @@ public class LogicielService implements ILogicielService {
 	public List<Logiciel> getAll() {
 		return logDao.getAll();
 	}
+
+
+
+	@Override
+	public Logiciel getbyName(String nom) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

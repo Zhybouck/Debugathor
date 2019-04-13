@@ -160,4 +160,21 @@ public class UtilisateurDAO implements IUtilisateurDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
-}
+
+	@Override
+	public Utilisateur getByName(String mail) {
+		log.debug("getting Utilisateur instance with nom: " + mail);
+		try {
+			Utilisateur instance = (Utilisateur) sessionFactory.getCurrentSession().get("fr.formation.dao.Utilisateur",
+					mail);
+			if (instance == null) {
+				log.debug("get successful, no instance found");
+			} else {
+				log.debug("get successful, instance found");
+			}
+			return instance;
+		} catch (RuntimeException re) {
+			log.error("get failed", re);
+			throw re;
+	}
+	}}

@@ -110,4 +110,13 @@ public class UtilisateurService implements IGenericService<Utilisateur>, IUtilis
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Utilisateur getbyName(String nom) {
+		// TODO Auto-generated method stub
+		
+		Utilisateur user = utilDao.getByName(nom);
+		
+		return user;
+	}
 }
