@@ -122,7 +122,7 @@ public class SolutionDAO implements ISolutionDAO {
 	 * @see fr.formation.dao.ISolutionDAO#findById(java.lang.Integer)
 	 */
 	@Override
-	public Solution findById(int id) {
+	public Solution findById(Integer id) {
 		log.debug("getting Solution instance with id: " + id);
 		try {
 			Solution instance = (Solution) sessionFactory.getCurrentSession().get("fr.formation.dao.Solution", id);
@@ -161,5 +161,6 @@ public class SolutionDAO implements ISolutionDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

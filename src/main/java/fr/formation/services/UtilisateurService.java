@@ -104,9 +104,9 @@ public class UtilisateurService implements IGenericService<Utilisateur>, IUtilis
 	 * @see fr.formation.services.IUtilisateurService#findById(int)
 	 */
 	@Override
-	public Utilisateur findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Utilisateur findById(Integer id) {
+		Utilisateur user = utilDao.findById(id);
+		return user;
 	}
 
 	/* (non-Javadoc)

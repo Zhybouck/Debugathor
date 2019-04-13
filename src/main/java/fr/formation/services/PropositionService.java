@@ -66,7 +66,7 @@ public class PropositionService implements IPropositionService{
 	 * @see fr.formation.services.IPropositionService#findById(int)
 	 */
 	@Override
-	public Proposition findById(int id) {
+	public Proposition findById(Integer id) {
 		return propDao.findById(id);
 	}
 

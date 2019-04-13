@@ -138,7 +138,7 @@ public class Utilisateur implements java.io.Serializable {
 		this.rang = rang;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utilisateur")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "utilisateur")
 	public Set<Solution> getSolutions() {
 		return this.solutions;
 	}

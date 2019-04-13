@@ -64,7 +64,7 @@ public class SolutionService implements ISolutionService{
 	 * @see fr.formation.services.ISolutionService#findById(int)
 	 */
 	@Override
-	public Solution findById(int id) {
+	public Solution findById(Integer id) {
 		return solDao.findById(id);
 	}
 

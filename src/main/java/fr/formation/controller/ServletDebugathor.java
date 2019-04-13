@@ -47,11 +47,14 @@ public class ServletDebugathor extends HttpServlet {
 		List<Logiciel> ll= daol.getAll();
 //		List<Solution> ls= daos.getAll();
 //		List<Utilisateur> lu= daou.getAll();
+		Utilisateur user = daou.findById(1);
 //		List<Proposition> lp= daop.getAll();
 		request.setAttribute("ll", ll);
 //		request.setAttribute("ls", ls);
 //		request.setAttribute("lu", lu);
 //		request.setAttribute("lp", lp);
+		request.setAttribute("user", user);
+		System.out.println(user);
 		request.getRequestDispatcher("debug.jsp").forward(request, response);
 	}
 
@@ -61,7 +64,7 @@ public class ServletDebugathor extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		System.out.println("fin de méthode post");
+		System.out.println("fin de mï¿½thode post");
 	}
 
 }

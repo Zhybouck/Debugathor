@@ -158,7 +158,7 @@ public class LogicielDAO implements ILogicielDAO {
 	 * 
 	 * @see fr.formation.dao.ILogicielDAO#findById(int)
 	 */
-	public Logiciel findById(int id) {
+	public Logiciel findById(Integer id) {
 		log.debug("getting Logiciel instance with id: " + id);
 		try {
 			sessionFactory.getCurrentSession().getTransaction().begin();
