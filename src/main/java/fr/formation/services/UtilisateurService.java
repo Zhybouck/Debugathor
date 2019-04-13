@@ -4,11 +4,18 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
 import fr.formation.dao.IUtilisateurDAO;
 import fr.formation.dao.UtilisateurDAO;
 import fr.formation.entities.Utilisateur;
 
 @Service
+@Path("/user")
 public class UtilisateurService implements IGenericService<Utilisateur>, IUtilisateurService {
 	IUtilisateurDAO utilDao = new UtilisateurDAO();
 
@@ -111,8 +118,9 @@ public class UtilisateurService implements IGenericService<Utilisateur>, IUtilis
 		return null;
 	}
 
-	@Override
-	public Utilisateur getbyName(String nom) {
+	@GET
+	@Produces({MediaType.APPLICATION_JSON})
+	public Utilisateur getbyName(@PathParam("Mail")String nom) {
 		// TODO Auto-generated method stub
 		
 		Utilisateur user = utilDao.getByName(nom);
