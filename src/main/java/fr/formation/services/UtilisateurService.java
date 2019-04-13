@@ -11,6 +11,7 @@ import fr.formation.entities.Utilisateur;
 @Service
 public class UtilisateurService implements IGenericService<Utilisateur>, IUtilisateurService {
 	IUtilisateurDAO utilDao = new UtilisateurDAO();
+	int test;
 
 	public UtilisateurService(IUtilisateurDAO utilisateurDao) {
 		utilDao = utilisateurDao;
