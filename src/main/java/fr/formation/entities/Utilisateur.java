@@ -26,7 +26,9 @@ public class Utilisateur implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	private Integer idUtilisateur;
+	private String mail;
 	private String mdp;
 	private String prenom;
 	private String nom;
@@ -38,7 +40,8 @@ public class Utilisateur implements java.io.Serializable {
 	public Utilisateur() {
 	}
 
-	public Utilisateur(String mdp, String prenom, String nom, Date dateInsc, String poste, String rang) {
+	public Utilisateur(String mail,String mdp, String prenom, String nom, Date dateInsc, String poste, String rang) {
+		this.mail=mail;
 		this.mdp = mdp;
 		this.prenom = prenom;
 		this.nom = nom;
@@ -47,8 +50,9 @@ public class Utilisateur implements java.io.Serializable {
 		this.rang = rang;
 	}
 
-	public Utilisateur(String mdp, String prenom, String nom, Date dateInsc, String poste, String rang,
+	public Utilisateur(String mail,String mdp, String prenom, String nom, Date dateInsc, String poste, String rang,
 			Set<Solution> solutions) {
+		this.mail=mail;
 		this.mdp = mdp;
 		this.prenom = prenom;
 		this.nom = nom;
@@ -70,6 +74,15 @@ public class Utilisateur implements java.io.Serializable {
 		this.idUtilisateur = idUtilisateur;
 	}
 
+	@Column(name = "Mail", nullable = false, length = 45)
+	public String getMail() {
+		return this.mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+	
 	@Column(name = "MDP", nullable = false, length = 45)
 	public String getMdp() {
 		return this.mdp;
@@ -136,7 +149,7 @@ public class Utilisateur implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "Utilisateur [idUtilisateur=" + idUtilisateur + ", mdp=" + mdp + ", prenom=" + prenom + ", nom=" + nom
+		return "Utilisateur [idUtilisateur=" + idUtilisateur +", mail=" + mail + ", mdp=" + mdp + ", prenom=" + prenom + ", nom=" + nom
 				+ ", dateInsc=" + dateInsc + ", poste=" + poste + ", rang=" + rang + ", solutions=" + solutions;
 	}
 	
