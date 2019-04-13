@@ -162,9 +162,4 @@ public class SolutionDAO implements ISolutionDAO {
 		return null;
 	}
 
-	@Override
-	public Solution getByName(String mail) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

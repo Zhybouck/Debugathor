@@ -222,9 +222,5 @@ public class LogicielDAO implements ILogicielDAO {
 //	    }
 	}
 
-	@Override
-	public Logiciel getByName(String mail) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 }

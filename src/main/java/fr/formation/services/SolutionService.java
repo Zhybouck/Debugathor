@@ -85,10 +85,6 @@ public class SolutionService implements ISolutionService{
 		return null;
 	}
 
-	@Override
-	public Solution getbyName(String nom) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }

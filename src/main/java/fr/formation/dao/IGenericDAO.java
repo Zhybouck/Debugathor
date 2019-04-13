@@ -20,5 +20,4 @@ public interface IGenericDAO<T> {
 
 	List<T> getAll();
 	
-	T getByName(String nom);
 }
