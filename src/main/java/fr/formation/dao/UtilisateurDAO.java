@@ -6,7 +6,9 @@ import static org.hibernate.criterion.Example.create;
 import java.util.List;
 
 import javax.naming.InitialContext;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -17,6 +19,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
+import fr.formation.entities.Logiciel;
 import fr.formation.entities.Utilisateur;
 import fr.formation.utils.HibernateUtils;
 
@@ -200,19 +203,17 @@ public class UtilisateurDAO implements IUtilisateurDAO {
 
 	@Override
 	public Utilisateur getByMail(String mail) {
-		log.debug("getting Utilisateur instance with nom: " + mail);
-		try {
-			Utilisateur instance = (Utilisateur) sessionFactory.getCurrentSession().get("fr.formation.dao.Utilisateur",
-					mail);
-			if (instance == null) {
-				log.debug("get successful, no instance found");
-			} else {
-				log.debug("get successful, instance found");
-			}
-			return instance;
-		} catch (RuntimeException re) {
-			log.error("get failed", re);
-			throw re;
-		}
+		Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+		session.getTransaction().begin();
+
+		// create Criteria
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<Utilisateur> criteriaQuery = builder.createQuery(Utilisateur.class);
+		Root<Utilisateur> root = criteriaQuery.from(Utilisateur.class);
+		CriteriaQuery<Utilisateur> select = criteriaQuery.select(root);
+		criteriaQuery.where(builder.equal(root.get("nomLogiciel"),mail));
+		Utilisateur user = session.createQuery(criteriaQuery).getSingleResult();
+		session.close();
+		return user;
 	}
 }
