@@ -162,7 +162,7 @@ public class UtilisateurDAO implements IUtilisateurDAO {
 	}
 
 	@Override
-	public Utilisateur getByName(String mail) {
+	public Utilisateur getByMail(String mail) {
 		log.debug("getting Utilisateur instance with nom: " + mail);
 		try {
 			Utilisateur instance = (Utilisateur) sessionFactory.getCurrentSession().get("fr.formation.dao.Utilisateur",

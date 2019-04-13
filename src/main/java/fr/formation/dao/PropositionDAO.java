@@ -155,9 +155,5 @@ public class PropositionDAO implements IPropositionDAO {
 		return null;
 	}
 
-	@Override
-	public Proposition getByName(String mail) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 }

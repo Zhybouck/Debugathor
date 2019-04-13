@@ -20,5 +20,4 @@ public interface IGenericService<T> {
 
 	List<T> getAll();
 	
-	T getbyName(String nom);
 }

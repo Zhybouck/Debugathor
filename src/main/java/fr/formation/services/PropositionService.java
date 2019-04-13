@@ -86,11 +86,6 @@ public class PropositionService implements IPropositionService{
 		return propDao.getAll();
 	}
 
-	@Override
-	public Proposition getbyName(String nom) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
 }

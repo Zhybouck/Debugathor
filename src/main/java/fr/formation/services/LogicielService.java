@@ -109,9 +109,5 @@ public class LogicielService implements ILogicielService {
 
 
 
-	@Override
-	public Logiciel getbyName(String nom) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 }

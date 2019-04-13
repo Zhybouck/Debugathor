@@ -120,11 +120,8 @@ public class UtilisateurService implements IGenericService<Utilisateur>, IUtilis
 
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
-	public Utilisateur getbyName(@PathParam("Mail")String nom) {
-		// TODO Auto-generated method stub
-		
-		Utilisateur user = utilDao.getByName(nom);
-		
+	public Utilisateur getbyMail(@PathParam("Mail") String mail) {
+		Utilisateur user = utilDao.getByMail(mail);
 		return user;
 	}
 }
