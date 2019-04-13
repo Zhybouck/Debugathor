@@ -18,8 +18,6 @@ import fr.formation.dao.PropositionDAO;
 import fr.formation.dao.SolutionDAO;
 import fr.formation.dao.UtilisateurDAO;
 import fr.formation.entities.Logiciel;
-import fr.formation.entities.Proposition;
-import fr.formation.entities.Solution;
 import fr.formation.entities.Utilisateur;
 
 /**
@@ -47,14 +45,15 @@ public class ServletDebugathor extends HttpServlet {
 		List<Logiciel> ll= daol.findByName("eclipse");
 //		List<Solution> ls= daos.getAll();
 //		List<Utilisateur> lu= daou.getAll();
-		Utilisateur user = daou.findById(1);
+//		Utilisateur user = daou.findById(1);
 //		List<Proposition> lp= daop.getAll();
 		request.setAttribute("ll", ll);
+		System.out.println(ll.toString());
 //		request.setAttribute("ls", ls);
 //		request.setAttribute("lu", lu);
 //		request.setAttribute("lp", lp);
-		request.setAttribute("user", user);
-		System.out.println(user);
+//		request.setAttribute("user", user);
+//		System.out.println(user);
 		request.getRequestDispatcher("debug.jsp").forward(request, response);
 	}
 

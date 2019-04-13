@@ -280,10 +280,10 @@ public class LogicielDAO implements ILogicielDAO {
 		CriteriaQuery<Logiciel> criteriaQuery = builder.createQuery(Logiciel.class);
 		Root<Logiciel> root = criteriaQuery.from(Logiciel.class);
 		CriteriaQuery<Logiciel> select = criteriaQuery.select(root);
-		criteriaQuery.select(root.get("nomLogiciel"));
+		criteriaQuery.where(builder.equal(root.get("nomLogiciel"),name));
 		List<Logiciel> liste = session.createQuery(criteriaQuery).getResultList();
 		session.close();
-
 		return liste;
+
 	}
 }
