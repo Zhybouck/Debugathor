@@ -1,61 +1,37 @@
 package fr.formation.dao;
-// Generated 5 avr. 2019 11:04:33 by Hibernate Tools 5.1.10.Final
+// Generated 15 avr. 2019 13:36:33 by Hibernate Tools 5.1.10.Final
+
+import java.util.List;
+import javax.naming.InitialContext;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.hibernate.LockMode;
+import org.hibernate.SessionFactory;
+
+import fr.formation.entities.Logiciel;
 
 import static org.hibernate.criterion.Example.create;
 
-import java.util.List;
-
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.hibernate.HibernateException;
-import org.hibernate.LockMode;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.springframework.stereotype.Repository;
-
-import fr.formation.entities.Logiciel;
-import fr.formation.utils.HibernateUtils;
-
 /**
  * Home object for domain model class Logiciel.
- * 
  * @see fr.formation.dao.Logiciel
  * @author Hibernate Tools
  */
-
-@Repository
-public class LogicielDAO implements ILogicielDAO {
+public class LogicielDAO implements ILogicielDAO{
 
 	private static final Log log = LogFactory.getLog(LogicielDAO.class);
 
-	SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
+	private final SessionFactory sessionFactory = getSessionFactory();
 
-//	protected SessionFactory getSessionFactory() {
-//		try {
-//			return HibernateUtils.getSessionFactory();
-//		} catch (Exception e) {
-//			log.error("Could not locate SessionFactory in JNDI", e);
-//			throw new IllegalStateException("Could not locate SessionFactory in JNDI");
-//		}
-//	}
-	public LogicielDAO() {
+	protected SessionFactory getSessionFactory() {
+		try {
+			return (SessionFactory) new InitialContext().lookup("SessionFactory");
+		} catch (Exception e) {
+			log.error("Could not locate SessionFactory in JNDI", e);
+			throw new IllegalStateException("Could not locate SessionFactory in JNDI");
+		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see fr.formation.dao.ISolutionDAO#persist(fr.formation.beans.Logiciel)
-	 */
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see fr.formation.dao.ILogicielDAO#persist(fr.formation.beans.Logiciel)
-	 */
 	public void persist(Logiciel transientInstance) {
 		log.debug("persisting Logiciel instance");
 		try {
@@ -67,16 +43,6 @@ public class LogicielDAO implements ILogicielDAO {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see fr.formation.dao.ISolutionDAO#attachDirty(fr.formation.beans.Logiciel)
-	 */
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see fr.formation.dao.ILogicielDAO#attachDirty(fr.formation.beans.Logiciel)
-	 */
 	public void attachDirty(Logiciel instance) {
 		log.debug("attaching dirty Logiciel instance");
 		try {
@@ -88,16 +54,6 @@ public class LogicielDAO implements ILogicielDAO {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see fr.formation.dao.ISolutionDAO#attachClean(fr.formation.beans.Logiciel)
-	 */
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see fr.formation.dao.ILogicielDAO#attachClean(fr.formation.beans.Logiciel)
-	 */
 	public void attachClean(Logiciel instance) {
 		log.debug("attaching clean Logiciel instance");
 		try {
@@ -109,16 +65,6 @@ public class LogicielDAO implements ILogicielDAO {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see fr.formation.dao.ISolutionDAO#delete(fr.formation.beans.Logiciel)
-	 */
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see fr.formation.dao.ILogicielDAO#delete(fr.formation.beans.Logiciel)
-	 */
 	public void delete(Logiciel persistentInstance) {
 		log.debug("deleting Logiciel instance");
 		try {
@@ -130,16 +76,6 @@ public class LogicielDAO implements ILogicielDAO {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see fr.formation.dao.ISolutionDAO#merge(fr.formation.beans.Logiciel)
-	 */
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see fr.formation.dao.ILogicielDAO#merge(fr.formation.beans.Logiciel)
-	 */
 	public Logiciel merge(Logiciel detachedInstance) {
 		log.debug("merging Logiciel instance");
 		try {
@@ -152,37 +88,10 @@ public class LogicielDAO implements ILogicielDAO {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see fr.formation.dao.ISolutionDAO#findById(int)
-	 */
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see fr.formation.dao.ILogicielDAO#findById(int)
-	 */
-//	public Logiciel findById(int id) {
-//		log.debug("getting Logiciel instance with id: " + id);
-//		try {
-//			sessionFactory.getCurrentSession().getTransaction().begin();
-//			Logiciel instance = (Logiciel) sessionFactory.getCurrentSession().get(Logiciel.class.getName(), id);
-//			if (instance == null) {
-//				log.debug("get successful, no instance found");
-//			} else {
-//				log.debug("get successful, instance found");
-//			}
-//			return instance;
-//		} catch (RuntimeException re) {
-//			log.error("get failed", re);
-//			throw re;
-//		}
-//	}
-	public Logiciel findById(Integer id) {
+	public Logiciel findById(int id) {
 		log.debug("getting Logiciel instance with id: " + id);
 		try {
-			sessionFactory.getCurrentSession().getTransaction().begin();
-			Logiciel instance = (Logiciel) sessionFactory.getCurrentSession().get(Logiciel.class.getName(), id);
+			Logiciel instance = (Logiciel) sessionFactory.getCurrentSession().get("fr.formation.dao.Logiciel", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
 			} else {
@@ -195,16 +104,6 @@ public class LogicielDAO implements ILogicielDAO {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see fr.formation.dao.ISolutionDAO#findByExample(fr.formation.beans.Logiciel)
-	 */
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see fr.formation.dao.ILogicielDAO#findByExample(fr.formation.beans.Logiciel)
-	 */
 	public List<Logiciel> findByExample(Logiciel instance) {
 		log.debug("finding Logiciel instance by example");
 		try {
@@ -218,72 +117,21 @@ public class LogicielDAO implements ILogicielDAO {
 		}
 	}
 
-	public List<Logiciel> getAll() {
-//		CriteriaBuilder builder = session.getCriteriaBuilder();
-//		CriteriaQuery<Logiciel> criteria = builder.createQuery(Logiciels);
-//		criteria.from(Logiciels);
-//		List<Logiciel> liste = session.createQuery(criteria).getResultList();
-//		return liste;
-		Session session = sessionFactory.openSession();
-
-		// create Criteria
-		CriteriaQuery<Logiciel> criteriaQuery = session.getCriteriaBuilder().createQuery(Logiciel.class);
-		criteriaQuery.from(Logiciel.class);
-
-		List<Logiciel> liste = session.createQuery(criteriaQuery).getResultList();
-		session.close();
-
-		return liste;
-//	    try
-//	    {
-//	        return sessionFactory.getCurrentSession().createCriteria(Logiciel.class).list();
-//	    } catch (Exception e) {
-//	        return new ArrayList<>();
-//	    }
+	@Override
+	public Logiciel findById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public Logiciel findById(int id) {
-		Session session = sessionFactory.getCurrentSession();
-		Transaction tx = session.getTransaction();
-		Logiciel logiciel = null;
-
-		try {
-			tx.begin();
-			logiciel = session.get(Logiciel.class, id);
-			tx.commit();
-		} catch (HibernateException e) {
-			log.error(e.getLocalizedMessage());
-			if (tx != null) {
-				try {
-					tx.rollback();
-				} catch (Exception e1) {
-					log.error("Rollback : " + e.getLocalizedMessage());
-				}
-			}
-			e.printStackTrace();
-		} finally {
-			if (session != null) {
-				session.close();
-			}
-		}
-		return logiciel;
+	public List<Logiciel> getAll() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public List<Logiciel> findByName(String name) {
-		Session session = HibernateUtils.getSessionFactory().getCurrentSession();
-		session.getTransaction().begin();
-
-		// create Criteria
-		CriteriaBuilder builder = session.getCriteriaBuilder();
-		CriteriaQuery<Logiciel> criteriaQuery = builder.createQuery(Logiciel.class);
-		Root<Logiciel> root = criteriaQuery.from(Logiciel.class);
-		CriteriaQuery<Logiciel> select = criteriaQuery.select(root);
-		criteriaQuery.where(builder.equal(root.get("nomLogiciel"),name));
-		List<Logiciel> liste = session.createQuery(criteriaQuery).getResultList();
-		session.close();
-		return liste;
-
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

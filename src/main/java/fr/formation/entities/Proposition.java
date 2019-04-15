@@ -1,11 +1,13 @@
 package fr.formation.entities;
-// Generated 5 avr. 2019 11:02:06 by Hibernate Tools 5.1.10.Final
+// Generated 15 avr. 2019 13:33:11 by Hibernate Tools 5.1.10.Final
 
 import java.util.Date;
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -19,44 +21,47 @@ import javax.persistence.TemporalType;
 @Table(name = "proposition", catalog = "debugathor")
 public class Proposition implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private int idProposition;
+	private PropositionId id;
 	private Solution solution;
-	private String prop;
+	private Utilisateur utilisateur;
 	private Date dateProp;
+	private String commentaire;
+	private Integer note;
 
 	public Proposition() {
 	}
 
-	public Proposition(int idProposition, Solution solution, Utilisateur utilisateur, String prop) {
-		this.idProposition = idProposition;
+	public Proposition(PropositionId id, Solution solution, Utilisateur utilisateur) {
+		this.id = id;
 		this.solution = solution;
-		this.prop = prop;
+		this.utilisateur = utilisateur;
 	}
 
-	public Proposition(int idProposition, Solution solution, Utilisateur utilisateur, String prop, Date dateProp) {
-		this.idProposition = idProposition;
+	public Proposition(PropositionId id, Solution solution, Utilisateur utilisateur, Date dateProp, String commentaire,
+			Integer note) {
+		this.id = id;
 		this.solution = solution;
-		this.prop = prop;
+		this.utilisateur = utilisateur;
 		this.dateProp = dateProp;
+		this.commentaire = commentaire;
+		this.note = note;
 	}
 
-	@Id
+	@EmbeddedId
 
-	@Column(name = "idProposition", unique = true, nullable = false)
-	public int getIdProposition() {
-		return this.idProposition;
+	@AttributeOverrides({
+			@AttributeOverride(name = "utilisateurIdUtilisateur", column = @Column(name = "utilisateur_IdUtilisateur", nullable = false)),
+			@AttributeOverride(name = "solutionIdSolution", column = @Column(name = "solution_idSolution", nullable = false)) })
+	public PropositionId getId() {
+		return this.id;
 	}
 
-	public void setIdProposition(int idProposition) {
-		this.idProposition = idProposition;
+	public void setId(PropositionId id) {
+		this.id = id;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Solution_idSolution", nullable = false)
+	@JoinColumn(name = "solution_idSolution", nullable = false, insertable = false, updatable = false)
 	public Solution getSolution() {
 		return this.solution;
 	}
@@ -65,18 +70,18 @@ public class Proposition implements java.io.Serializable {
 		this.solution = solution;
 	}
 
-
-	@Column(name = "Prop", nullable = false)
-	public String getProp() {
-		return this.prop;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "utilisateur_IdUtilisateur", nullable = false, insertable = false, updatable = false)
+	public Utilisateur getUtilisateur() {
+		return this.utilisateur;
 	}
 
-	public void setProp(String prop) {
-		this.prop = prop;
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "DateProp", length = 10)
+	@Column(name = "Date_Prop", length = 10)
 	public Date getDateProp() {
 		return this.dateProp;
 	}
@@ -85,12 +90,22 @@ public class Proposition implements java.io.Serializable {
 		this.dateProp = dateProp;
 	}
 
-	@Override
-	public String toString() {
-		return "Proposition [idProposition=" + idProposition + ", solution=" + solution
-				+ ", prop=" + prop + ", dateProp=" + dateProp + "]";
+	@Column(name = "Commentaire", length = 45)
+	public String getCommentaire() {
+		return this.commentaire;
 	}
-	
-	
+
+	public void setCommentaire(String commentaire) {
+		this.commentaire = commentaire;
+	}
+
+	@Column(name = "Note")
+	public Integer getNote() {
+		return this.note;
+	}
+
+	public void setNote(Integer note) {
+		this.note = note;
+	}
 
 }

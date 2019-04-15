@@ -1,5 +1,5 @@
 package fr.formation.entities;
-// Generated 5 avr. 2019 11:02:06 by Hibernate Tools 5.1.10.Final
+// Generated 15 avr. 2019 13:33:11 by Hibernate Tools 5.1.10.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -24,13 +24,8 @@ import javax.persistence.TemporalType;
 @Table(name = "solution", catalog = "debugathor")
 public class Solution implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private Integer idSolution;
 	private Logiciel logiciel;
-	private Utilisateur utilisateur;
 	private String type;
 	private Date dateBug;
 	private String titre;
@@ -42,20 +37,17 @@ public class Solution implements java.io.Serializable {
 	public Solution() {
 	}
 
-	public Solution(Logiciel logiciel, Utilisateur utilisateur, String titre, String description, String demarche,
-			String technologie) {
+	public Solution(Logiciel logiciel, String titre, String description, String demarche, String technologie) {
 		this.logiciel = logiciel;
-		this.utilisateur = utilisateur;
 		this.titre = titre;
 		this.description = description;
 		this.demarche = demarche;
 		this.technologie = technologie;
 	}
 
-	public Solution(Logiciel logiciel, Utilisateur utilisateur, String type, Date dateBug, String titre,
-			String description, String demarche, String technologie, Set<Proposition> propositions) {
+	public Solution(Logiciel logiciel, String type, Date dateBug, String titre, String description, String demarche,
+			String technologie, Set<Proposition> propositions) {
 		this.logiciel = logiciel;
-		this.utilisateur = utilisateur;
 		this.type = type;
 		this.dateBug = dateBug;
 		this.titre = titre;
@@ -85,16 +77,6 @@ public class Solution implements java.io.Serializable {
 
 	public void setLogiciel(Logiciel logiciel) {
 		this.logiciel = logiciel;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Utilisateur_IdUtilisateur", nullable = false)
-	public Utilisateur getUtilisateur() {
-		return this.utilisateur;
-	}
-
-	public void setUtilisateur(Utilisateur utilisateur) {
-		this.utilisateur = utilisateur;
 	}
 
 	@Column(name = "Type", length = 45)
@@ -161,12 +143,4 @@ public class Solution implements java.io.Serializable {
 		this.propositions = propositions;
 	}
 
-	@Override
-	public String toString() {
-		return "Solution [idSolution=" + idSolution + ", logiciel=" + logiciel + ", utilisateur=" + utilisateur
-				+ ", type=" + type + ", dateBug=" + dateBug + ", titre=" + titre + ", description=" + description
-				+ ", demarche=" + demarche + ", technologie=" + technologie + ", propositions=" + propositions + "]";
-	}
-
-	
 }

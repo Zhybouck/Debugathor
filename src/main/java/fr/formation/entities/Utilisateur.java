@@ -1,5 +1,5 @@
 package fr.formation.entities;
-// Generated 5 avr. 2019 11:02:06 by Hibernate Tools 5.1.10.Final
+// Generated 15 avr. 2019 13:33:11 by Hibernate Tools 5.1.10.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -22,44 +22,39 @@ import javax.persistence.TemporalType;
 @Table(name = "utilisateur", catalog = "debugathor")
 public class Utilisateur implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
 	private Integer idUtilisateur;
-	private String mail;
 	private String mdp;
 	private String prenom;
 	private String nom;
 	private Date dateInsc;
 	private String poste;
 	private String rang;
-	private Set<Solution> solutions = new HashSet<Solution>(0);
+	private String mail;
+	private Set<Proposition> propositions = new HashSet<Proposition>(0);
 
 	public Utilisateur() {
 	}
 
-	public Utilisateur(String mail,String mdp, String prenom, String nom, Date dateInsc, String poste, String rang) {
-		this.mail=mail;
+	public Utilisateur(String mdp, String prenom, String nom, Date dateInsc, String poste, String rang, String mail) {
 		this.mdp = mdp;
 		this.prenom = prenom;
 		this.nom = nom;
 		this.dateInsc = dateInsc;
 		this.poste = poste;
 		this.rang = rang;
+		this.mail = mail;
 	}
 
-	public Utilisateur(String mail,String mdp, String prenom, String nom, Date dateInsc, String poste, String rang,
-			Set<Solution> solutions) {
-		this.mail=mail;
+	public Utilisateur(String mdp, String prenom, String nom, Date dateInsc, String poste, String rang, String mail,
+			Set<Proposition> propositions) {
 		this.mdp = mdp;
 		this.prenom = prenom;
 		this.nom = nom;
 		this.dateInsc = dateInsc;
 		this.poste = poste;
 		this.rang = rang;
-		this.solutions = solutions;
+		this.mail = mail;
+		this.propositions = propositions;
 	}
 
 	@Id
@@ -74,15 +69,6 @@ public class Utilisateur implements java.io.Serializable {
 		this.idUtilisateur = idUtilisateur;
 	}
 
-	@Column(name = "Mail", nullable = false, length = 45)
-	public String getMail() {
-		return this.mail;
-	}
-
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
-	
 	@Column(name = "MDP", nullable = false, length = 45)
 	public String getMdp() {
 		return this.mdp;
@@ -138,21 +124,22 @@ public class Utilisateur implements java.io.Serializable {
 		this.rang = rang;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "utilisateur")
-	public Set<Solution> getSolutions() {
-		return this.solutions;
+	@Column(name = "Mail", nullable = false, length = 45)
+	public String getMail() {
+		return this.mail;
 	}
 
-	public void setSolutions(Set<Solution> solutions) {
-		this.solutions = solutions;
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 
-	@Override
-	public String toString() {
-		return "Utilisateur [idUtilisateur=" + idUtilisateur +", mail=" + mail + ", mdp=" + mdp + ", prenom=" + prenom + ", nom=" + nom
-				+ ", dateInsc=" + dateInsc + ", poste=" + poste + ", rang=" + rang + ", solutions=" + solutions;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utilisateur")
+	public Set<Proposition> getPropositions() {
+		return this.propositions;
 	}
-	
-	
+
+	public void setPropositions(Set<Proposition> propositions) {
+		this.propositions = propositions;
+	}
 
 }

@@ -1,38 +1,29 @@
 package fr.formation.dao;
-// Generated 5 avr. 2019 11:04:33 by Hibernate Tools 5.1.10.Final
-
-import static org.hibernate.criterion.Example.create;
+// Generated 15 avr. 2019 13:36:33 by Hibernate Tools 5.1.10.Final
 
 import java.util.List;
-
 import javax.naming.InitialContext;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
-import org.springframework.stereotype.Repository;
 
 import fr.formation.entities.Proposition;
-import fr.formation.utils.HibernateUtils;
+import fr.formation.entities.PropositionId;
+
+import static org.hibernate.criterion.Example.create;
 
 /**
  * Home object for domain model class Proposition.
  * @see fr.formation.dao.Proposition
  * @author Hibernate Tools
  */
-@Repository
-public class PropositionDAO implements IPropositionDAO {
+public class PropositionDAO implements IPropositionDAO{
 
 	private static final Log log = LogFactory.getLog(PropositionDAO.class);
 
-	SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
+	private final SessionFactory sessionFactory = getSessionFactory();
 
-	
-	public PropositionDAO() {
-		// TODO Auto-generated constructor stub
-	}
-	
 	protected SessionFactory getSessionFactory() {
 		try {
 			return (SessionFactory) new InitialContext().lookup("SessionFactory");
@@ -42,9 +33,6 @@ public class PropositionDAO implements IPropositionDAO {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.dao.IPropositionDAO#persist(fr.formation.beans.Proposition)
-	 */
 	public void persist(Proposition transientInstance) {
 		log.debug("persisting Proposition instance");
 		try {
@@ -56,9 +44,6 @@ public class PropositionDAO implements IPropositionDAO {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.dao.IPropositionDAO#attachDirty(fr.formation.beans.Proposition)
-	 */
 	public void attachDirty(Proposition instance) {
 		log.debug("attaching dirty Proposition instance");
 		try {
@@ -70,9 +55,6 @@ public class PropositionDAO implements IPropositionDAO {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.dao.IPropositionDAO#attachClean(fr.formation.beans.Proposition)
-	 */
 	public void attachClean(Proposition instance) {
 		log.debug("attaching clean Proposition instance");
 		try {
@@ -84,9 +66,6 @@ public class PropositionDAO implements IPropositionDAO {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.dao.IPropositionDAO#delete(fr.formation.beans.Proposition)
-	 */
 	public void delete(Proposition persistentInstance) {
 		log.debug("deleting Proposition instance");
 		try {
@@ -98,9 +77,6 @@ public class PropositionDAO implements IPropositionDAO {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.dao.IPropositionDAO#merge(fr.formation.beans.Proposition)
-	 */
 	public Proposition merge(Proposition detachedInstance) {
 		log.debug("merging Proposition instance");
 		try {
@@ -113,10 +89,7 @@ public class PropositionDAO implements IPropositionDAO {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.dao.IPropositionDAO#findById(int)
-	 */
-	public Proposition findById(Integer id) {
+	public Proposition findById(PropositionId id) {
 		log.debug("getting Proposition instance with id: " + id);
 		try {
 			Proposition instance = (Proposition) sessionFactory.getCurrentSession().get("fr.formation.dao.Proposition",
@@ -133,9 +106,6 @@ public class PropositionDAO implements IPropositionDAO {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.dao.IPropositionDAO#findByExample(fr.formation.beans.Proposition)
-	 */
 	public List<Proposition> findByExample(Proposition instance) {
 		log.debug("finding Proposition instance by example");
 		try {
@@ -150,10 +120,14 @@ public class PropositionDAO implements IPropositionDAO {
 	}
 
 	@Override
-	public List<Proposition> getAll() {
+	public Proposition findById(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
+	@Override
+	public List<Proposition> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

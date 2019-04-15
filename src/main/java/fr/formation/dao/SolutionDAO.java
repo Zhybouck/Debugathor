@@ -1,38 +1,28 @@
 package fr.formation.dao;
-// Generated 5 avr. 2019 11:04:33 by Hibernate Tools 5.1.10.Final
-
-import static org.hibernate.criterion.Example.create;
+// Generated 15 avr. 2019 13:36:33 by Hibernate Tools 5.1.10.Final
 
 import java.util.List;
-
 import javax.naming.InitialContext;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
-import org.springframework.stereotype.Repository;
 
 import fr.formation.entities.Solution;
-import fr.formation.utils.HibernateUtils;
+
+import static org.hibernate.criterion.Example.create;
 
 /**
  * Home object for domain model class Solution.
  * @see fr.formation.dao.Solution
  * @author Hibernate Tools
  */
-
-@Repository
-public class SolutionDAO implements ISolutionDAO {
+public class SolutionDAO implements ISolutionDAO{
 
 	private static final Log log = LogFactory.getLog(SolutionDAO.class);
 
-	SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
+	private final SessionFactory sessionFactory = getSessionFactory();
 
-	public SolutionDAO() {
-		
-	}
-	
 	protected SessionFactory getSessionFactory() {
 		try {
 			return (SessionFactory) new InitialContext().lookup("SessionFactory");
@@ -42,10 +32,6 @@ public class SolutionDAO implements ISolutionDAO {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.dao.ISolutionDAO#persist(fr.formation.entities.Solution)
-	 */
-	@Override
 	public void persist(Solution transientInstance) {
 		log.debug("persisting Solution instance");
 		try {
@@ -57,10 +43,6 @@ public class SolutionDAO implements ISolutionDAO {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.dao.ISolutionDAO#attachDirty(fr.formation.entities.Solution)
-	 */
-	@Override
 	public void attachDirty(Solution instance) {
 		log.debug("attaching dirty Solution instance");
 		try {
@@ -72,10 +54,6 @@ public class SolutionDAO implements ISolutionDAO {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.dao.ISolutionDAO#attachClean(fr.formation.entities.Solution)
-	 */
-	@Override
 	public void attachClean(Solution instance) {
 		log.debug("attaching clean Solution instance");
 		try {
@@ -87,10 +65,6 @@ public class SolutionDAO implements ISolutionDAO {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.dao.ISolutionDAO#delete(fr.formation.entities.Solution)
-	 */
-	@Override
 	public void delete(Solution persistentInstance) {
 		log.debug("deleting Solution instance");
 		try {
@@ -102,10 +76,6 @@ public class SolutionDAO implements ISolutionDAO {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.dao.ISolutionDAO#merge(fr.formation.entities.Solution)
-	 */
-	@Override
 	public Solution merge(Solution detachedInstance) {
 		log.debug("merging Solution instance");
 		try {
@@ -118,11 +88,7 @@ public class SolutionDAO implements ISolutionDAO {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.dao.ISolutionDAO#findById(java.lang.Integer)
-	 */
-	@Override
-	public Solution findById(Integer id) {
+	public Solution findById(java.lang.Integer id) {
 		log.debug("getting Solution instance with id: " + id);
 		try {
 			Solution instance = (Solution) sessionFactory.getCurrentSession().get("fr.formation.dao.Solution", id);
@@ -138,10 +104,6 @@ public class SolutionDAO implements ISolutionDAO {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.dao.ISolutionDAO#findByExample(fr.formation.entities.Solution)
-	 */
-	@Override
 	public List<Solution> findByExample(Solution instance) {
 		log.debug("finding Solution instance by example");
 		try {
@@ -155,12 +117,9 @@ public class SolutionDAO implements ISolutionDAO {
 		}
 	}
 
-
 	@Override
 	public List<Solution> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 }

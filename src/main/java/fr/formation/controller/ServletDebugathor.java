@@ -18,6 +18,7 @@ import fr.formation.dao.PropositionDAO;
 import fr.formation.dao.SolutionDAO;
 import fr.formation.dao.UtilisateurDAO;
 import fr.formation.entities.Logiciel;
+import fr.formation.entities.Proposition;
 import fr.formation.entities.Utilisateur;
 
 /**
@@ -38,17 +39,18 @@ public class ServletDebugathor extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ILogicielDAO daol= new LogicielDAO();
-		ISolutionDAO daos= new SolutionDAO();
-		IUtilisateurDAO daou = new UtilisateurDAO();
-		IPropositionDAO daop= new PropositionDAO();
-		List<Logiciel> ll= daol.findByName("eclipse");
+//		ILogicielDAO daol= new LogicielDAO();
+//		ISolutionDAO daos= new SolutionDAO();
+//		IUtilisateurDAO daou = new UtilisateurDAO();
+//		IPropositionDAO daop= new PropositionDAO();
+//		List<Logiciel> ll= daol.findByName("eclipse");
+//		Logiciel l = daol.findById(1);
 //		List<Solution> ls= daos.getAll();
 //		List<Utilisateur> lu= daou.getAll();
 //		Utilisateur user = daou.findById(1);
 //		List<Proposition> lp= daop.getAll();
-		request.setAttribute("ll", ll);
-		System.out.println(ll.toString());
+//		request.setAttribute("ll", ll);
+//		System.out.println(ll.toString());
 //		request.setAttribute("ls", ls);
 //		request.setAttribute("lu", lu);
 //		request.setAttribute("lp", lp);
