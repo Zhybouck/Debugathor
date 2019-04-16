@@ -2,7 +2,12 @@ package fr.formation.dao;
 
 import java.io.Serializable;
 import java.util.List;
-
+/**
+ * Olivier
+ * @author IN-ST-007
+ *
+ * @param <T>
+ */
 public interface IGenericDao<T extends Serializable> {
 
 	/*
