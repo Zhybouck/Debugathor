@@ -1,8 +1,6 @@
-<html>
-<body>
-	<h2>Hello World!</h2>
-</body>
-<form action="ServletDebugathor" method="post">
-	<input type="submit" value="login">
-</form>
-</html>
+
+<!-- Redirige vers la page controller dans laquelle il y a le request mapping "/init" -->
+
+<%
+	request.getRequestDispatcher("/init").forward(request, response);
+%>

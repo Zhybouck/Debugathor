@@ -24,7 +24,8 @@
 		</div>
 		<div>
 			<h1>Formulaire de connexion</h1>
-			<form>
+			<form:form action="/user/login" method="POST"
+			modelAttribute="userform">
 				<div class="form-group">
 					<label for="exampleInputEmail1">Identifiant</label> <input
 						type="email" class="form-control" id="exampleInputEmail1"
@@ -45,12 +46,14 @@
 				<div class="form-group">
 					<button type="submit" class="btn btn-primary">Connexion</button>
 				</div>
-			</form>
+			</form:form>
 		</div>
 		<div class="redircreacompte">
 			<h1>Vous n'avez pas de compte?</h1>
+			<form:form action="/user/add" method="POST"
+			modelAttribute="adduser">
 			<button class="btn btn-success">Créer un compte</button>
-
+		</form:form>
 		</div>
 		</div>
 </body>
