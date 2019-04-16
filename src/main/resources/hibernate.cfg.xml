@@ -19,6 +19,7 @@
         <mapping class="fr.formation.utils.HibernateUtils"/>
         <mapping class="fr.formation.entities.Logiciel"/>
         <mapping class="fr.formation.entities.Proposition"/>
+        <mapping class="fr.formation.entities.PropositionId"/>
         <mapping class="fr.formation.entities.Utilisateur"/>
         <mapping class="fr.formation.entities.Solution"/>
         <mapping class="fr.formation.dao.LogicielDAO"/>

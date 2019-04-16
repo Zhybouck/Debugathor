@@ -1,113 +1,84 @@
 package fr.formation.dao;
 
-import static org.hibernate.criterion.Example.create;
-
 import java.util.List;
-
-import javax.naming.InitialContext;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.hibernate.LockMode;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
-public class GenericDAO<T> {
+public abstract class GenericDAO<T> {
+	private Class<T> clazz;
 	private static final Log log = LogFactory.getLog(GenericDAO.class);
 
-	private final SessionFactory sessionFactory = getSessionFactory();
+	@Autowired
+	SessionFactory sessionFactory;
 
-	protected SessionFactory getSessionFactory() {
+	/*
+	 * ajoute l'objet obj à la base de données
+	 */
+	public void save(T obj) {
+		Session session = sessionFactory.getCurrentSession();
 		try {
-			return (SessionFactory) new InitialContext().lookup("SessionFactory");
-		} catch (Exception e) {
-			log.error("Could not locate SessionFactory in JNDI", e);
-			throw new IllegalStateException("Could not locate SessionFactory in JNDI");
+			session.persist(obj);
+		} catch (HibernateException e) {
+			log.error(e.getLocalizedMessage());
+			e.printStackTrace();
 		}
 	}
 
-	public void persist(T transientInstance) {
-		log.debug("persisting T instance");
+	/*
+	 * Mets à jout l'objet obj dans la base de données
+	 */
+	public void update(T obj) {
+		Session session = sessionFactory.getCurrentSession();
 		try {
-			sessionFactory.getCurrentSession().persist(transientInstance);
-			log.debug("persist successful");
-		} catch (RuntimeException re) {
-			log.error("persist failed", re);
-			throw re;
+			session.update(obj);
+		} catch (HibernateException e) {
+			log.error(e.getLocalizedMessage());
+			e.printStackTrace();
 		}
 	}
 
-	public void attachDirty(T instance) {
-		log.debug("attaching dirty T instance");
+	/*
+	 * supprime l'objet obj de la base de données
+	 */
+	public void delete(T obj) {
+		Session session = sessionFactory.getCurrentSession();
 		try {
-			sessionFactory.getCurrentSession().saveOrUpdate(instance);
-			log.debug("attach successful");
-		} catch (RuntimeException re) {
-			log.error("attach failed", re);
-			throw re;
+			session.remove(obj);
+		} catch (HibernateException e) {
+			log.error(e.getLocalizedMessage());
+			e.printStackTrace();
 		}
 	}
 
-	public void attachClean(T instance) {
-		log.debug("attaching clean T instance");
-		try {
-			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
-			log.debug("attach successful");
-		} catch (RuntimeException re) {
-			log.error("attach failed", re);
-			throw re;
-		}
+	/*
+	 *	recupère toute la liste d'objets
+	 */
+	public List<T> getAll() {
+		Session session = sessionFactory.getCurrentSession();
+		return session.createQuery( "from " + clazz.getName() ).list();
 	}
 
-	public void delete(T persistentInstance) {
-		log.debug("deleting T instance");
-		try {
-			sessionFactory.getCurrentSession().delete(persistentInstance);
-			log.debug("delete successful");
-		} catch (RuntimeException re) {
-			log.error("delete failed", re);
-			throw re;
-		}
-	}
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see fr.formation.inti.dao.IEmployeeDAO#findById(java.lang.Long)
+	 */
+	public T findById(Long empId) {
+		Session session = sessionFactory.getCurrentSession();
+		T emp = null;
 
-	public T merge(T detachedInstance) {
-		log.debug("merging T instance");
 		try {
-			T result = (T) sessionFactory.getCurrentSession().merge(detachedInstance);
-			log.debug("merge successful");
-			return result;
-		} catch (RuntimeException re) {
-			log.error("merge failed", re);
-			throw re;
+			emp = session.get(clazz, empId);
+		} catch (HibernateException e) {
+			log.error(e.getLocalizedMessage());
+			e.printStackTrace();
 		}
-	}
-
-	public T findById(java.lang.Integer id) {
-		log.debug("getting T instance with id: " + id);
-		try {
-			T instance = (T) sessionFactory.getCurrentSession().get("fr.formation.dao.T", id);
-			if (instance == null) {
-				log.debug("get successful, no instance found");
-			} else {
-				log.debug("get successful, instance found");
-			}
-			return instance;
-		} catch (RuntimeException re) {
-			log.error("get failed", re);
-			throw re;
-		}
-	}
-
-	public List<T> findByExample(T instance) {
-		log.debug("finding T instance by example");
-		try {
-			List<T> results = (List<T>) sessionFactory.getCurrentSession()
-					.createCriteria("fr.formation.dao.T").add(create(instance)).list();
-			log.debug("find by example successful, result size: " + results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
+		return emp;
 	}
 }

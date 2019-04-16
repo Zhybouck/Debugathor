@@ -3,23 +3,19 @@ package fr.formation.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.formation.dao.ILogicielDAO;
-import fr.formation.dao.IPropositionDAO;
-import fr.formation.dao.ISolutionDAO;
-import fr.formation.dao.IUtilisateurDAO;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
 import fr.formation.dao.LogicielDAO;
-import fr.formation.dao.PropositionDAO;
-import fr.formation.dao.SolutionDAO;
-import fr.formation.dao.UtilisateurDAO;
 import fr.formation.entities.Logiciel;
-import fr.formation.entities.Proposition;
-import fr.formation.entities.Utilisateur;
+import fr.formation.services.LogicielService;
 
 /**
  * Servlet implementation class ServletDebugathor
@@ -39,11 +35,24 @@ public class ServletDebugathor extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		ILogicielDAO daol= new LogicielDAO();
+		LogicielDAO daol= new LogicielDAO();
+		ServletContext servcont= getServletContext();
+        WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(servcont);
+        LogicielService serv= context.getBean("logicielService",LogicielService.class);
+        //normalWebAppContext.setConfigLocation("/WEB-INF/normal-webapp-servlet.xml");
+//		LogicielDAO serv = (LogicielDAO) context.getBean("logicielDAO");
+//		System.out.println(" =================== findbyid =================");
+//		System.out.println(empserv.findById(7369l));
+//		
+		System.out.println(" =================== getAll =================");
+		List<Logiciel> list=serv.getAll();
+		for(Logiciel e : list) {
+			System.out.println(e);
+		}
 //		ISolutionDAO daos= new SolutionDAO();
 //		IUtilisateurDAO daou = new UtilisateurDAO();
 //		IPropositionDAO daop= new PropositionDAO();
-//		List<Logiciel> ll= daol.findByName("eclipse");
+		List<Logiciel> ll= daol.getAll();		
 //		Logiciel l = daol.findById(1);
 //		List<Solution> ls= daos.getAll();
 //		List<Utilisateur> lu= daou.getAll();
@@ -55,7 +64,7 @@ public class ServletDebugathor extends HttpServlet {
 //		request.setAttribute("lu", lu);
 //		request.setAttribute("lp", lp);
 //		request.setAttribute("user", user);
-//		System.out.println(user);
+		System.out.println(ll.toString());
 		request.getRequestDispatcher("debug.jsp").forward(request, response);
 	}
 
