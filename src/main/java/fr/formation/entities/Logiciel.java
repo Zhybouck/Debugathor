@@ -47,7 +47,7 @@ public class Logiciel implements java.io.Serializable {
 		this.idLogiciel = idLogiciel;
 	}
 
-	@Version
+	
 	@Column(name = "Version", length = 45)
 	public String getVersion() {
 		return this.version;

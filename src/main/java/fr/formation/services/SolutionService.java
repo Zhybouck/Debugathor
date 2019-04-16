@@ -2,88 +2,62 @@ package fr.formation.services;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
-import fr.formation.dao.ISolutionDAO;
-import fr.formation.dao.SolutionDAO;
 import fr.formation.entities.Solution;
 
-@Service
+
 public class SolutionService implements ISolutionService{
-	ISolutionDAO solDao= new SolutionDAO();
-	
-	public SolutionService(ISolutionDAO solDao) {
-		this.solDao = solDao;
-	}
 
-	public SolutionService() {
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.formation.services.ISolutionService#persist(fr.formation.entities.Solution)
-	 */
 	@Override
 	public void persist(Solution transientInstance) {
-		solDao.persist(transientInstance);
+		// TODO Auto-generated method stub
 		
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.services.ISolutionService#attachDirty(fr.formation.entities.Solution)
-	 */
 	@Override
 	public void attachDirty(Solution instance) {
-		solDao.attachDirty(instance);
+		// TODO Auto-generated method stub
+		
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.services.ISolutionService#attachClean(fr.formation.entities.Solution)
-	 */
 	@Override
 	public void attachClean(Solution instance) {
-		solDao.attachClean(instance);
+		// TODO Auto-generated method stub
+		
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.services.ISolutionService#delete(fr.formation.entities.Solution)
-	 */
 	@Override
 	public void delete(Solution persistentInstance) {
-		solDao.delete(persistentInstance);
+		// TODO Auto-generated method stub
+		
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.services.ISolutionService#merge(fr.formation.entities.Solution)
-	 */
 	@Override
 	public Solution merge(Solution detachedInstance) {
-		return solDao.merge(detachedInstance);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.services.ISolutionService#findById(int)
-	 */
 	@Override
 	public Solution findById(Integer id) {
-		return solDao.findById(id);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.services.ISolutionService#findByExample(fr.formation.entities.Solution)
-	 */
 	@Override
 	public List<Solution> findByExample(Solution instance) {
-		return solDao.findByExample(instance);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.services.ISolutionService#getAll()
-	 */
 	@Override
 	public List<Solution> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
+	
+
 
 
 

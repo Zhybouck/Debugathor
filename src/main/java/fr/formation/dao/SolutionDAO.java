@@ -17,7 +17,7 @@ import static org.hibernate.criterion.Example.create;
  * @see fr.formation.dao.Solution
  * @author Hibernate Tools
  */
-public class SolutionDAO implements ISolutionDAO{
+public class SolutionDAO {
 
 	private static final Log log = LogFactory.getLog(SolutionDAO.class);
 
@@ -117,9 +117,5 @@ public class SolutionDAO implements ISolutionDAO{
 		}
 	}
 
-	@Override
-	public List<Solution> getAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 }

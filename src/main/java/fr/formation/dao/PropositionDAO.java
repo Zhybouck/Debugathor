@@ -18,7 +18,7 @@ import static org.hibernate.criterion.Example.create;
  * @see fr.formation.dao.Proposition
  * @author Hibernate Tools
  */
-public class PropositionDAO implements IPropositionDAO{
+public class PropositionDAO extends GenericDAO<Proposition> implements IPropositionDAO{
 
 	private static final Log log = LogFactory.getLog(PropositionDAO.class);
 
@@ -119,11 +119,7 @@ public class PropositionDAO implements IPropositionDAO{
 		}
 	}
 
-	@Override
-	public Proposition findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	@Override
 	public List<Proposition> getAll() {

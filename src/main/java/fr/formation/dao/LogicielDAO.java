@@ -2,24 +2,32 @@ package fr.formation.dao;
 // Generated 15 avr. 2019 13:36:33 by Hibernate Tools 5.1.10.Final
 
 import java.util.List;
-import javax.naming.InitialContext;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.hibernate.LockMode;
-import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
 
 import fr.formation.entities.Logiciel;
-
-import static org.hibernate.criterion.Example.create;
 
 /**
  * Home object for domain model class Logiciel.
  * @see fr.formation.dao.Logiciel
  * @author Hibernate Tools
  */
-public class LogicielDAO extends GenericDAO<Logiciel>{
+@Repository("logicielDao")
+public class LogicielDAO extends GenericDAO<Logiciel> implements ILogicielDAO{
 
 	private static final Log log = LogFactory.getLog(LogicielDAO.class);
+
+	public LogicielDAO() {
+		setClazz(Logiciel.class);
+	}
+
+	@Override
+	public List<Logiciel> findByName(String name) {
+		return null;
+	}
+	
 
 //	private final SessionFactory sessionFactory = getSessionFactory();
 //

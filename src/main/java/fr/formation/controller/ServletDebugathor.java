@@ -38,7 +38,7 @@ public class ServletDebugathor extends HttpServlet {
 		LogicielDAO daol= new LogicielDAO();
 		ServletContext servcont= getServletContext();
         WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(servcont);
-        LogicielService serv= context.getBean("logicielService",LogicielService.class);
+        LogicielService serv= context.getBean("serviceLogiciel",LogicielService.class);
         //normalWebAppContext.setConfigLocation("/WEB-INF/normal-webapp-servlet.xml");
 //		LogicielDAO serv = (LogicielDAO) context.getBean("logicielDAO");
 //		System.out.println(" =================== findbyid =================");

@@ -2,16 +2,17 @@ package fr.formation.services;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.formation.dao.IPropositionDAO;
-import fr.formation.dao.PropositionDAO;
 import fr.formation.entities.Proposition;;
 
-@Service
+
 public class PropositionService implements IPropositionService{
 
-	IPropositionDAO propDao=new PropositionDAO();
+	@Autowired
+	IPropositionDAO propDao;
 	
 	
 	
@@ -22,70 +23,55 @@ public class PropositionService implements IPropositionService{
 		this.propDao = propDao;
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.services.IPropositionService#persist(fr.formation.entities.Proposition)
-	 */
 	@Override
 	public void persist(Proposition transientInstance) {
-		propDao.persist(transientInstance);
+		// TODO Auto-generated method stub
+		
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.services.IPropositionService#attachDirty(fr.formation.entities.Proposition)
-	 */
 	@Override
 	public void attachDirty(Proposition instance) {
-		propDao.attachDirty(instance);
+		// TODO Auto-generated method stub
+		
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.services.IPropositionService#attachClean(fr.formation.entities.Proposition)
-	 */
 	@Override
 	public void attachClean(Proposition instance) {
-		propDao.attachClean(instance);		
+		// TODO Auto-generated method stub
+		
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.services.IPropositionService#delete(fr.formation.entities.Proposition)
-	 */
 	@Override
 	public void delete(Proposition persistentInstance) {
-		propDao.delete(persistentInstance);
+		// TODO Auto-generated method stub
+		
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.services.IPropositionService#merge(fr.formation.entities.Proposition)
-	 */
 	@Override
 	public Proposition merge(Proposition detachedInstance) {
-		return propDao.merge(detachedInstance);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.services.IPropositionService#findById(int)
-	 */
 	@Override
 	public Proposition findById(Integer id) {
-		return propDao.findById(id);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.services.IPropositionService#findByExample(fr.formation.entities.Proposition)
-	 */
 	@Override
 	public List<Proposition> findByExample(Proposition instance) {
-		return propDao.findByExample(instance);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.services.IPropositionService#getAll()
-	 */
 	@Override
 	public List<Proposition> getAll() {
-		return propDao.getAll();
+		// TODO Auto-generated method stub
+		return null;
 	}
 
+	
 
 
 }

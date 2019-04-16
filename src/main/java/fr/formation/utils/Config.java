@@ -1,7 +1,6 @@
 package fr.formation.utils;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 import fr.formation.dao.LogicielDAO;
 import fr.formation.dao.PropositionDAO;
@@ -12,7 +11,7 @@ import fr.formation.services.PropositionService;
 import fr.formation.services.SolutionService;
 import fr.formation.services.UtilisateurService;
 
-@Configuration
+
 public class Config {
 	
 	
@@ -20,11 +19,11 @@ public class Config {
 	 * beans logiciel
 	 */
 	@Bean
-	public LogicielService ServiceLogiciel(){
+	public LogicielService logicielService(){
 		return new LogicielService();
 	}
 	@Bean
-	public LogicielDAO logDao(){
+	public LogicielDAO logicielDAO(){
 		return new LogicielDAO();
 	}
 	
@@ -32,11 +31,11 @@ public class Config {
 	 * beans proposition
 	 */
 	@Bean
-	public PropositionService ServiceProposition(){
+	public PropositionService propositionService(){
 		return new PropositionService();
 	}
 	@Bean
-	public PropositionDAO propDao(){
+	public PropositionDAO propositionDAO(){
 		return new PropositionDAO();
 	}
 	
@@ -44,11 +43,11 @@ public class Config {
 	 * beans solution
 	 */
 	@Bean
-	public SolutionService ServiceSolution(){
+	public SolutionService solutionService(){
 		return new SolutionService();
 	}
 	@Bean
-	public SolutionDAO solDao(){
+	public SolutionDAO solutionDAO(){
 		return new SolutionDAO();
 	}
 	
@@ -58,12 +57,11 @@ public class Config {
 	 * beans utilisateurs
 	 */
 	@Bean
-	public UtilisateurService ServiceUtilisateur(){
+	public UtilisateurService utilisateurService(){
 		return new UtilisateurService();
 	}
-	
 	@Bean
-	public UtilisateurDAO utilDao(){
+	public UtilisateurDAO utilisateurDAO(){
 		return new UtilisateurDAO();
 	}
 }

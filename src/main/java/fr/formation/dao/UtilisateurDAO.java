@@ -17,7 +17,7 @@ import static org.hibernate.criterion.Example.create;
  * @see fr.formation.dao.Utilisateur
  * @author Hibernate Tools
  */
-public class UtilisateurDAO implements IUtilisateurDAO{
+public class UtilisateurDAO {
 
 	private static final Log log = LogFactory.getLog(UtilisateurDAO.class);
 
@@ -118,15 +118,5 @@ public class UtilisateurDAO implements IUtilisateurDAO{
 		}
 	}
 
-	@Override
-	public List<Utilisateur> getAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public Utilisateur getByMail(String mail) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

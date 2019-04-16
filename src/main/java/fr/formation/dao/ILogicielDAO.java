@@ -4,7 +4,7 @@ import java.util.List;
 
 import fr.formation.entities.Logiciel;
 
-public interface ILogicielDAO extends IGenericDAO<Logiciel>{
+public interface ILogicielDAO extends IGenericDao<Logiciel>{
 
 	List<Logiciel> findByName(String name);
 	

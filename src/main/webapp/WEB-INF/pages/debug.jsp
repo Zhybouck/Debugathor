@@ -9,13 +9,13 @@
 </head>
 <body>
 	<table border="2">
-		<c:forEach items="${ll}" var="logiciel">
+		<c:forEach items="${list}" var="logiciel">
 			<tr>
 				<td><c:out value="${logiciel.idLogiciel}" /></td>
 				<td><c:out value="${logiciel.version}" /></td>
 				<td><c:out value="${logiciel.nomLogiciel}" /></td>
-				<td><c:out value="${logiciel.solutions}" /></td>
-			<tr>
+<%-- 				<td><c:out value="${logiciel.solutions}" /></td>
+ --%>			<tr>
 		</c:forEach>
 	</table>
 <!-- 	<table border="2"> -->
