@@ -4,20 +4,31 @@ import java.util.List;
 
 public interface IGenericService<T> {
 
-	void persist(T transientInstance);
+	/*
+	 * ajoute l'objet obj à la base de données
+	 */
+	void save(T obj);
 
-	void attachDirty(T instance);
+	/*
+	 * Mets à jout l'objet obj dans la base de données
+	 */
+	void update(T obj);
 
-	void attachClean(T instance);
+	/*
+	 * supprime l'objet obj de la base de données
+	 */
+	void delete(T obj);
 
-	void delete(T persistentInstance);
-
-	T merge(T detachedInstance);
-
-	T findById(Integer id);
-
-	List<T> findByExample(T instance);
-
+	/*
+	 *	recupère toute la liste d'objets
+	 */
 	List<T> getAll();
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see fr.formation.inti.dao.IEmployeeDAO#findById(java.lang.Long)
+	 */
+	T findById(Long empId);
 	
 }

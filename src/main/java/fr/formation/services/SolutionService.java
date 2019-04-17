@@ -2,63 +2,49 @@ package fr.formation.services;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+
+import fr.formation.dao.ISolutionDAO;
 import fr.formation.entities.Solution;
 
-
+@Service
 public class SolutionService implements ISolutionService{
 
+	@Autowired
+	@Qualifier(value="solutionDao")
+	ISolutionDAO solDao;
+	
 	@Override
-	public void persist(Solution transientInstance) {
+	public void save(Solution obj) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void attachDirty(Solution instance) {
+	public void update(Solution obj) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void attachClean(Solution instance) {
+	public void delete(Solution obj) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void delete(Solution persistentInstance) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Solution merge(Solution detachedInstance) {
+	public Solution findById(Long empId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public Solution findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Solution> findByExample(Solution instance) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
+	/* (non-Javadoc)
+	 * @see fr.formation.services.ILogicielService#getAll()
+	 */
 	@Override
 	public List<Solution> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return solDao.getAll();
 	}
-	
-	
-	
-
-
-
-
 }

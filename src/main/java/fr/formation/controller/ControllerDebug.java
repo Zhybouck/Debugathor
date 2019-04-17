@@ -20,8 +20,9 @@ public class ControllerDebug {
 
 	@RequestMapping("/test")
 	public String sendAllLogiciel(Model model) {
-		List<Logiciel> list=service.getAll();
 		
+		List<Logiciel> list=service.getAll();
+		Logiciel log=service.findById(2l);
 		model.addAttribute("list",list);
 		return "debug";
 	}

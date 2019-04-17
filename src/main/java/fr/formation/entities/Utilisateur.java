@@ -22,7 +22,11 @@ import javax.persistence.TemporalType;
 @Table(name = "utilisateur", catalog = "debugathor")
 public class Utilisateur implements java.io.Serializable {
 
-	private Integer idUtilisateur;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Long idUtilisateur;
 	private String mdp;
 	private String prenom;
 	private String nom;
@@ -61,11 +65,11 @@ public class Utilisateur implements java.io.Serializable {
 	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "IdUtilisateur", unique = true, nullable = false)
-	public Integer getIdUtilisateur() {
+	public Long getIdUtilisateur() {
 		return this.idUtilisateur;
 	}
 
-	public void setIdUtilisateur(Integer idUtilisateur) {
+	public void setIdUtilisateur(Long idUtilisateur) {
 		this.idUtilisateur = idUtilisateur;
 	}
 

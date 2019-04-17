@@ -21,6 +21,10 @@ import javax.persistence.TemporalType;
 @Table(name = "proposition", catalog = "debugathor")
 public class Proposition implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private PropositionId id;
 	private Solution solution;
 	private Utilisateur utilisateur;

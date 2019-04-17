@@ -115,12 +115,12 @@ public abstract class GenericDAO<T extends Serializable> implements IGenericDao<
 	 * @see fr.formation.dao.IGenericDao#findById(java.lang.Long)
 	 */
 	@Override
-	public T findById(Long empId) {
+	public T findById(Long Id) {
 		Session session = sessionFactory.getCurrentSession();
 		T emp = null;
 
 		try {
-			emp = session.get(clazz, empId);
+			emp = session.get(clazz,Id);
 		} catch (HibernateException e) {
 			log.error(e.getLocalizedMessage());
 			e.printStackTrace();

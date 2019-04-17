@@ -10,32 +10,36 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class PropositionId implements java.io.Serializable {
 
-	private int utilisateurIdUtilisateur;
-	private int solutionIdSolution;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Long utilisateurIdUtilisateur;
+	private Long solutionIdSolution;
 
 	public PropositionId() {
 	}
 
-	public PropositionId(int utilisateurIdUtilisateur, int solutionIdSolution) {
+	public PropositionId(Long utilisateurIdUtilisateur, Long solutionIdSolution) {
 		this.utilisateurIdUtilisateur = utilisateurIdUtilisateur;
 		this.solutionIdSolution = solutionIdSolution;
 	}
 
 	@Column(name = "utilisateur_IdUtilisateur", nullable = false)
-	public int getUtilisateurIdUtilisateur() {
+	public Long getUtilisateurIdUtilisateur() {
 		return this.utilisateurIdUtilisateur;
 	}
 
-	public void setUtilisateurIdUtilisateur(int utilisateurIdUtilisateur) {
+	public void setUtilisateurIdUtilisateur(Long utilisateurIdUtilisateur) {
 		this.utilisateurIdUtilisateur = utilisateurIdUtilisateur;
 	}
 
 	@Column(name = "solution_idSolution", nullable = false)
-	public int getSolutionIdSolution() {
+	public Long getSolutionIdSolution() {
 		return this.solutionIdSolution;
 	}
 
-	public void setSolutionIdSolution(int solutionIdSolution) {
+	public void setSolutionIdSolution(Long solutionIdSolution) {
 		this.solutionIdSolution = solutionIdSolution;
 	}
 
@@ -55,8 +59,8 @@ public class PropositionId implements java.io.Serializable {
 	public int hashCode() {
 		int result = 17;
 
-		result = 37 * result + this.getUtilisateurIdUtilisateur();
-		result = 37 * result + this.getSolutionIdSolution();
+		result = (int) (37 * result + this.getUtilisateurIdUtilisateur());
+		result = (int) (37 * result + this.getSolutionIdSolution());
 		return result;
 	}
 

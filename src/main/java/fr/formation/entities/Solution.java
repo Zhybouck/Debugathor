@@ -24,7 +24,11 @@ import javax.persistence.TemporalType;
 @Table(name = "solution", catalog = "debugathor")
 public class Solution implements java.io.Serializable {
 
-	private Integer idSolution;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Long idSolution;
 	private Logiciel logiciel;
 	private String type;
 	private Date dateBug;
@@ -61,11 +65,11 @@ public class Solution implements java.io.Serializable {
 	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "idSolution", unique = true, nullable = false)
-	public Integer getIdSolution() {
+	public Long getIdSolution() {
 		return this.idSolution;
 	}
 
-	public void setIdSolution(Integer idSolution) {
+	public void setIdSolution(Long idSolution) {
 		this.idSolution = idSolution;
 	}
 

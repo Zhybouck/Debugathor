@@ -11,6 +11,7 @@ import fr.formation.entities.Logiciel;
 
 @Service
 public class LogicielService implements ILogicielService{
+	
 	@Autowired
 	@Qualifier(value="logicielDao")
 	ILogicielDAO logDao;
@@ -18,77 +19,35 @@ public class LogicielService implements ILogicielService{
 	public LogicielService() {
 	}
 
+	@Override
+	public void save(Logiciel obj) {
+		logDao.save(obj);
+		
+	}
 
+	@Override
+	public void update(Logiciel obj) {
+		logDao.update(obj);
+		
+	}
 
+	@Override
+	public void delete(Logiciel obj) {
+		logDao.delete(obj);
+		
+	}
+
+	@Override
+	public Logiciel findById(Long empId) {
+		return logDao.findById(empId);
+	}
+	
 	/* (non-Javadoc)
 	 * @see fr.formation.services.ILogicielService#getAll()
 	 */
-	/* (non-Javadoc)
-	 * @see fr.formation.services.ILogicielService#getAll()
-	 */
+	@Override
 	public List<Logiciel> getAll() {
 		return logDao.getAll();
 	}
-
-
-
-	@Override
-	public void persist(Logiciel transientInstance) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void attachDirty(Logiciel instance) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void attachClean(Logiciel instance) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void delete(Logiciel persistentInstance) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public Logiciel merge(Logiciel detachedInstance) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
-	@Override
-	public Logiciel findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
-	@Override
-	public List<Logiciel> findByExample(Logiciel instance) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
-
-
 
 }
