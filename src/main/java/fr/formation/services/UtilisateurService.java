@@ -53,8 +53,7 @@ public class UtilisateurService implements IGenericService<Utilisateur>, IUtilis
 
 	@Override
 	public Utilisateur getbyMail(String mail) {
-		// TODO Auto-generated method stub
-		return null;
+		return utilDao.getbyMail(mail);
 	}
 	
 }

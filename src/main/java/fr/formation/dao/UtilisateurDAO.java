@@ -1,10 +1,18 @@
 package fr.formation.dao;
 // Generated 15 avr. 2019 13:36:33 by Hibernate Tools 5.1.10.Final
 
+import java.util.List;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
+import fr.formation.entities.Proposition;
 import fr.formation.entities.Utilisateur;
 
 /**
@@ -20,6 +28,22 @@ public class UtilisateurDAO extends GenericDAO<Utilisateur> implements IUtilisat
 
 	public UtilisateurDAO() {
 		setClazz(Utilisateur.class);
+	}
+
+	@Override
+	public Utilisateur getbyMail(String mail) {
+		Session session = sessionFactory.getCurrentSession();
+
+        // create Criteria
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Utilisateur> criteriaQuery = builder.createQuery(Utilisateur.class);
+        Root<Utilisateur> root = criteriaQuery.from(Utilisateur.class);
+        CriteriaQuery<Utilisateur> select = criteriaQuery.select(root);
+        criteriaQuery.where(builder.equal(root.get("mail"), mail));
+        Utilisateur util  = session.createQuery(criteriaQuery).getSingleResult();
+        session.close();
+
+        return util;
 	}
 	
 //	private final SessionFactory sessionFactory = getSessionFactory();
