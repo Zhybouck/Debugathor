@@ -73,7 +73,7 @@ public class Solution implements java.io.Serializable {
 		this.idSolution = idSolution;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Logiciel_idLogiciel", nullable = false)
 	public Logiciel getLogiciel() {
 		return this.logiciel;
@@ -138,7 +138,7 @@ public class Solution implements java.io.Serializable {
 		this.technologie = technologie;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "solution")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "solution")
 	public Set<Proposition> getPropositions() {
 		return this.propositions;
 	}
@@ -147,4 +147,10 @@ public class Solution implements java.io.Serializable {
 		this.propositions = propositions;
 	}
 
+	@Override
+	public String toString() {
+		return "Solution [idSolution=" + idSolution + ", logiciel=" + logiciel + ", type=" + type + ", dateBug="
+				+ dateBug + ", titre=" + titre + ", description=" + description + ", demarche=" + demarche
+				+ ", technologie=" + technologie + ", proposition="+ propositions + "]";
+	}
 }

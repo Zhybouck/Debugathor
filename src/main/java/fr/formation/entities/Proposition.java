@@ -64,7 +64,7 @@ public class Proposition implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "solution_idSolution", nullable = false, insertable = false, updatable = false)
 	public Solution getSolution() {
 		return this.solution;
@@ -74,7 +74,7 @@ public class Proposition implements java.io.Serializable {
 		this.solution = solution;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "utilisateur_IdUtilisateur", nullable = false, insertable = false, updatable = false)
 	public Utilisateur getUtilisateur() {
 		return this.utilisateur;
@@ -111,5 +111,6 @@ public class Proposition implements java.io.Serializable {
 	public void setNote(Integer note) {
 		this.note = note;
 	}
+	
 
 }

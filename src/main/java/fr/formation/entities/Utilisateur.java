@@ -145,7 +145,7 @@ public class Utilisateur implements java.io.Serializable {
 		this.mail = mail;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utilisateur")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "utilisateur")
 	public Set<Proposition> getPropositions() {
 		return this.propositions;
 	}
@@ -154,4 +154,12 @@ public class Utilisateur implements java.io.Serializable {
 		this.propositions = propositions;
 	}
 
+	@Override
+	public String toString() {
+		return "Utilisateur [idUtilisateur=" + idUtilisateur + ", mdp=" + mdp + ", prenom=" + prenom + ", nom=" + nom
+				+ ", dateInsc=" + dateInsc + ", poste=" + poste + ", rang=" + rang + ", mail=" + mail
+				+ ", propositions=" + propositions + "]";
+	}
+
+	
 }

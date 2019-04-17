@@ -7,7 +7,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import fr.formation.dao.IPropositionDAO;
-import fr.formation.entities.Proposition;;
+import fr.formation.entities.Proposition;
+import fr.formation.entities.Utilisateur;;
 
 @Service
 public class PropositionService implements IPropositionService{
@@ -50,6 +51,11 @@ public class PropositionService implements IPropositionService{
 	@Override
 	public List<Proposition> getAll() {
 		return propDao.getAll();
+	}
+
+	@Override
+	public List<Proposition> findAllPropbyUser(Utilisateur util) {
+		return propDao.findAllPropbyUser(util);
 	}
 
 	

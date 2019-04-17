@@ -23,26 +23,23 @@ public class UtilisateurService implements IGenericService<Utilisateur>, IUtilis
 	
 	@Override
 	public void save(Utilisateur obj) {
-		// TODO Auto-generated method stub
-		
+		utilDao.save(obj);
 	}
 
 	@Override
 	public void update(Utilisateur obj) {
-		// TODO Auto-generated method stub
+		utilDao.update(obj);
 		
 	}
 
 	@Override
 	public void delete(Utilisateur obj) {
-		// TODO Auto-generated method stub
-		
+		utilDao.delete(obj);	
 	}
 
 	@Override
 	public Utilisateur findById(Long empId) {
-		// TODO Auto-generated method stub
-		return null;
+		return utilDao.findById(empId);
 	}
 	
 	/* (non-Javadoc)

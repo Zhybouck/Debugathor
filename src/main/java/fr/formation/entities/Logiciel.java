@@ -71,7 +71,7 @@ public class Logiciel implements Serializable {
 		this.nomLogiciel = nomLogiciel;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "logiciel")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "logiciel")
 	public Set<Solution> getSolutions() {
 		return this.solutions;
 	}
