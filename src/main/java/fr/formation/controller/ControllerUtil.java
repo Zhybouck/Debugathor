@@ -1,5 +1,7 @@
 package fr.formation.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import fr.formation.entities.Solution;
 import fr.formation.entities.Utilisateur;
+import fr.formation.services.ISolutionService;
 import fr.formation.services.IUtilisateurService;
 
 @Controller
@@ -24,6 +28,10 @@ public class ControllerUtil {
 	@Autowired
 	IUtilisateurService service;
 
+	
+	@Autowired
+	ISolutionService solserv;
+	
 	@RequestMapping(value = "/init", method = RequestMethod.GET)
 	public String initView(Model model) {
 		model.addAttribute("userform", new Utilisateur());
@@ -45,7 +53,7 @@ public class ControllerUtil {
 	}
 
 	@RequestMapping(value = "/user/add", method = RequestMethod.POST)
-	public String addUser(@Valid @ModelAttribute("adduser") Utilisateur utilisateur, BindingResult result) {
+	public String addUser(@Valid @ModelAttribute("adduser") Utilisateur utilisateur, BindingResult result, Model model) {
 
 		if (utilisateur.equals(null)) {
 			return "CreaCompte";
@@ -54,7 +62,9 @@ public class ControllerUtil {
 				return "CreaCompte";
 			} else {
 				service.save(utilisateur);
-				return "Tableau";
+				List<Solution> liste = solserv.getAll();
+				model.addAttribute("liste", liste );
+				return "tabBug";
 			}
 		}
 	}
