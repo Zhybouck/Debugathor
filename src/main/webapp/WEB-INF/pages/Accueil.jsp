@@ -29,14 +29,14 @@
 				<div class="form-group">
 					<label for="exampleInputEmail1">Mail</label>
 					<form:input type="email" class="form-control" id="exampleInputEmail1"
-						aria-describedby="emailHelp" placeholder="Identifiant" path="email"/>
-					<small><form:errors path="email" cssClass="errormsg" /></small>
+						aria-describedby="emailHelp" placeholder="Identifiant" path="mail"/>
+					<small><form:errors path="mail" cssClass="errormsg" /></small>
 				</div>
 				<div class="form-group">
 					<label for="exampleInputPassword1">Mot de passe</label>
 					<form:input type="password" class="form-control" id="exampleInputPassword1"
-						placeholder="Password" path="password"/>
-				<small><form:errors path="password" cssClass="errormsg" /></small>
+						placeholder="Password" path="mdp"/>
+				<small><form:errors path="mdp" cssClass="errormsg" /></small>
 						
 				</div>
 				<div class="form-group form-check">
