@@ -53,7 +53,7 @@ public class ControllerUtil {
 			if (result.hasErrors()) {
 				return "CreaCompte";
 			} else {
-				service.attachClean(utilisateur);
+				service.save(utilisateur);
 				return "Tableau";
 			}
 		}
