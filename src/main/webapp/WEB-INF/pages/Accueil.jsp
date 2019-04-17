@@ -24,7 +24,7 @@
 		</div>
 		<div>
 			<h1>Formulaire de connexion</h1>
-			<form:form action="/user/login" method="POST"
+			<form:form action="user/login" method="POST"
 			modelAttribute="userform">
 				<div class="form-group">
 					<label for="exampleInputEmail1">Mail</label>
@@ -37,15 +37,9 @@
 					<form:input type="password" class="form-control" id="exampleInputPassword1"
 						placeholder="Password" path="mdp"/>
 				<small><form:errors path="mdp" cssClass="errormsg" /></small>
-						
-				</div>
-				<div class="form-group form-check">
-					<form type="checkbox" class="form-check-input" id="exampleCheck1">
-					<label class="form-check-label" for="exampleCheck1">Rester
-						connecter</label></form>
-				</div>
-				<div class="form-group">
+						<div class="form-group">
 					<button type="submit" class="btn btn-primary">Connexion</button>
+				</div>
 				</div>
 			</form:form>
 		</div>

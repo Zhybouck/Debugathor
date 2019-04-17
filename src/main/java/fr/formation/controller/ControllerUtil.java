@@ -38,7 +38,7 @@ public class ControllerUtil {
 		return "Accueil";
 	}
 
-	@RequestMapping(value = "/user/login", method = RequestMethod.POST)
+	@RequestMapping(value = "user/login", method = RequestMethod.POST)
 	public String doLogin(@ModelAttribute("userform") Utilisateur utilisateur, BindingResult result,
 			SessionStatus status) {
 		String mail = utilisateur.getMail();
@@ -52,7 +52,7 @@ public class ControllerUtil {
 		}
 	}
 
-	@RequestMapping(value = "/user/add", method = RequestMethod.POST)
+	@RequestMapping(value = "user/add", method = RequestMethod.POST)
 	public String addUser(@Valid @ModelAttribute("adduser") Utilisateur utilisateur, BindingResult result, Model model) {
 
 		if (utilisateur.equals(null)) {
