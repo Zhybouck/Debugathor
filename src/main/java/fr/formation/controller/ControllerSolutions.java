@@ -30,20 +30,20 @@ public class ControllerSolutions {
 	}
 	
 	
-	@RequestMapping(value = "solution/focus", method = RequestMethod.POST)
+	@RequestMapping(value = "/focus", method = RequestMethod.POST)
 	public String focusOnOne(@ModelAttribute("Id")Long Id, Model model) {
 		model.addAttribute(solserv.findById(Id));
 		return "focusBug";
 	}
 	
-	@RequestMapping(value = "solution/update", method = RequestMethod.POST)
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String updateOne(@ModelAttribute("focusedSol")Solution solution,Model model ,BindingResult result) {
 		solserv.update(solution);
 		model.addAttribute(solserv.findById((solution).getIdSolution()));
 		return "focusBug";
 	}
 	
-	@RequestMapping(value = "solution/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String saveeOne(@ModelAttribute("addsol")Solution solution,Model model ,BindingResult result) {
 		solserv.save(solution);
 		
