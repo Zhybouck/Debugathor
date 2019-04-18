@@ -1,12 +1,21 @@
 package fr.formation.dao;
 // Generated 15 avr. 2019 13:36:33 by Hibernate Tools 5.1.10.Final
 
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import fr.formation.entities.Proposition;
 import fr.formation.entities.Solution;
+import fr.formation.entities.Utilisateur;
 
 /**
  * Home object for domain model class Solution.
@@ -23,6 +32,25 @@ public class SolutionDAO extends GenericDAO<Solution> implements ISolutionDAO{
 		setClazz(Solution.class);
 	}
 	
+	@Override
+	public List<Solution> getByDateInsc(Date debut,Date fin){
+		Session session = sessionFactory.getCurrentSession();
+		
+		//on passe du format java au format sql pour les dates
+		java.sql.Date debutsql=new java.sql.Date(debut.getTime());
+		java.sql.Date finsql=new java.sql.Date(fin.getTime());
+		
+        // create Criteria
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Solution> criteriaQuery = builder.createQuery(Solution.class);
+        Root<Solution> root = criteriaQuery.from(Solution.class);
+        criteriaQuery.where(builder.between(root.get("dateBug"), debutsql, finsql));
+        List<Solution> listutil  = session.createQuery(criteriaQuery).getResultList();
+//        session.close();
+
+        return listutil;
+		
+	}
 //	private final SessionFactory sessionFactory = getSessionFactory();
 //
 //	protected SessionFactory getSessionFactory() {

@@ -1,6 +1,8 @@
 package fr.formation.dao;
 // Generated 15 avr. 2019 13:36:33 by Hibernate Tools 5.1.10.Final
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -41,9 +43,32 @@ public class UtilisateurDAO extends GenericDAO<Utilisateur> implements IUtilisat
         CriteriaQuery<Utilisateur> select = criteriaQuery.select(root);
         criteriaQuery.where(builder.equal(root.get("mail"), mail));
         Utilisateur util  = session.createQuery(criteriaQuery).getSingleResult();
-        session.close();
+//        session.close();
 
         return util;
+	}
+	
+	/*
+	 * méthode qui récupère les utilisateurs dont la date d'inscription est comprise entre deux dates
+	 */
+	@Override
+	public List<Utilisateur> getByDateInsc(Date debut,Date fin){
+		Session session = sessionFactory.getCurrentSession();
+		
+		//on passe du format java au format sql pour les dates
+		java.sql.Date debutsql=new java.sql.Date(debut.getTime());
+		java.sql.Date finsql=new java.sql.Date(fin.getTime());
+		
+        // create Criteria
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Utilisateur> criteriaQuery = builder.createQuery(Utilisateur.class);
+        Root<Utilisateur> root = criteriaQuery.from(Utilisateur.class);
+        criteriaQuery.where(builder.between(root.get("dateInsc"), debutsql, finsql));
+        List<Utilisateur> listutil  = session.createQuery(criteriaQuery).getResultList();
+//        session.close();
+
+        return listutil;
+		
 	}
 	
 //	private final SessionFactory sessionFactory = getSessionFactory();

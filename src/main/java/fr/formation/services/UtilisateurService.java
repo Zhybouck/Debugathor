@@ -1,5 +1,6 @@
 package fr.formation.services;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,12 @@ public class UtilisateurService implements IGenericService<Utilisateur>, IUtilis
 	@Override
 	public Utilisateur getbyMail(String mail) {
 		return utilDao.getbyMail(mail);
+	}
+
+
+	@Override
+	public List<Utilisateur> getByDateInsc(Date debut, Date fin) {
+		return utilDao.getByDateInsc(debut, fin);
 	}
 	
 }

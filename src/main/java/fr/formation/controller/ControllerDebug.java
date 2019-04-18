@@ -1,5 +1,8 @@
 package fr.formation.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,13 +37,20 @@ public class ControllerDebug {
 	IUtilisateurService serviceutil;
 
 	@RequestMapping("/test")
-	public String sendAllLogiciel(Model model) {
+	public String sendAllLogiciel(Model model) throws ParseException{
 		
 //		List<Logiciel> list=service.getAll();
 		Logiciel log=service.findById(2l);
 		Utilisateur u= serviceutil.findById(1l);
+		
 //		List<Solution> listsol = servicesol.getAll();
-//		List<Utilisateur> listutil = serviceutil.getAll();
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
+		Date debut;
+		debut = simpleDateFormat.parse("2014/11/11");
+		Date fin;
+		fin = simpleDateFormat.parse("2021/12/25");
+		List<Solution> listsol=servicesol.getByDateInsc(debut, fin);
+		List<Utilisateur> listutil = serviceutil.getByDateInsc(debut, fin);
 		List<Proposition> listprop = serviceprop.findAllPropbyUser(u);
 //		for(Solution s: listsol)
 //			System.out.println(s.toString());

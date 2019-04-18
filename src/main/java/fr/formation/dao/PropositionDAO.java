@@ -44,7 +44,7 @@ public class PropositionDAO extends GenericDAO<Proposition> implements IProposit
         CriteriaQuery<Proposition> select = criteriaQuery.select(root);
         criteriaQuery.where(builder.equal(root.get("utilisateur"), util));
         List<Proposition> listProp = session.createQuery(criteriaQuery).getResultList();
-        session.close();
+//        session.close();
 
         return listProp;
 	}

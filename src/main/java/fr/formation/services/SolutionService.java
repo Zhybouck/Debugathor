@@ -1,5 +1,6 @@
 package fr.formation.services;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,5 +47,10 @@ public class SolutionService implements ISolutionService{
 	@Override
 	public List<Solution> getAll() {
 		return solDao.getAll();
+	}
+
+	@Override
+	public List<Solution> getByDateInsc(Date debut, Date fin) {
+		return solDao.getByDateInsc(debut, fin);
 	}
 }
