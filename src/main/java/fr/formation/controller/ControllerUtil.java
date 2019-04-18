@@ -50,7 +50,7 @@ public class ControllerUtil {
 			return "redirect:/Solution/init";  
 			} else {
 			return "Accueil";
-		}
+		} 
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
