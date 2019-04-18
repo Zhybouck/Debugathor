@@ -22,15 +22,13 @@ import fr.formation.services.IUtilisateurService;
 
 @Controller
 @Transactional
-@SessionAttributes("userform")
+@SessionAttributes("Utilisateur")
+@RequestMapping("/user")
 public class ControllerUtil {
 
 	@Autowired
 	IUtilisateurService service;
 
-	
-	@Autowired
-	ISolutionService solserv;
 	
 	@RequestMapping(value = "/init", method = RequestMethod.GET)
 	public String initView(Model model) {
@@ -38,21 +36,24 @@ public class ControllerUtil {
 		return "Accueil";
 	}
 
-	@RequestMapping(value = "user/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String doLogin(@ModelAttribute("userform") Utilisateur utilisateur, BindingResult result,
-			SessionStatus status) {
+			Model model) {
+		System.out.println("Utilisateur ==>"+ utilisateur);
 		String mail = utilisateur.getMail();
+		System.out.println("Mail ==>" + mail);
 		Utilisateur checkeur = service.getbyMail(mail);
-
+		System.out.println("checkeur ====> " + checkeur);
 		if ((utilisateur.getMail().equals(checkeur.getMail()) && (utilisateur.getMdp().equals(checkeur.getMdp())))) {
-			status.isComplete();
-			return "Tableau";
-		} else {
+			
+			model.addAttribute("Utilisateur", checkeur);
+			return "redirect:/Solution/init";  
+			} else {
 			return "Accueil";
 		}
 	}
 
-	@RequestMapping(value = "user/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addUser(@Valid @ModelAttribute("adduser") Utilisateur utilisateur, BindingResult result, Model model) {
 
 		if (utilisateur.equals(null)) {
@@ -62,13 +63,13 @@ public class ControllerUtil {
 				return "CreaCompte";
 			} else {
 				service.save(utilisateur);
-				List<Solution> liste = solserv.getAll();
-				model.addAttribute("liste", liste );
 				return "tabBug";
 			}
 		}
 	}
 
+
+	
 	@RequestMapping("/disconnect")
 	public String endSessionHandlingMethod(SessionStatus status) {
 		status.setComplete();
