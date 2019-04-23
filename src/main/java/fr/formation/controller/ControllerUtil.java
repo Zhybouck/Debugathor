@@ -73,7 +73,7 @@ public class ControllerUtil {
 				crea.setMdp(LoginUtils.hashPassword(crea.getMdp()));
 				service.save(crea);
 				return "redirect:/user/init";
-			}
+			} 
 		}
 	}
 
