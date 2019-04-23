@@ -50,4 +50,9 @@ public class LogicielService implements ILogicielService{
 		return logDao.getAll();
 	}
 
+	@Override
+	public List<Logiciel> findByName(String name) {
+		return logDao.findByName(name);
+	}
+
 }

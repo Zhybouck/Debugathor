@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import fr.formation.dao.IPropositionDAO;
 import fr.formation.entities.Proposition;
+import fr.formation.entities.Solution;
 import fr.formation.entities.Utilisateur;;
 
 @Service
@@ -23,26 +24,25 @@ public class PropositionService implements IPropositionService{
 
 	@Override
 	public void save(Proposition obj) {
-		// TODO Auto-generated method stub
+		propDao.save(obj);
 		
 	}
 
 	@Override
 	public void update(Proposition obj) {
-		// TODO Auto-generated method stub
+		propDao.update(obj);
 		
 	}
 
 	@Override
 	public void delete(Proposition obj) {
-		// TODO Auto-generated method stub
+		propDao.delete(obj);
 		
 	}
 
 	@Override
 	public Proposition findById(Long empId) {
-		// TODO Auto-generated method stub
-		return null;
+		return propDao.findById(empId);
 	}
 	
 	/* (non-Javadoc)
@@ -56,6 +56,11 @@ public class PropositionService implements IPropositionService{
 	@Override
 	public List<Proposition> findAllPropbyUser(Utilisateur util) {
 		return propDao.findAllPropbyUser(util);
+	}
+
+	@Override
+	public List<Proposition> findAllPropbySolution(Solution sol) {
+		return propDao.findAllPropbySolution(sol);
 	}
 
 	

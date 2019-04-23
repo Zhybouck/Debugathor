@@ -62,5 +62,29 @@ public class UtilisateurService implements IGenericService<Utilisateur>, IUtilis
 	public List<Utilisateur> getByDateInsc(Date debut, Date fin) {
 		return utilDao.getByDateInsc(debut, fin);
 	}
+
+
+	@Override
+	public List<Utilisateur> getbyRank(String rank) {
+		return utilDao.getbyRank(rank);
+	}
+
+
+	@Override
+	public List<Utilisateur> getbyPoste(String poste) {
+		return utilDao.getbyPoste(poste);
+	}
+
+
+	@Override
+	public List<Utilisateur> getbyFirstName(String name) {
+		return utilDao.getbyFirstName(name);
+	}
+
+
+	@Override
+	public List<Utilisateur> getbyLastName(String name) {
+		return utilDao.getbyLastName(name);
+	}
 	
 }
