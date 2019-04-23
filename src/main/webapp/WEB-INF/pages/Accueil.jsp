@@ -43,10 +43,11 @@
 				</div>
 			</form:form>
 		</div>
-		<div class="redircreacompte">
+		<div>
 			<h1>Vous n'avez pas de compte?</h1>
-			<button class="btn btn-success">Créer un compte</button>
-
+			<form action="user/addone" method="post">
+			<button type="submit" class="btn btn-success">Créer un compte</button>
+		</form>
 		</div>
 		</div>
 </body>

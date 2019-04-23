@@ -31,11 +31,22 @@ public class Utilisateur implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Long idUtilisateur;
+	
+	@NotEmpty
 	private String mdp;
+	
+	@NotEmpty
 	private String prenom;
+	
+	@NotEmpty
 	private String nom;
+	
 	private Date dateInsc;
+	
+	@NotEmpty
 	private String poste;
+	
+	@NotEmpty
 	private String rang;
 	
 	@NotEmpty
