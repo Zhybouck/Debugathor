@@ -11,141 +11,160 @@ import javax.persistence.criteria.Root;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import fr.formation.entities.Logiciel;
 import fr.formation.entities.Proposition;
+import fr.formation.entities.PropositionId;
 import fr.formation.entities.Solution;
 import fr.formation.entities.Utilisateur;
+import fr.formation.services.ILogicielService;
 
 /**
  * Home object for domain model class Solution.
+ * 
  * @see fr.formation.dao.Solution
  * @author Hibernate Tools
  */
 
 @Repository("solutionDao")
-public class SolutionDAO extends GenericDAO<Solution> implements ISolutionDAO{
+public class SolutionDAO extends GenericDAO<Solution> implements ISolutionDAO {
 
 	private static final Log log = LogFactory.getLog(SolutionDAO.class);
 
 	public SolutionDAO() {
 		setClazz(Solution.class);
 	}
-	
+
+	@Autowired
+	ILogicielService Logserv;
+
+	/*
+	 * recupère les solutions dont la date est comprise entre une date de début et une date de fin
+	 */
 	@Override
-	public List<Solution> getByDateInsc(Date debut,Date fin){
+	public List<Solution> getByDateBug(Date debut, Date fin) {
 		Session session = sessionFactory.getCurrentSession();
-		
-		//on passe du format java au format sql pour les dates
-		java.sql.Date debutsql=new java.sql.Date(debut.getTime());
-		java.sql.Date finsql=new java.sql.Date(fin.getTime());
-		
-        // create Criteria
+		// si aucune valeur n'est spécifiée on prends la valeur maximale pour "fin"
+		if (fin == null) {
+			fin = new Date(Long.MAX_VALUE);
+		}
+		// si aucune valeur n'est spécifiée on prends la valeur maximale pour "debut"
+		if (debut == null) {
+			debut = new Date(Long.MIN_VALUE);
+		}
+
+		// on passe du format java au format sql pour les dates
+		java.sql.Date debutsql = new java.sql.Date(debut.getTime());
+		java.sql.Date finsql = new java.sql.Date(fin.getTime());
+
+		// create Criteria
 		CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<Solution> criteriaQuery = builder.createQuery(Solution.class);
-        Root<Solution> root = criteriaQuery.from(Solution.class);
-        criteriaQuery.where(builder.between(root.get("dateBug"), debutsql, finsql));
-        List<Solution> listutil  = session.createQuery(criteriaQuery).getResultList();
+		CriteriaQuery<Solution> criteriaQuery = builder.createQuery(Solution.class);
+		Root<Solution> root = criteriaQuery.from(Solution.class);
+		criteriaQuery.where(builder.between(root.get("dateBug"), debutsql, finsql));
+		List<Solution> listutil = session.createQuery(criteriaQuery).getResultList();
 //        session.close();
 
-        return listutil;
-		
-	}
-//	private final SessionFactory sessionFactory = getSessionFactory();
-//
-//	protected SessionFactory getSessionFactory() {
-//		try {
-//			return (SessionFactory) new InitialContext().lookup("SessionFactory");
-//		} catch (Exception e) {
-//			log.error("Could not locate SessionFactory in JNDI", e);
-//			throw new IllegalStateException("Could not locate SessionFactory in JNDI");
-//		}
-//	}
-//
-//	public void persist(Solution transientInstance) {
-//		log.debug("persisting Solution instance");
-//		try {
-//			sessionFactory.getCurrentSession().persist(transientInstance);
-//			log.debug("persist successful");
-//		} catch (RuntimeException re) {
-//			log.error("persist failed", re);
-//			throw re;
-//		}
-//	}
-//
-//	public void attachDirty(Solution instance) {
-//		log.debug("attaching dirty Solution instance");
-//		try {
-//			sessionFactory.getCurrentSession().saveOrUpdate(instance);
-//			log.debug("attach successful");
-//		} catch (RuntimeException re) {
-//			log.error("attach failed", re);
-//			throw re;
-//		}
-//	}
-//
-//	public void attachClean(Solution instance) {
-//		log.debug("attaching clean Solution instance");
-//		try {
-//			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
-//			log.debug("attach successful");
-//		} catch (RuntimeException re) {
-//			log.error("attach failed", re);
-//			throw re;
-//		}
-//	}
-//
-//	public void delete(Solution persistentInstance) {
-//		log.debug("deleting Solution instance");
-//		try {
-//			sessionFactory.getCurrentSession().delete(persistentInstance);
-//			log.debug("delete successful");
-//		} catch (RuntimeException re) {
-//			log.error("delete failed", re);
-//			throw re;
-//		}
-//	}
-//
-//	public Solution merge(Solution detachedInstance) {
-//		log.debug("merging Solution instance");
-//		try {
-//			Solution result = (Solution) sessionFactory.getCurrentSession().merge(detachedInstance);
-//			log.debug("merge successful");
-//			return result;
-//		} catch (RuntimeException re) {
-//			log.error("merge failed", re);
-//			throw re;
-//		}
-//	}
-//
-//	public Solution findById(java.lang.Integer id) {
-//		log.debug("getting Solution instance with id: " + id);
-//		try {
-//			Solution instance = (Solution) sessionFactory.getCurrentSession().get("fr.formation.dao.Solution", id);
-//			if (instance == null) {
-//				log.debug("get successful, no instance found");
-//			} else {
-//				log.debug("get successful, instance found");
-//			}
-//			return instance;
-//		} catch (RuntimeException re) {
-//			log.error("get failed", re);
-//			throw re;
-//		}
-//	}
-//
-//	public List<Solution> findByExample(Solution instance) {
-//		log.debug("finding Solution instance by example");
-//		try {
-//			List<Solution> results = (List<Solution>) sessionFactory.getCurrentSession()
-//					.createCriteria("fr.formation.dao.Solution").add(create(instance)).list();
-//			log.debug("find by example successful, result size: " + results.size());
-//			return results;
-//		} catch (RuntimeException re) {
-//			log.error("find by example failed", re);
-//			throw re;
-//		}
-//	}
+		return listutil;
 
-	
+	}
+
+	/*
+	 * recupère les solutions par recherche dans le titre
+	 */
+	@Override
+	public List<Solution> getByTitre(String titre) {
+		Session session = sessionFactory.getCurrentSession();
+
+		// create Criteria
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<Solution> criteriaQuery = builder.createQuery(Solution.class);
+		Root<Solution> root = criteriaQuery.from(Solution.class);
+		criteriaQuery.where(builder.like(root.get("titre"), "%" + titre + "%"));
+		List<Solution> listutil = session.createQuery(criteriaQuery).getResultList();
+//        session.close();
+
+		return listutil;
+	}
+
+	/*
+	 * recupère les solutions liées a une technologie
+	 */
+	@Override
+	public List<Solution> getByTechno(String technologie) {
+		Session session = sessionFactory.getCurrentSession();
+
+		// create Criteria
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<Solution> criteriaQuery = builder.createQuery(Solution.class);
+		Root<Solution> root = criteriaQuery.from(Solution.class);
+		criteriaQuery.where(builder.equal(root.get("technologie"), technologie));
+		List<Solution> listutil = session.createQuery(criteriaQuery).getResultList();
+//        session.close();
+
+		return listutil;
+	}
+
+	/*
+	 * recupère les solutions liées a un logiciel en passant par l'id du logiciel
+	 */
+	@Override
+	public List<Solution> getByidLogiciel(Long idLogiciel) {
+		Session session = sessionFactory.getCurrentSession();
+
+		Logiciel log = Logserv.findById(idLogiciel);
+		// create Criteria
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<Solution> criteriaQuery = builder.createQuery(Solution.class);
+		Root<Solution> root = criteriaQuery.from(Solution.class);
+		criteriaQuery.where(builder.equal(root.get("logiciel"), log));
+		List<Solution> listutil = session.createQuery(criteriaQuery).getResultList();
+//        session.close();
+
+		return listutil;
+	}
+
+	/*
+	 * recupère les solutions liées a un logiciel
+	 */
+	@Override
+	public List<Solution> getByLogiciel(Logiciel logiciel) {
+		Session session = sessionFactory.getCurrentSession();
+
+		// create Criteria
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<Solution> criteriaQuery = builder.createQuery(Solution.class);
+		Root<Solution> root = criteriaQuery.from(Solution.class);
+		criteriaQuery.where(builder.equal(root.get("logiciel"), logiciel));
+		List<Solution> listutil = session.createQuery(criteriaQuery).getResultList();
+//        session.close();
+
+		return listutil;
+	}
+
+	/*
+	 * recupère les solutions liées a un utilisateur
+	 */
+	@Override
+	public List<Solution> getByUtilisateur(Utilisateur util) {
+		Long id = util.getIdUtilisateur();
+		Session session = sessionFactory.getCurrentSession();
+
+		// create Criteria
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<Solution> criteriaQuery = builder.createQuery(Solution.class);
+		Root<Solution> solroot = criteriaQuery.from(Solution.class);
+		Root<Proposition> propidroot = criteriaQuery.from(Proposition.class);
+		criteriaQuery.select(solroot); // on sélectionne uniquement les solutions
+		
+		//la jointure est faite dans la 1ere partie puis on applique la condition sur l'id
+		//on doit utiliser propidroot.get("id").get("solutionIdSolution") pour accéder à l'id qui est situé dans PropositionId
+		criteriaQuery.where(builder.equal(propidroot.get("id").get("solutionIdSolution"), solroot.get("idSolution")),
+				builder.equal(propidroot.get("id").get("utilisateurIdUtilisateur"), id));
+		List<Solution> listutil = session.createQuery(criteriaQuery).getResultList();
+
+		return listutil;
+	}
 }

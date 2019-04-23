@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import fr.formation.dao.ISolutionDAO;
+import fr.formation.entities.Logiciel;
 import fr.formation.entities.Solution;
+import fr.formation.entities.Utilisateur;
 
 @Service
 public class SolutionService implements ISolutionService{
@@ -19,26 +21,25 @@ public class SolutionService implements ISolutionService{
 	
 	@Override
 	public void save(Solution obj) {
-		// TODO Auto-generated method stub
+		solDao.save(obj);
 		
 	}
 
 	@Override
 	public void update(Solution obj) {
-		// TODO Auto-generated method stub
+		solDao.update(obj);
 		
 	}
 
 	@Override
 	public void delete(Solution obj) {
-		// TODO Auto-generated method stub
+		solDao.delete(obj);
 		
 	}
 
 	@Override
 	public Solution findById(Long empId) {
-		// TODO Auto-generated method stub
-		return null;
+		return solDao.findById(empId);
 	}
 	
 	/* (non-Javadoc)
@@ -50,7 +51,32 @@ public class SolutionService implements ISolutionService{
 	}
 
 	@Override
-	public List<Solution> getByDateInsc(Date debut, Date fin) {
-		return solDao.getByDateInsc(debut, fin);
+	public List<Solution> getByDateBug(Date debut, Date fin) {
+		return solDao.getByDateBug(debut, fin);
+	}
+
+	@Override
+	public List<Solution> getByTitre(String titre) {
+		return solDao.getByTitre(titre);
+	}
+
+	@Override
+	public List<Solution> getByTechno(String technologie) {
+		return solDao.getByTechno(technologie);
+	}
+
+	@Override
+	public List<Solution> getByidLogiciel(Long idLogiciel) {
+		return solDao.getByidLogiciel(idLogiciel);
+	}
+
+	@Override
+	public List<Solution> getByLogiciel(Logiciel logiciel) {
+		return solDao.getByLogiciel(logiciel);
+	}
+
+	@Override
+	public List<Solution> getByUtilisateur(Utilisateur util) {
+		return solDao.getByUtilisateur(util);
 	}
 }
