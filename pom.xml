@@ -25,7 +25,7 @@
 			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
@@ -95,18 +95,24 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		
+
 		<!-- jar is used for showing the server side validations in the spring 
-            framework -->
-        <dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>6.0.10.Final</version>
-        </dependency>
+			framework -->
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.0.10.Final</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 			<version>${spring.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/de.svenkubiak/jBCrypt -->
+		<dependency>
+			<groupId>de.svenkubiak</groupId>
+			<artifactId>jBCrypt</artifactId>
+			<version>0.4.1</version>
 		</dependency>
 	</dependencies>
 	<build>

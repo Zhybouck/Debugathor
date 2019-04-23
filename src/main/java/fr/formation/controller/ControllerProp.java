@@ -29,7 +29,7 @@ public class ControllerProp {
 	@RequestMapping(value="/AllForOne", method = RequestMethod.GET)
 	public String init(@ModelAttribute("Id") Long id, Model model) {
 		Solution sol = solserv.findById(id);
-		List<Proposition> list = propserv.findAllPropBySolution(sol);
+		List<Proposition> list = propserv.findAllPropbySolution(sol);
 		model.addAttribute("AllProp", list);
 		return "PropForOne";
 	}

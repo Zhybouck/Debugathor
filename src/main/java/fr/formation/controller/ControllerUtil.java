@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import fr.formation.cryptlogin.LoginUtils;
 import fr.formation.entities.Utilisateur;
 import fr.formation.services.IUtilisateurService;
 
@@ -36,12 +37,15 @@ public class ControllerUtil {
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String doLogin(@ModelAttribute("userform") Utilisateur utilisateur, BindingResult result, Model model) {
-		String mail = utilisateur.getMail();
-		Utilisateur checkeur = service.getbyMail(mail);
-		if ((utilisateur.getMail().equals(checkeur.getMail()) && (utilisateur.getMdp().equals(checkeur.getMdp())))) {
-
-			model.addAttribute("Utilisateur", checkeur);
-			return "redirect:/Solution/init";
+		Utilisateur checkeur = service.getbyMail(utilisateur.getMail());
+		if ((utilisateur.getMail().equals(checkeur.getMail()))) {
+			String hashed_mdp = LoginUtils.hashPassword(utilisateur.getMdp());
+			if (LoginUtils.checkmdp(utilisateur.getMdp(), checkeur.getMdp())) {
+				model.addAttribute("Utilisateur", checkeur);
+				return "redirect:/Solution/init";
+			} else {
+				return "Accueil";
+			}
 		} else {
 			return "Accueil";
 		}
@@ -56,29 +60,22 @@ public class ControllerUtil {
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String add(@Valid @ModelAttribute("creationutilisateur") Utilisateur crea, BindingResult result,
 			Model model) {
-		System.out.println(crea);
 		java.util.Date date = new java.util.Date();
-
 		java.sql.Date d = new java.sql.Date(date.getTime());
-		crea.setDateInsc(d);
-		System.out.println(crea);
+		
 		if (crea.equals(null)) {
 			return "CreaCompte";
 		} else {
-			System.out.println("avant le check des erreurs" + crea);
 			if (result.hasErrors()) {
-				System.out.println("Si ya des erreurs" + crea);
-
 				return "CreaCompte";
 			} else {
+				crea.setDateInsc(d);
+				crea.setMdp(LoginUtils.hashPassword(crea.getMdp()));
 				service.save(crea);
 				return "redirect:/user/init";
 			}
 		}
 	}
-	
-	
-	
 
 	@RequestMapping("/disconnect")
 	public String endSessionHandlingMethod(SessionStatus status) {
