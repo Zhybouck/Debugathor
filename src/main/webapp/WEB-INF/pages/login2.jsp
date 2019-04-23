@@ -16,23 +16,26 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 
+
 <!-- Style CSS -->
 <style type="text/css">
 
-.div-left {
+/* Permet d'aligner les boutons à droite */
+.ml-auto {
+	left: auto !important;
+	right: 0px;
+}
+
+/* Fixe la taille des boutons */
+.custom {
+	width: 120px !important;
+}
+
+body {
+	margin-top: 70px;
 	background-color: #343a40;
 	color: #eff2f3;
 }
-
-.div-right {
-	background-color: #eff2f3;
-	color: #343a40;
-}
-
-a {
-	color: #eff2f3;
-}
-
 </style>
 
 </head>
@@ -40,37 +43,35 @@ a {
 
 <body>
 
+	<!-- Navbar -->
+	<!-- 	Rajouter les form -->
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+		<img src="C:\Users\IN-ST-008\Desktop\DT.png" width="4%"
+			alt=""> <a class="navbar-brand" href="#">Debugathor</a>
+
+		<ul class="nav navbar-nav ml-auto">
+			<li><button class="btn btn-outline-light custom" type="submit">Se
+					connecter</button></li>
+			<li><button class="btn btn-light custom" type="submit">S'inscrire</button></li>
+		</ul>
+	</nav>
+
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-4 div-left">
-
-				<!-- Navbar -->
-				<!-- 	Rajouter les form -->
-				<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-					<img src="C:\Users\IN-ST-008\Desktop\DT.png" width="8%" alt="">
-					<a class="navbar-brand" href="#">Debugathor</a>
-				</nav>
+			<div class="col-6">
 
 				<div class="text-center">
 					<img class="img-fluid mt-5 mb-5"
 						src="C:\Users\IN-ST-008\Desktop\logoDT.png" alt="Responsive image"
-						width="80%">
-				</div>
-				
-				<div class="text-center mb-5">
-					<p>
-						Pas encore inscrit ?</p> <p> <a class="btn btn-outline-light"
-							href="http://localhost:8080/TestDebugathor/login.jsp"
-							role="button">Nous rejoindre ! &raquo;</a>
-					</p>
+						width="70%">
 				</div>
 			</div>
 
 
-			<div class="col-8 div-right">
-				<form class="form-signin ml-5 mt-5 mb-5">
-					<h1 class="display-4">Se connecter</h1>
-					<h6>Veuillez vous identifier.</h6>
+			<div class="col-6">
+				<form class="form-signin mt-5 mb-5">
+					<h1>Se connecter</h1>
+					<p>Veuillez vous identifier.</p>
 					<hr>
 
 					<div class="form-label-group col-7">
@@ -94,16 +95,14 @@ a {
 					<button class="btn btn-lg btn-primary btn-block ml-3 col-3"
 						type="submit">Se connecter</button>
 				</form>
-
-				<!-- Footer -->
-				<hr>
-				<footer class="container-fluid ml-5">
-					<p>&copy; Debugathor 2019</p>
-				</footer>
 			</div>
 		</div>
 
-
+		<!-- Footer -->
+		<hr>
+		<footer class="container-fluid">
+			<p>&copy; Debugathor 2019</p>
+		</footer>
 
 	</div>
 

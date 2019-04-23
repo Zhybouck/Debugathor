@@ -5,25 +5,25 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<title>Ajouter une solution !</title>
+<title>Faire une proposition</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
+<!-- Lien pour les tableaux -->
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+	
 <!-- Liens nécessaires pour le datepicker	 -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js"
 	type="text/javascript"></script>
 <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css"
 	rel="stylesheet" type="text/css" />
-	
+
 <!-- Style CSS -->
 <style type="text/css">
 body {
@@ -32,10 +32,10 @@ body {
 }
 </style>
 </head>
-
 <body>
 
 	<!-- Navbar -->
+
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 		<img src="C:\Users\IN-ST-008\Desktop\DT.png" width="4%"
 			alt=""> <a class="navbar-brand" href="#">Debugathor</a>
@@ -58,23 +58,15 @@ body {
 			</form>
 		</div>
 	</nav>
-
-	<!-- Formulaire d'ajout d'une solution -->
 	
-	<div class="container-fluid col-md-6">
-		<h1 style="margin-top: 70px">Ajouter une solution</h1>
-		<p>Veuillez remplir le formulaire ci-dessous pour ajouter une
-			solution.</p>
+<!-- 	Formulaire de proposition -->
+
+<div class="container-fluid col-md-6">
+		<h1 style="margin-top: 70px">Compléter une solution</h1>
+		<p>Veuillez remplir le formulaire ci-dessous pour compléter la
+			solution proposée.</p>
 		<hr>
 		<form>
-			<div class="form-group col-md-6">
-				<label for="exampleFormControlInput1">Technologie</label> <input
-					type="text" class="form-control" id="exampleFormControlInput1">
-			</div>
-			<div class="form-group col-md-6">
-				<label for="exampleFormControlInput1">Version</label> <input
-					type="text" class="form-control" id="exampleFormControlInput1">
-			</div>
 			
 			<div class="form-group col-md-6">
 				<label for="exampleFormControlInput1">Date</label> <input id="datepicker" />
@@ -85,39 +77,20 @@ body {
         		});
     		</script>
 
-
 			<div class="form-group col-md-10">
-				<label for="exampleFormControlInput1">Type de bug</label> <input
-					type="text" class="form-control" id="exampleFormControlInput1">
-			</div>
-			<div class="form-group col-md-10">
-				<label for="exampleFormControlTextarea1">Description du bug</label>
+				<label for="exampleFormControlTextarea1">Commentaire</label>
 				<textarea class="form-control" id="exampleFormControlTextarea1"
 					rows="5"></textarea>
 			</div>
-			<div class="form-group col-md-10">
-				<label for="exampleFormControlTextarea1">Démarche à suivre</label>
-				<textarea class="form-control" id="exampleFormControlTextarea1"
-					rows="5"></textarea>
-			</div>
-		</form>
 
-		<!-- Importer le fichier Log -->
-
-		<form>
-			<div class="form-group col-md-6">
-				<label for="exampleFormControlFile1">Importer votre fichier
-					logs</label> <input type="file" class="form-control-file"
-					id="exampleFormControlFile1">
-			</div>
 		</form>
 
 		<br>
 
 		<!-- Bouton d'annulation et de confirmation d'ajout-->
 		<form class="form-inline col-md-6">
-			<button class="btn btn-outline-secondary col-4" type="submit">Annuler</button>
-			<button class="btn btn-success col-4" type="submit">Confirmer</button>
+			<button class="btn btn-outline-secondary" type="submit">Annuler</button>
+			<button class="btn btn-success" type="submit">Confirmer</button>
 		</form>
 
 		<!-- Footer -->
@@ -129,10 +102,12 @@ body {
 	</div>
 
 
+
+
+
 	<!-- Les balises script sont à mettre à la fin du body pour éviter de surcharger le chargement de la page -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<script

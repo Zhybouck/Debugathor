@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Zoom solution</title>
+<title>Mes solutions</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -27,8 +27,8 @@ body {
 </head>
 <body>
 
-	<!-- Navbar -->
 
+	<!-- Navbar -->
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 		<img src="C:\Users\IN-ST-008\Desktop\DT.png" width="4%"
 			alt=""> <a class="navbar-brand" href="#">Debugathor</a>
@@ -42,8 +42,10 @@ body {
 				<li class="nav-item"><a class="nav-link"
 					href="http://localhost:8080/TestDebugathor/tabBug.jsp">Liste
 						des bugs </a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="http://localhost:8080/TestDebugathor/myBugs.jsp">Mes bugs</a></li>
+				<li class="nav-item active"><a class="nav-link"
+					href="http://localhost:8080/TestDebugathor/myBugs.jsp">Mes bugs
+						<span class="sr-only">(current)</span>
+				</a></li>
 			</ul>
 			<form class="form-inline mt-2 mt-md-0">
 				<button class="btn btn-danger my-2 my-sm-0" type="submit">Se
@@ -52,12 +54,12 @@ body {
 		</div>
 	</nav>
 
-	<!-- Tableau comprenant uniquement le bug sélectionné -->
+	<!-- Tableau de l'ensemble des solutions postées par l'utilisateur connecté -->
 
 	<div class="container mb-3 mt-3">
 
 		<table class="table table-striped table-bordered" style="width: 100%"
-			id="focusBug">
+			id="myBugs">
 
 
 
@@ -66,6 +68,8 @@ body {
 
 
 	</div>
+
+
 
 
 
@@ -86,7 +90,7 @@ body {
 
 	<!-- 	Script relatif à l'ID du tableau -->
 	<script>
-		$('focusBug').DataTable();
+		$('myBugs').DataTable();
 	</script>
 </body>
 </html>
