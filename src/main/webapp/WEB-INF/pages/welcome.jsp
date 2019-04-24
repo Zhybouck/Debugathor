@@ -40,10 +40,9 @@ body {
 
 /* Pour éviter d'avoir une ligne grise sous la navbar */
 .topwelcome {
-	background-color:#343a40;
+	background-color: #343a40;
 	color: #eff2f3;
 }
-
 </style>
 
 </head>
@@ -51,19 +50,21 @@ body {
 <body>
 
 	<div class="topwelcome">
-	
+
 		<!-- Navbar -->
 		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
 			<img src="C:\Users\IN-ST-008\Desktop\DT.png" width="4%" alt="">
 			<a class="navbar-brand" href="#">Debugathor</a>
-
 			<ul class="nav navbar-nav ml-auto">
-				<li><button class="btn btn-outline-light custom" type="submit">Se
-						connecter</button></li>
-				<li><button class="btn btn-light custom" type="submit">S'inscrire</button></li>
+				<li><form action="user/init" method="get">
+						<button class="btn btn-outline-light custom" type="submit">Se
+							connecter</button>
+					</form></li>
+				<li><form action="user/addone" method="post">
+						<button class="btn btn-light custom" type="submit">S'inscrire</button>
+					</form></li>
 			</ul>
 		</nav>
-
 
 		<!-- Jumbotron -->
 		<div class="jumbotron text-center">
@@ -71,7 +72,7 @@ body {
 				width="40%" alt="Responsive image">
 		</div>
 	</div>
-	
+
 	<!-- Contenu -->
 	<div class="container-fluid col-md-6 down">
 		<div class="row">
@@ -81,11 +82,13 @@ body {
 					dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
 					ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
 					magna mollis euismod. Donec sed odio dui.</p>
-				<p>
-					<a class="btn btn-secondary"
-						href="http://localhost:8080/TestDebugathor/login.jsp"
-						role="button">Se connecter &raquo;</a>
-				</p>
+
+				<form action="user/init" method="get">
+					<p>
+						<button class="btn btn-secondary" type="submit">Se
+							connecter &raquo;</button>
+					</p>
+				</form>
 			</div>
 			<div class="col-md-6">
 				<h2>Nous rejoindre !</h2>
@@ -93,11 +96,14 @@ body {
 					dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
 					ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
 					magna mollis euismod. Donec sed odio dui.</p>
-				<p>
-					<a class="btn btn-secondary"
-						href="http://localhost:8080/TestDebugathor/inscription.jsp"
-						role="button">S'inscrire &raquo;</a>
-				</p>
+
+				<form action="user/addone" method="post">
+					<p>
+						<button class="btn btn-secondary" type="submit">S'inscrire
+							&raquo;</button>
+					</p>
+				</form>
+
 			</div>
 		</div>
 

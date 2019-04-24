@@ -70,7 +70,7 @@ body {
 
 			<div class="col-6">
 				<form class="form-signin mt-5 mb-5">
-					<h1>Se connecter</h1>
+					<h1 class="display-4">Se connecter</h1>
 					<p>Veuillez vous identifier.</p>
 					<hr>
 

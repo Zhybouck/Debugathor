@@ -33,10 +33,10 @@ public class ControllerUtil {
 		log.info("-------------------------Initialisation des utilisateurs controlleurs---------------------");
 		session.setAttribute("Utilisateur", null);
 		model.addAttribute("userform", new Utilisateur());
-		return "Accueil";
+		return "login";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/id", method = RequestMethod.POST)
 	public String doLogin(@ModelAttribute("userform") Utilisateur utilisateur, BindingResult result, Model model,
 			HttpSession session, SessionStatus status) {
 		log.info("-------------------------Login---------------------");
@@ -60,10 +60,10 @@ public class ControllerUtil {
 					session.setAttribute("Utilisateur", checkeur);
 					return "redirect:/Solution/init";
 				} else {
-					return "Accueil";
+					return "login";
 				}
 			} else {
-				return "Accueil";
+				return "login";
 			}
 		}
 	}
@@ -71,39 +71,50 @@ public class ControllerUtil {
 	@RequestMapping(value = "/addone", method = RequestMethod.POST)
 	public String addUser(Model model) {
 		model.addAttribute("creationutilisateur", new Utilisateur());
-		return "CreaCompte";
+		System.out.println("Je passe par addone");
+		return "inscription";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String add(@Valid @ModelAttribute("creationutilisateur") Utilisateur crea, BindingResult result,
 			Model model) {
+		System.out.println("Je passe par add");
+
 		java.util.Date date = new java.util.Date();
 		java.sql.Date d = new java.sql.Date(date.getTime());
-
-		Utilisateur exist = service.getbyMail(crea.getMail());
-		if (null != exist) {
+		System.out.println(crea.getMail());
+//		Utilisateur exist = service.getbyMail(crea.getMail());
+//		if (null != exist) {
+//			System.out.println("hey?");
 			if (crea.equals(null)) {
-				return "CreaCompte";
+				System.out.println("creation nulle");
+				return "inscription";
 			} else {
 				if (result.hasErrors()) {
-					return "CreaCompte";
+					System.out.println("result has error");
+					return "inscription";
 				} else {
+					System.out.println("J'ai tout passé utilisateur créé");
+
+					System.out.println("else");
 					crea.setDateInsc(d);
 					crea.setMdp(LoginUtils.hashPassword(crea.getMdp()));
 					service.save(crea);
-					return "redirect:Debugathor/";
+					return "redirect:/user/init";
 				}
 			}
-		} else {
-			return "CreaCompte";
-		}
+//		} else {
+//			System.out.println("j'ai foiré maggle");
+//
+//			return "inscription";
+//		}
 	}
 
 	@RequestMapping("/disconnect")
 	public String endSessionHandlingMethod(SessionStatus status, HttpSession session) {
 		status.setComplete();
 		session.invalidate();
-		return "Accueil";
+		return "login";
 	}
 
 }

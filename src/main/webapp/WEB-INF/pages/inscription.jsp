@@ -15,13 +15,6 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-<!-- Liens nécessaires pour le datepicker	 -->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js"
-	type="text/javascript"></script>
-<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css"
-	rel="stylesheet" type="text/css" />
-
 <!-- Style CSS -->
 <style type="text/css">
 .div-left {
@@ -73,70 +66,65 @@ a {
 
 
 			<div class="col-8 div-right">
-				<form class="form-signin ml-5 mt-5 mb-5">
+				<form:form class="form-signin ml-5 mt-5 mb-5" action="add"
+					method="post" modelAttribute="creationutilisateur">
 					<h1 class="display-4">Inscription</h1>
 					<h6>Veuillez remplir tous les champs pour créer un compte.</h6>
 					<hr>
 
+
 					<div class="form-label-group col-4">
-						Prénom <input type="text" id="inputFirstName"
-							class="form-control mt-1" placeholder="Prénom" required>
-						<label for="inputFirstName"></label>
+						Prénom
+						<form:input type="text" id="inputFirstName"
+							class="form-control mt-1" placeholder="Prénom" path="prenom" />
+						<small><form:errors path="prenom" cssClass="errormsg" required="required"/></small>
 					</div>
 
 					<div class="form-label-group col-4">
-						Nom <input type="text" id="inputName" class="form-control mt-1"
-							placeholder="Nom" required> <label for="inputName"></label>
-					</div>
-					
-					<div class="form-label-group col-4">
-						Poste<input type="text" id="inputPoste" class="form-control mt-1"
-							placeholder="Poste" required> <label for="inputPoste"></label>
-					</div>
-					
-					<div class="form-label-group col-4">
-						Rang<input type="text" id="inputRank" class="form-control mt-1"
-							placeholder="Rang" required> <label for="inputRank"></label>
+						Nom
+						<form:input type="text" id="inputName" class="form-control mt-1"
+							placeholder="Nom" path="nom" required="required"/>
+						<small><form:errors path="nom" cssClass="errormsg" /></small>
 					</div>
 
-					<div class="form-group col-4">
-						<label for="exampleFormControlInput1">Date</label> <input
-							id="datepicker" />
+					<div class="form-label-group col-4">
+						Poste
+						<form:input type="text" id="inputPoste" class="form-control mt-1"
+							placeholder="Poste" path="poste" required="required"/>
+						<small><form:errors path="poste" cssClass="errormsg" /></small>
 					</div>
-					<script>
-						$('#datepicker').datepicker({
-							uiLibrary : 'bootstrap4'
-						});
-					</script>
+
+					<div class="form-label-group col-4">
+						Rang
+						<form:input type="text" id="inputRang" class="form-control mt-1"
+							placeholder="Rang" path="rang" required="required"/>
+						<small><form:errors path="rang" cssClass="errormsg" /></small>
+					</div>
 
 					<div class="form-label-group col-7">
-						Adresse mail <input type="email" id="inputEmail"
-							class="form-control mt-1" placeholder="Adresse mail" required
-							autofocus> <label for="inputEmail"></label>
+						Adresse mail
+						<form:input type="mail" id="inputMail" class="form-control mt-1"
+							placeholder="Adresse mail" path="mail" required="required"/>
+						<small><form:errors path="mail" cssClass="errormsg" /></small>
 					</div>
 
 					<div class="form-label-group col-5">
-						Mot de passe <input type="password" id="inputPassword"
-							class="form-control mt-1" placeholder="Mot de passe" required>
-						<label for="inputPassword"></label>
+						Mot de passe
+						<form:input type="password" id="inputPassword" class="form-control mt-1"
+							placeholder="Mot de passe" path="mdp" required="required"/>
+						<small><form:errors path="mdp" cssClass="errormsg" /></small>
 					</div>
 
 					<div class="form-label-group col-5">
 						Confirmation de votre mot de passe <input type="password"
 							id="inputPassword" class="form-control mt-1"
-							placeholder="Mot de passe" required> <label
-							for="inputPassword"></label>
-					</div>
-
-					<div class="checkbox mb-3 col-5">
-						<label> <input type="checkbox" value="remember-me">
-							Se souvenir de moi
-						</label>
+							placeholder="Mot de passe" required="required">
 					</div>
 
 					<button class="btn btn-lg btn-primary btn-block ml-3 col-3"
 						type="submit">S'inscrire</button>
-				</form>
+
+				</form:form>
 
 				<!-- Footer -->
 				<hr>

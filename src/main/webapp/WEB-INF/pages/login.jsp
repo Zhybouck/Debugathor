@@ -18,7 +18,6 @@
 
 <!-- Style CSS -->
 <style type="text/css">
-
 .div-left {
 	background-color: #343a40;
 	color: #eff2f3;
@@ -32,7 +31,6 @@
 a {
 	color: #eff2f3;
 }
-
 </style>
 
 </head>
@@ -56,44 +54,50 @@ a {
 						src="C:\Users\IN-ST-008\Desktop\logoDT.png" alt="Responsive image"
 						width="80%">
 				</div>
-				
+
 				<div class="text-center mb-5">
-					<p>
-						Pas encore inscrit ?</p> <p> <a class="btn btn-outline-light"
-							href="http://localhost:8080/TestDebugathor/login.jsp"
-							role="button">Nous rejoindre ! &raquo;</a>
-					</p>
+					<p>Pas encore inscrit ?</p>
+					
+					<form action="user/addone" method="post">
+						<p><button class="btn btn-outline-light" type="submit">Nous
+							rejoindre ! &raquo;</button></p>
+					</form>
 				</div>
 			</div>
 
 
 			<div class="col-8 div-right">
-				<form class="form-signin ml-5 mt-5 mb-5">
+				<form:form class="form-signin ml-5 mt-5 mb-5" action="user/id"
+					method="POST" modelAttribute="userform">
+
 					<h1 class="display-4">Se connecter</h1>
 					<h6>Veuillez vous identifier.</h6>
 					<hr>
 
 					<div class="form-label-group col-7">
-						Adresse mail <input type="email" id="inputEmail"
-							class="form-control mt-2" placeholder="Adresse mail" required
-							autofocus> <label for="inputEmail"></label>
+						Adresse mail
+						<form:input type="email" id="inputEmail" class="form-control mt-2"
+							placeholder="Adresse mail" path="mail" />
+						<small><form:errors path="mail" cssClass="errormsg" /></small>
 					</div>
 
 					<div class="form-label-group col-5">
-						Mot de passe <input type="password" id="inputPassword"
-							class="form-control mt-2" placeholder="Mot de passe" required>
-						<label for="inputPassword"></label>
+						Mot de passe
+						<form:input type="password" id="inputPassword"
+							class="form-control mt-2" placeholder="Mot de passe" path="mdp" />
+						<small><form:errors path="mdp" cssClass="errormsg" /></small>
 					</div>
 
-					<div class="checkbox mb-3 col-5">
-						<label> <input type="checkbox" value="remember-me">
-							Se souvenir de moi
-						</label>
-					</div>
+					<!-- A voir si on l'utilise -->
+					<!-- 					<div class="checkbox mb-3 col-5"> -->
+					<!-- 						<label> <input type="checkbox" value="remember-me"> -->
+					<!-- 							Se souvenir de moi -->
+					<!-- 						</label> -->
+					<!-- 					</div> -->
 
 					<button class="btn btn-lg btn-primary btn-block ml-3 col-3"
 						type="submit">Se connecter</button>
-				</form>
+				</form:form>
 
 				<!-- Footer -->
 				<hr>
@@ -103,11 +107,7 @@ a {
 			</div>
 		</div>
 
-
-
 	</div>
-
-
 
 
 	<!-- Les balises script sont à mettre à la fin du body pour éviter de surcharger le chargement de la page -->
