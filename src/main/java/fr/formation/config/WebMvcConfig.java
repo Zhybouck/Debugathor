@@ -1,5 +1,6 @@
 package fr.formation.config;
  
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
@@ -8,13 +9,15 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-import fr.formation.intercepot.SessionInterceptor;
+import fr.formation.interceptor.SessionInterceptor;
  
  
 @Configuration
 @EnableWebMvc
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
  
+	@Autowired
+	SessionInterceptor sessionInterceptor;
     // Static Resource Config
     // equivalents for <mvc:resources/> tags
     @Override
@@ -37,6 +40,6 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new SessionInterceptor());
+        registry.addInterceptor(sessionInterceptor);
     }
 }

@@ -1,10 +1,10 @@
 package fr.formation.controller;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +13,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import fr.formation.cryptlogin.LoginUtils;
@@ -22,32 +21,50 @@ import fr.formation.services.IUtilisateurService;
 
 @Controller
 @Transactional
-@SessionAttributes("Utilisateur")
 @RequestMapping("/user")
 public class ControllerUtil {
+	private static final Log log = LogFactory.getLog(ControllerUtil.class);
 
 	@Autowired
 	IUtilisateurService service;
 
 	@RequestMapping(value = "/init", method = RequestMethod.GET)
-	public String initView(Model model) {
+	public String initView(Model model, HttpSession session) {
+		log.info("-------------------------Initialisation des utilisateurs controlleurs---------------------");
+		session.setAttribute("Utilisateur", null);
 		model.addAttribute("userform", new Utilisateur());
 		return "Accueil";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String doLogin(@ModelAttribute("userform") Utilisateur utilisateur, BindingResult result, Model model) {
-		Utilisateur checkeur = service.getbyMail(utilisateur.getMail());
-		if ((utilisateur.getMail().equals(checkeur.getMail()))) {
-			String hashed_mdp = LoginUtils.hashPassword(utilisateur.getMdp());
-			if (LoginUtils.checkmdp(utilisateur.getMdp(), checkeur.getMdp())) {
-				model.addAttribute("Utilisateur", checkeur);
-				return "redirect:/Solution/init";
+	public String doLogin(@ModelAttribute("userform") Utilisateur utilisateur, BindingResult result, Model model,
+			HttpSession session, SessionStatus status) {
+		log.info("-------------------------Login---------------------");
+
+		
+		if (utilisateur.getMail().equals(null)) {
+			log.info("-------------------------L'utilisateur est null---------------------");
+
+			return "redirect:/user/init";
+		} else {
+			log.info("-------------------------L'utilisateur est pas null---------------------");
+			log.info("-------------------------Creation du checkeur---------------------");
+			Utilisateur checkeur = service.getbyMail(utilisateur.getMail());
+			log.info("-------------------------Creation du Checkeur de l'utilisateur---------------------");
+
+			if ((utilisateur.getMail().equals(checkeur.getMail()))) {
+				log.info("-------------------------Cryptage mdp---------------------");
+
+				String hashed_mdp = LoginUtils.hashPassword(utilisateur.getMdp());
+				if (LoginUtils.checkmdp(utilisateur.getMdp(), checkeur.getMdp())) {
+					session.setAttribute("Utilisateur", checkeur);
+					return "redirect:/Solution/init";
+				} else {
+					return "Accueil";
+				}
 			} else {
 				return "Accueil";
 			}
-		} else {
-			return "Accueil";
 		}
 	}
 
@@ -62,24 +79,30 @@ public class ControllerUtil {
 			Model model) {
 		java.util.Date date = new java.util.Date();
 		java.sql.Date d = new java.sql.Date(date.getTime());
-		
-		if (crea.equals(null)) {
-			return "CreaCompte";
-		} else {
-			if (result.hasErrors()) {
+
+		Utilisateur exist = service.getbyMail(crea.getMail());
+		if (null != exist) {
+			if (crea.equals(null)) {
 				return "CreaCompte";
 			} else {
-				crea.setDateInsc(d);
-				crea.setMdp(LoginUtils.hashPassword(crea.getMdp()));
-				service.save(crea);
-				return "redirect:/user/init";
-			} 
+				if (result.hasErrors()) {
+					return "CreaCompte";
+				} else {
+					crea.setDateInsc(d);
+					crea.setMdp(LoginUtils.hashPassword(crea.getMdp()));
+					service.save(crea);
+					return "redirect:Debugathor/";
+				}
+			}
+		} else {
+			return "CreaCompte";
 		}
 	}
 
 	@RequestMapping("/disconnect")
-	public String endSessionHandlingMethod(SessionStatus status) {
+	public String endSessionHandlingMethod(SessionStatus status, HttpSession session) {
 		status.setComplete();
+		session.invalidate();
 		return "Accueil";
 	}
 
