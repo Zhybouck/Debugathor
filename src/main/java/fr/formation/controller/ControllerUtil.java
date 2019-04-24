@@ -33,6 +33,7 @@ public class ControllerUtil {
 		log.info("-------------------------Initialisation des utilisateurs controlleurs---------------------");
 		session.setAttribute("Utilisateur", null);
 		model.addAttribute("userform", new Utilisateur());
+		
 		return "login";
 	}
 
