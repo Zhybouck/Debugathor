@@ -130,11 +130,12 @@ body {
 						<td><c:out value="${solution.description}" /></td>
 						<td><c:out value="${solution.demarche}" /></td>
 
-						<td><form action="focus" method="POST">
+						<td>
+						<form action="focus" method="POST">
 						<input  name="Id" type = "hidden" value="${solution.idSolution}">
-								<button type="submit"
+						<button type="submit"
 									class="btn btn-outline-secondary">Consulter</button>
-							</form></td>
+						</form></td>
 						
 
 					</tr>
