@@ -1,8 +1,8 @@
 package fr.formation.controller;
 
-import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.formation.entities.Solution;
 import fr.formation.services.ISolutionService;
@@ -36,7 +37,7 @@ public class ControllerSolutions {
 	
 	//lorsque l'on sélectionne une solution cette methode est appelée et renvoie vers la méthode focusBug
 	@RequestMapping(value = "/focus", method = RequestMethod.POST)
-	public String focusOnOne(@ModelAttribute("Id")Long Id, Model model) {
+	public String focusOnOne(@RequestParam("Id")Long Id, Model model) {
 		model.addAttribute("focusedSol", solserv.findById(Id));
 		return "focusBug";
 	}
@@ -61,16 +62,27 @@ public class ControllerSolutions {
 		}
 	}
 	
+	@RequestMapping(value = "/initaddsoluce", method = RequestMethod.POST)
+	public String initaddsoluce(Solution solution, Model model ,BindingResult result) {
+		
+		model.addAttribute("Solution", new Solution());
+		return "addBug";
+		
+	}
+	
+	
+	
+	
 	
 	//Cette requête est faite pour ajouter une solution à la base de donnee
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String saveeOne(@ModelAttribute("addsol")Solution solution, Model model ,BindingResult result) {
-		solserv.save(solution);
+	@RequestMapping(value = "/applyadd", method = RequestMethod.POST)
+	public String saveeOne(@ModelAttribute("Solution")Solution solution, Model model ,BindingResult result) {
 		
 		if(result.hasErrors()) {
 			return "addBug";
 		}
-		model.addAttribute(solserv.findById((solution).getIdSolution()));
+		solserv.save(solution);
+		model.addAttribute("focusedSol", solserv.findById((solution).getIdSolution()));
 		return "focusBug";
 	}
 	
@@ -79,5 +91,11 @@ public class ControllerSolutions {
 		return "redirect:/Solution/init";
 
 	}
+	
+	@RequestMapping(value = "/disconnect", method = RequestMethod.POST)
+	public String endSessionHandlingMethod(HttpSession session) {
+		session.invalidate();
+		return "byebye";
+	} 
 
 }

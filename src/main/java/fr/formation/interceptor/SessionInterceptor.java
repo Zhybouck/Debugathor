@@ -28,23 +28,18 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		System.out.println("Pre Handle");
-		System.out.println(request.getServletPath());
 		if (request.getServletPath().equals("/user/init") || request.getServletPath().equals("/user/id")
 				|| request.getServletPath().equals("/user/addone") || request.getServletPath().equals("/user/add")) {
 			log.info("-------------------------Initialisation des utilisateurs---------------------");
-			System.out.println("Je suis dans le premier if");
 			return true;
 		}
 		if (null != request.getSession().getAttribute("Utilisateur")) {
-			System.out.println("Je suis dans le deuxieme if");
 			log.info(
 					"-----------------------------------------La Session Existe---------------------------------------");
 			return true;
 		}
 		log.info(
 				"-------------------------La Session N'existe pas ou l'URL n'est pas autorisée sans session---------------------");
-		System.out.println("Je suis dans aucun if");
 
 		response.sendRedirect(request.getContextPath());
 		return true;

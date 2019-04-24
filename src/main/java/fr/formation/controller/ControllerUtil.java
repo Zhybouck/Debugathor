@@ -118,7 +118,7 @@ public class ControllerUtil {
 	@RequestMapping(value = "/disconnect", method = RequestMethod.POST)
 	public String endSessionHandlingMethod(SessionStatus status, HttpSession session) {
 		session.invalidate();
-		return "login";
+		return "byebye";
 	} 
 
 }

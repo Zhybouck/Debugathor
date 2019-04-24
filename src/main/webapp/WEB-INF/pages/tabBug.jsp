@@ -50,8 +50,8 @@ body {
 
 	<!-- Navbar -->
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		<img src="../resources/img/DT.png" width="4%">
-		<a class="navbar-brand" href="#">Debugathor</a>
+		<img src="../resources/img/DT.png" width="4%"> <a
+			class="navbar-brand" href="#">Debugathor</a>
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active"><a class="nav-link"
@@ -66,7 +66,8 @@ body {
 						une solution</a></li>
 			</ul>
 
-			<form class="form-inline mt-2 mt-md-0">
+			<form class="form-inline mt-2 mt-md-0" action="disconnect"
+				method="post">
 				<button class="btn btn-danger my-2 my-sm-0" type="submit">Se
 					deconnecter</button>
 			</form>
@@ -82,340 +83,70 @@ body {
 
 		<table
 			class="datatable table table-striped table-hover table-bordered">
+			<c:forEach items="${listesol}" var="solution">
+				<!-- Entête du tableau -->
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Technologie</th>
+						<th>Type</th>
+						<th>Date</th>
+						<th>Titre</th>
+						<th>Description</th>
+						<th>Démarche</th>
+						<th>Consulter</th>
+					</tr>
+				</thead>
 
-			<!-- Entête du tableau -->
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>Technologie</th>
-					<th>Type</th>
-					<th>Date</th>
-					<th>Titre</th>
-					<th>Description</th>
-					<th>Démarche</th>
-					<th>Consulter</th>
-				</tr>
-			</thead>
+				<!-- Ligne filtres -->
+				<tfoot>
+					<tr>
+						<th><input type="text"
+							class="form-control input-sm filter-column"></th>
+						<th><input type="text"
+							class="form-control input-sm filter-column"></th>
+						<th><input type="text"
+							class="form-control input-sm filter-column"></th>
+						<th><input type="text"
+							class="form-control input-sm filter-column"></th>
+						<th><input type="text"
+							class="form-control input-sm filter-column"></th>
+						<th><input type="text"
+							class="form-control input-sm filter-column"></th>
+						<th><input type="text"
+							class="form-control input-sm filter-column"></th>
+						<th></th>
+					</tr>
+				</tfoot>
 
-			<!-- Ligne filtres -->
-			<tfoot>
-				<tr>
-					<th><input type="text"
-						class="form-control input-sm filter-column"></th>
-					<th><input type="text"
-						class="form-control input-sm filter-column"></th>
-					<th><input type="text"
-						class="form-control input-sm filter-column"></th>
-					<th><input type="text"
-						class="form-control input-sm filter-column"></th>
-					<th><input type="text"
-						class="form-control input-sm filter-column"></th>
-					<th><input type="text"
-						class="form-control input-sm filter-column"></th>
-					<th><input type="text"
-						class="form-control input-sm filter-column"></th>
-					<th></th>
-				</tr>
-			</tfoot>
+				<!-- Corps du tableau -->
+				<tbody>
+					<tr>
+						<td><c:out value="${solution.idSolution}" /></td>
+						<td><c:out value="${solution.technologie}" /></td>
+						<td><c:out value="${solution.type}" /></td>
+						<td><c:out value="${solution.dateBug}" /></td>
+						<td><c:out value="${solution.titre}" /></td>
+						<td><c:out value="${solution.description}" /></td>
+						<td><c:out value="${solution.demarche}" /></td>
 
-			<!-- Corps du tableau -->
-			<tbody>
-				<tr>
-					<td>1</td>
-					<td>Java</td>
-					<td>java.io.FileNotFoundException</td>
-					<td>29/03/2018</td>
-					<td>Impossible de trouver le fichier</td>
-					<td>Donec id elit non mi porta gravida at eget metus. Fusce
-						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-						ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui.</td>
-					<td>Donec sed odio dui. Fusce dapibus, tellus ac cursus
-						commodo, tortor mauris condimentum nibh, ut fermentum massa justo
-						sit amet risus.</td>
-					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
-				</tr>
+						<td><form action="focus" method="POST">
+						<input  name="Id" type = "hidden" value="${solution.idSolution}">
+								<button type="submit"
+									class="btn btn-outline-secondary">Consulter</button>
+							</form></td>
+						
 
-				<tr>
-					<td>2</td>
-					<td>JavaScript</td>
-					<td>java.io.NullPointer</td>
-					<td>25/02/2019</td>
-					<td>Serveur indisponible</td>
-					<td>Donec id elit non mi porta gravida at eget metus. Fusce
-						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-						ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui.</td>
-					<td>Donec sed odio dui. Cras justo odio, dapibus ac facilisis
-						in, egestas eget quam. Vestibulum id ligula porta felis euismod
-						semper.</td>
-					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
-				</tr>
-
-				<tr>
-					<td>3</td>
-					<td>CSS</td>
-					<td>org.apache.NullPointer</td>
-					<td>12/04/2019</td>
-					<td>Impossible de trouver le fichier</td>
-					<td>Donec id elit non mi porta gravida at eget metus. Fusce
-						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-						ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui.</td>
-					<td>Vestibulum id ligula porta felis euismod semper. Fusce
-						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-						ut fermentum massa justo sit amet risus.</td>
-					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
-				</tr>
-
-				<tr>
-					<td>4</td>
-					<td>Java</td>
-					<td>java.io.FileNotFoundException</td>
-					<td>29/03/2018</td>
-					<td>Impossible de trouver le fichier</td>
-					<td>Donec id elit non mi porta gravida at eget metus. Fusce
-						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-						ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui.</td>
-					<td>Donec sed odio dui. Fusce dapibus, tellus ac cursus
-						commodo, tortor mauris condimentum nibh, ut fermentum massa justo
-						sit amet risus.</td>
-					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
-				</tr>
-
-				<tr>
-					<td>5</td>
-					<td>JavaScript</td>
-					<td>java.io.NullPointer</td>
-					<td>25/02/2019</td>
-					<td>Serveur indisponible</td>
-					<td>Donec id elit non mi porta gravida at eget metus. Fusce
-						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-						ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui.</td>
-					<td>Donec sed odio dui. Cras justo odio, dapibus ac facilisis
-						in, egestas eget quam. Vestibulum id ligula porta felis euismod
-						semper.</td>
-					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
-				</tr>
-
-				<tr>
-					<td>6</td>
-					<td>CSS</td>
-					<td>org.apache.NullPointer</td>
-					<td>12/04/2019</td>
-					<td>Impossible de trouver le fichier</td>
-					<td>Donec id elit non mi porta gravida at eget metus. Fusce
-						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-						ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui.</td>
-					<td>Vestibulum id ligula porta felis euismod semper. Fusce
-						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-						ut fermentum massa justo sit amet risus.</td>
-					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
-				</tr>
-
-				<tr>
-					<td>7</td>
-					<td>Java</td>
-					<td>java.io.FileNotFoundException</td>
-					<td>29/03/2018</td>
-					<td>Impossible de trouver le fichier</td>
-					<td>Donec id elit non mi porta gravida at eget metus. Fusce
-						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-						ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui.</td>
-					<td>Donec sed odio dui. Fusce dapibus, tellus ac cursus
-						commodo, tortor mauris condimentum nibh, ut fermentum massa justo
-						sit amet risus.</td>
-					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
-				</tr>
-
-				<tr>
-					<td>8</td>
-					<td>JavaScript</td>
-					<td>java.io.NullPointer</td>
-					<td>25/02/2019</td>
-					<td>Serveur indisponible</td>
-					<td>Donec id elit non mi porta gravida at eget metus. Fusce
-						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-						ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui.</td>
-					<td>Donec sed odio dui. Cras justo odio, dapibus ac facilisis
-						in, egestas eget quam. Vestibulum id ligula porta felis euismod
-						semper.</td>
-					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
-				</tr>
-
-				<tr>
-					<td>9</td>
-					<td>CSS</td>
-					<td>org.apache.NullPointer</td>
-					<td>12/04/2019</td>
-					<td>Impossible de trouver le fichier</td>
-					<td>Donec id elit non mi porta gravida at eget metus. Fusce
-						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-						ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui.</td>
-					<td>Vestibulum id ligula porta felis euismod semper. Fusce
-						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-						ut fermentum massa justo sit amet risus.</td>
-					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
-				</tr>
-
-				<tr>
-					<td>10</td>
-					<td>Java</td>
-					<td>java.io.FileNotFoundException</td>
-					<td>29/03/2018</td>
-					<td>Impossible de trouver le fichier</td>
-					<td>Donec id elit non mi porta gravida at eget metus. Fusce
-						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-						ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui.</td>
-					<td>Donec sed odio dui. Fusce dapibus, tellus ac cursus
-						commodo, tortor mauris condimentum nibh, ut fermentum massa justo
-						sit amet risus.</td>
-					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
-				</tr>
-
-				<tr>
-					<td>11</td>
-					<td>JavaScript</td>
-					<td>java.io.NullPointer</td>
-					<td>25/02/2019</td>
-					<td>Serveur indisponible</td>
-					<td>Donec id elit non mi porta gravida at eget metus. Fusce
-						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-						ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui.</td>
-					<td>Donec sed odio dui. Cras justo odio, dapibus ac facilisis
-						in, egestas eget quam. Vestibulum id ligula porta felis euismod
-						semper.</td>
-					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
-				</tr>
-
-				<tr>
-					<td>12</td>
-					<td>CSS</td>
-					<td>org.apache.NullPointer</td>
-					<td>12/04/2019</td>
-					<td>Impossible de trouver le fichier</td>
-					<td>Donec id elit non mi porta gravida at eget metus. Fusce
-						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-						ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui.</td>
-					<td>Vestibulum id ligula porta felis euismod semper. Fusce
-						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-						ut fermentum massa justo sit amet risus.</td>
-					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
-				</tr>
-
-				<tr>
-					<td>13</td>
-					<td>Java</td>
-					<td>java.io.FileNotFoundException</td>
-					<td>29/03/2018</td>
-					<td>Impossible de trouver le fichier</td>
-					<td>Donec id elit non mi porta gravida at eget metus. Fusce
-						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-						ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui.</td>
-					<td>Donec sed odio dui. Fusce dapibus, tellus ac cursus
-						commodo, tortor mauris condimentum nibh, ut fermentum massa justo
-						sit amet risus.</td>
-					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
-				</tr>
-
-				<tr>
-					<td>14</td>
-					<td>JavaScript</td>
-					<td>java.io.NullPointer</td>
-					<td>25/02/2019</td>
-					<td>Serveur indisponible</td>
-					<td>Donec id elit non mi porta gravida at eget metus. Fusce
-						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-						ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui.</td>
-					<td>Donec sed odio dui. Cras justo odio, dapibus ac facilisis
-						in, egestas eget quam. Vestibulum id ligula porta felis euismod
-						semper.</td>
-					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
-				</tr>
-
-				<tr>
-					<td>3</td>
-					<td>CSS</td>
-					<td>org.apache.NullPointer</td>
-					<td>12/04/2019</td>
-					<td>Impossible de trouver le fichier</td>
-					<td>Donec id elit non mi porta gravida at eget metus. Fusce
-						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-						ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui.</td>
-					<td>Vestibulum id ligula porta felis euismod semper. Fusce
-						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-						ut fermentum massa justo sit amet risus.</td>
-					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
-				</tr>
-
-				<tr>
-					<td>1</td>
-					<td>Java</td>
-					<td>java.io.FileNotFoundException</td>
-					<td>29/03/2018</td>
-					<td>Impossible de trouver le fichier</td>
-					<td>Donec id elit non mi porta gravida at eget metus. Fusce
-						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-						ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui.</td>
-					<td>Donec sed odio dui. Fusce dapibus, tellus ac cursus
-						commodo, tortor mauris condimentum nibh, ut fermentum massa justo
-						sit amet risus.</td>
-					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
-				</tr>
-
-				<tr>
-					<td>2</td>
-					<td>JavaScript</td>
-					<td>java.io.NullPointer</td>
-					<td>25/02/2019</td>
-					<td>Serveur indisponible</td>
-					<td>Donec id elit non mi porta gravida at eget metus. Fusce
-						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-						ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui.</td>
-					<td>Donec sed odio dui. Cras justo odio, dapibus ac facilisis
-						in, egestas eget quam. Vestibulum id ligula porta felis euismod
-						semper.</td>
-					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
-				</tr>
-
-				<tr>
-					<td>3</td>
-					<td>CSS</td>
-					<td>org.apache.NullPointer</td>
-					<td>12/04/2019</td>
-					<td>Impossible de trouver le fichier</td>
-					<td>Donec id elit non mi porta gravida at eget metus. Fusce
-						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-						ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui.</td>
-					<td>Vestibulum id ligula porta felis euismod semper. Fusce
-						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-						ut fermentum massa justo sit amet risus.</td>
-					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
-				</tr>
-
-
-			</tbody>
+					</tr>
+				</tbody>
+			</c:forEach>
 
 		</table>
 
 		<div class="col-4 mt-5">
-			<button type="button" class="btn btn-success">Ajouter une
-				solution</button>
+			<form action="initaddsoluce" method="post">
+				<button class="btn btn-success">Ajouter une solution</button>
+			</form>
 		</div>
 
 	</div>
