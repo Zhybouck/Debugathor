@@ -53,7 +53,7 @@ body {
 
 		<!-- Navbar -->
 		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-			<img src="C:\Users\IN-ST-008\Desktop\DT.png" width="4%" alt="">
+			<img src="resources/img/DT.png" width="4%" alt="">
 			<a class="navbar-brand" href="#">Debugathor</a>
 			<ul class="nav navbar-nav ml-auto">
 				<li><form action="user/init" method="get">
@@ -68,7 +68,7 @@ body {
 
 		<!-- Jumbotron -->
 		<div class="jumbotron text-center">
-			<img class="img-fluid" src="C:\Users\IN-ST-008\Desktop\logoDT.png"
+			<img class="img-fluid" src="resources/img/logoDT.png"
 				width="40%" alt="Responsive image">
 		</div>
 	</div>

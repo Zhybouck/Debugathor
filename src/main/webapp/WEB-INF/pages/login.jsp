@@ -20,11 +20,13 @@
 <style type="text/css">
 .div-left {
 	background-color: #343a40;
+	min-height: 100vh;
 	color: #eff2f3;
 }
 
 .div-right {
 	background-color: #eff2f3;
+	min-height: 100vh;
 	color: #343a40;
 }
 
@@ -45,29 +47,30 @@ a {
 				<!-- Navbar -->
 				<!-- 	Rajouter les form -->
 				<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-					<img src="C:\Users\IN-ST-008\Desktop\DT.png" width="8%" alt="">
-					<a class="navbar-brand" href="#">Debugathor</a>
+					<img src="../resources/img/DT.png" width="8%"> <a
+						class="navbar-brand" href="#">Debugathor</a>
 				</nav>
 
 				<div class="text-center">
-					<img class="img-fluid mt-5 mb-5"
-						src="C:\Users\IN-ST-008\Desktop\logoDT.png" alt="Responsive image"
+					<img class="img-fluid mt-5 mb-5" src="../resources/img/logoDT.png"
 						width="80%">
 				</div>
 
 				<div class="text-center mb-5">
 					<p>Pas encore inscrit ?</p>
-					
+
 					<form action="user/addone" method="post">
-						<p><button class="btn btn-outline-light" type="submit">Nous
-							rejoindre ! &raquo;</button></p>
+						<p>
+							<button class="btn btn-outline-light" type="submit">Nous
+								rejoindre ! &raquo;</button>
+						</p>
 					</form>
 				</div>
 			</div>
 
 
 			<div class="col-8 div-right">
-				<form:form class="form-signin ml-5 mt-5 mb-5" action="user/id"
+				<form:form class="form-signin ml-5 mt-5 mb-5" action="id"
 					method="POST" modelAttribute="userform">
 
 					<h1 class="display-4">Se connecter</h1>
@@ -95,16 +98,18 @@ a {
 					<!-- 						</label> -->
 					<!-- 					</div> -->
 
-					<button class="btn btn-lg btn-primary btn-block ml-3 col-3"
+					<button class="btn btn-lg btn-primary btn-block ml-3 mt-4 col-3"
 						type="submit">Se connecter</button>
 				</form:form>
-
+				
 				<!-- Footer -->
 				<hr>
 				<footer class="container-fluid ml-5">
 					<p>&copy; Debugathor 2019</p>
 				</footer>
+
 			</div>
+
 		</div>
 
 	</div>

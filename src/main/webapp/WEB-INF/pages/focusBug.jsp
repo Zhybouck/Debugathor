@@ -49,7 +49,7 @@ body {
 
 	<!-- Navbar -->
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		<img src="C:\Users\IN-ST-008\Desktop\DT.png" width="4%" alt="">
+		<img src="../resources/img/DT.png" width="4%">
 		<a class="navbar-brand" href="#">Debugathor</a>
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="navbar-nav mr-auto">

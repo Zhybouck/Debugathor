@@ -50,7 +50,7 @@ body {
 
 	<!-- Navbar -->
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		<img src="C:\Users\IN-ST-008\Desktop\DT.png" width="4%" alt="">
+		<img src="../resources/img/DT.png" width="4%">
 		<a class="navbar-brand" href="#">Debugathor</a>
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="navbar-nav mr-auto">
@@ -93,6 +93,7 @@ body {
 					<th>Titre</th>
 					<th>Description</th>
 					<th>Démarche</th>
+					<th>Consulter</th>
 				</tr>
 			</thead>
 
@@ -113,6 +114,7 @@ body {
 						class="form-control input-sm filter-column"></th>
 					<th><input type="text"
 						class="form-control input-sm filter-column"></th>
+					<th></th>
 				</tr>
 			</tfoot>
 
@@ -131,6 +133,7 @@ body {
 					<td>Donec sed odio dui. Fusce dapibus, tellus ac cursus
 						commodo, tortor mauris condimentum nibh, ut fermentum massa justo
 						sit amet risus.</td>
+					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
 				</tr>
 
 				<tr>
@@ -146,6 +149,7 @@ body {
 					<td>Donec sed odio dui. Cras justo odio, dapibus ac facilisis
 						in, egestas eget quam. Vestibulum id ligula porta felis euismod
 						semper.</td>
+					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
 				</tr>
 
 				<tr>
@@ -161,6 +165,7 @@ body {
 					<td>Vestibulum id ligula porta felis euismod semper. Fusce
 						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
 						ut fermentum massa justo sit amet risus.</td>
+					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
 				</tr>
 
 				<tr>
@@ -176,6 +181,7 @@ body {
 					<td>Donec sed odio dui. Fusce dapibus, tellus ac cursus
 						commodo, tortor mauris condimentum nibh, ut fermentum massa justo
 						sit amet risus.</td>
+					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
 				</tr>
 
 				<tr>
@@ -191,6 +197,7 @@ body {
 					<td>Donec sed odio dui. Cras justo odio, dapibus ac facilisis
 						in, egestas eget quam. Vestibulum id ligula porta felis euismod
 						semper.</td>
+					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
 				</tr>
 
 				<tr>
@@ -206,6 +213,7 @@ body {
 					<td>Vestibulum id ligula porta felis euismod semper. Fusce
 						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
 						ut fermentum massa justo sit amet risus.</td>
+					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
 				</tr>
 
 				<tr>
@@ -221,6 +229,7 @@ body {
 					<td>Donec sed odio dui. Fusce dapibus, tellus ac cursus
 						commodo, tortor mauris condimentum nibh, ut fermentum massa justo
 						sit amet risus.</td>
+					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
 				</tr>
 
 				<tr>
@@ -236,6 +245,7 @@ body {
 					<td>Donec sed odio dui. Cras justo odio, dapibus ac facilisis
 						in, egestas eget quam. Vestibulum id ligula porta felis euismod
 						semper.</td>
+					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
 				</tr>
 
 				<tr>
@@ -251,6 +261,7 @@ body {
 					<td>Vestibulum id ligula porta felis euismod semper. Fusce
 						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
 						ut fermentum massa justo sit amet risus.</td>
+					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
 				</tr>
 
 				<tr>
@@ -266,6 +277,7 @@ body {
 					<td>Donec sed odio dui. Fusce dapibus, tellus ac cursus
 						commodo, tortor mauris condimentum nibh, ut fermentum massa justo
 						sit amet risus.</td>
+					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
 				</tr>
 
 				<tr>
@@ -281,6 +293,7 @@ body {
 					<td>Donec sed odio dui. Cras justo odio, dapibus ac facilisis
 						in, egestas eget quam. Vestibulum id ligula porta felis euismod
 						semper.</td>
+					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
 				</tr>
 
 				<tr>
@@ -296,6 +309,7 @@ body {
 					<td>Vestibulum id ligula porta felis euismod semper. Fusce
 						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
 						ut fermentum massa justo sit amet risus.</td>
+					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
 				</tr>
 
 				<tr>
@@ -311,6 +325,7 @@ body {
 					<td>Donec sed odio dui. Fusce dapibus, tellus ac cursus
 						commodo, tortor mauris condimentum nibh, ut fermentum massa justo
 						sit amet risus.</td>
+					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
 				</tr>
 
 				<tr>
@@ -326,6 +341,7 @@ body {
 					<td>Donec sed odio dui. Cras justo odio, dapibus ac facilisis
 						in, egestas eget quam. Vestibulum id ligula porta felis euismod
 						semper.</td>
+					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
 				</tr>
 
 				<tr>
@@ -341,6 +357,7 @@ body {
 					<td>Vestibulum id ligula porta felis euismod semper. Fusce
 						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
 						ut fermentum massa justo sit amet risus.</td>
+					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
 				</tr>
 
 				<tr>
@@ -356,6 +373,7 @@ body {
 					<td>Donec sed odio dui. Fusce dapibus, tellus ac cursus
 						commodo, tortor mauris condimentum nibh, ut fermentum massa justo
 						sit amet risus.</td>
+					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
 				</tr>
 
 				<tr>
@@ -371,6 +389,7 @@ body {
 					<td>Donec sed odio dui. Cras justo odio, dapibus ac facilisis
 						in, egestas eget quam. Vestibulum id ligula porta felis euismod
 						semper.</td>
+					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
 				</tr>
 
 				<tr>
@@ -386,6 +405,7 @@ body {
 					<td>Vestibulum id ligula porta felis euismod semper. Fusce
 						dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
 						ut fermentum massa justo sit amet risus.</td>
+					<td><button type="button" class="btn btn-outline-secondary">Consulter</button></td>
 				</tr>
 
 

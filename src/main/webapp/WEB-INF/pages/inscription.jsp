@@ -19,11 +19,13 @@
 <style type="text/css">
 .div-left {
 	background-color: #343a40;
+	min-height: 100vh;
 	color: #eff2f3;
 }
 
 .div-right {
 	background-color: #eff2f3;
+	min-height: 100vh;
 	color: #343a40;
 }
 
@@ -44,14 +46,13 @@ a {
 				<!-- Navbar -->
 
 				<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-					<img src="C:\Users\IN-ST-008\Desktop\DT.png" width="8%" alt="">
+					<img src="../resources/img/DT.png" width="8%">
 					<a class="navbar-brand" href="#">Debugathor</a>
 				</nav>
 
 				<div class="text-center">
 					<img class="img-fluid mt-5 mb-5"
-						src="C:\Users\IN-ST-008\Desktop\logoDT.png" alt="Responsive image"
-						width="80%">
+						src="../resources/img/logoDT.png" width="80%">
 				</div>
 
 				<div class="text-center mb-5">
