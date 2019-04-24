@@ -119,6 +119,6 @@ public class ControllerUtil {
 	public String endSessionHandlingMethod(SessionStatus status, HttpSession session) {
 		session.invalidate();
 		return "login";
-	}
+	} 
 
 }
