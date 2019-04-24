@@ -67,7 +67,7 @@ a {
 
 
 			<div class="col-8 div-right">
-				<form:form class="form-signin ml-5 mt-5 mb-5" action="user/id"
+				<form:form class="form-signin ml-5 mt-5 mb-5" action="id"
 					method="POST" modelAttribute="userform">
 
 					<h1 class="display-4">Se connecter</h1>

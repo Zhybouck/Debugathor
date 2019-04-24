@@ -1,5 +1,6 @@
 package fr.formation.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -29,8 +30,11 @@ public class ControllerUtil {
 	IUtilisateurService service;
 
 	@RequestMapping(value = "/init", method = RequestMethod.GET)
-	public String initView(Model model, HttpSession session) {
+	public String initView(Model model, HttpSession session, HttpServletRequest request) {
 		log.info("-------------------------Initialisation des utilisateurs controlleurs---------------------");
+		if (null != request.getSession().getAttribute("Utilisateur")) {
+			return "redirect:/Solution/init";
+		}
 		session.setAttribute("Utilisateur", null);
 		model.addAttribute("userform", new Utilisateur());
 		
@@ -39,7 +43,7 @@ public class ControllerUtil {
 
 	@RequestMapping(value = "/id", method = RequestMethod.POST)
 	public String doLogin(@ModelAttribute("userform") Utilisateur utilisateur, BindingResult result, Model model,
-			HttpSession session, SessionStatus status) {
+			HttpSession session) {
 		log.info("-------------------------Login---------------------");
 
 		
@@ -111,9 +115,8 @@ public class ControllerUtil {
 //		}
 	}
 
-	@RequestMapping("/disconnect")
+	@RequestMapping(value = "/disconnect", method = RequestMethod.POST)
 	public String endSessionHandlingMethod(SessionStatus status, HttpSession session) {
-		status.setComplete();
 		session.invalidate();
 		return "login";
 	}

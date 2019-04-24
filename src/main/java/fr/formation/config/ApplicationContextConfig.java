@@ -17,6 +17,8 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import fr.formation.interceptor.SessionInterceptor;
  
 @Configuration
 @ComponentScan("fr.formation.*")
@@ -89,6 +91,12 @@ public class ApplicationContextConfig {
  
      return transactionManager;
  }
+ 
+// @Autowired
+// @Bean(name = "SessionInterceptor")
+// SessionInterceptor sessionInterceptor() {
+//     return new SessionInterceptor();
+//}
  
 // @Bean(name = "applicantDAO")
 // public ApplicantDAO getApplicantDAO() {

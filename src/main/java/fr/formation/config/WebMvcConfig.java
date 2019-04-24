@@ -16,8 +16,8 @@ import fr.formation.interceptor.SessionInterceptor;
 @EnableWebMvc
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
  
-	@Autowired
-	SessionInterceptor sessionInterceptor;
+//	@Autowired
+//	SessionInterceptor sessionInterceptor;
     // Static Resource Config
     // equivalents for <mvc:resources/> tags
     @Override 
@@ -40,6 +40,6 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(sessionInterceptor);
-    }
+        registry.addInterceptor(new SessionInterceptor());
+        }
 }
