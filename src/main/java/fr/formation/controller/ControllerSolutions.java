@@ -45,13 +45,23 @@ public class ControllerSolutions {
 	//lorsque l'on sélectionne une solution cette methode est appelée et renvoie vers la méthode focusBug
 	@RequestMapping(value = "/focus", method = RequestMethod.POST)
 	public String focusOnOne(@RequestParam("Id")Long Id, Model model) {
-		model.addAttribute("focusedSol", solserv.findById(Id));
+		Solution solution = solserv.findById(Id);
+		model.addAttribute("focusedSol", solution);
+		model.addAttribute("nouvProp", new Proposition());
 		return "focusBug";
+	}
+	
+	@RequestMapping(value = "/focusplusprop", method = RequestMethod.POST)
+	public String focusPlusProp(@RequestParam("Id")Long Id, @ModelAttribute("focusedSol") Solution solution,Model model, HttpSession session, @ModelAttribute("nouvProp")Proposition proposition) {
+
+		model.addAttribute("focusedSol", solution);
+		model.addAttribute("nouvProp", new Proposition());
+		return "redirect:/Solution/focus";
 	}
 	
 	//Depusi une page avec plusieurs ou un seul bug on peut appeler cette méthode afin d'update un Bug/solution
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String updateInit(@ModelAttribute("Id")Long Id, Model model) {
+	public String updateInit(@RequestParam("Id")Long Id, Model model) {
 		model.addAttribute("toUpBug", solserv.findById(Id));
 		return "uppBug";
 	}
