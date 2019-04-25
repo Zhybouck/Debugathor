@@ -83,7 +83,7 @@ public class ControllerSolutions {
 	public String initaddsoluce(Solution solution, Model model ,BindingResult result) {
 		model.addAttribute("Solution", new Solution());
 		model.addAttribute("Proposition", new Proposition());
-		return "addBug";
+		return "addBug2";
 		
 	}
 	
@@ -92,7 +92,7 @@ public class ControllerSolutions {
 	public String saveeOne(@ModelAttribute("Solution")Solution solution, @ModelAttribute("Proposition")Proposition prop, Model model ,BindingResult result, HttpSession session) {
 		
 		if(result.hasErrors()) {
-			return "addBug";
+			return "addBug2";
 		}
 		
 		solserv.save(solution);
@@ -113,7 +113,6 @@ public class ControllerSolutions {
 	@RequestMapping(value="/back", method = RequestMethod.POST)
 	public String back() {
 		return "redirect:/Solution/init";
-
 	}
 	
 	@RequestMapping(value = "/disconnect", method = RequestMethod.POST)
