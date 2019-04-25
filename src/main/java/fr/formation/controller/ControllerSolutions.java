@@ -15,7 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import fr.formation.entities.Proposition;
+import fr.formation.entities.PropositionId;
 import fr.formation.entities.Solution;
+import fr.formation.entities.Utilisateur;
+import fr.formation.services.IPropositionService;
 import fr.formation.services.ISolutionService;
 
 @Controller
@@ -25,6 +29,9 @@ public class ControllerSolutions {
 	
 	@Autowired
 	ISolutionService solserv;
+	
+	@Autowired
+	IPropositionService	propserv;
 	
 	//Controller des solutions (ou Bugs)
 	//Init est la première methode par laquelle on apsse, genere, la liste des Solutions par appel du GetAll
@@ -64,29 +71,36 @@ public class ControllerSolutions {
 	
 	@RequestMapping(value = "/initaddsoluce", method = RequestMethod.POST)
 	public String initaddsoluce(Solution solution, Model model ,BindingResult result) {
-		
 		model.addAttribute("Solution", new Solution());
+		model.addAttribute("Proposition", new Proposition());
 		return "addBug";
 		
 	}
 	
-	
-	
-	
-	
 	//Cette requête est faite pour ajouter une solution à la base de donnee
 	@RequestMapping(value = "/applyadd", method = RequestMethod.POST)
-	public String saveeOne(@ModelAttribute("Solution")Solution solution, Model model ,BindingResult result) {
+	public String saveeOne(@ModelAttribute("Solution")Solution solution, @ModelAttribute("Proposition")Proposition prop, Model model ,BindingResult result, HttpSession session) {
 		
 		if(result.hasErrors()) {
 			return "addBug";
 		}
+		
 		solserv.save(solution);
-		model.addAttribute("focusedSol", solserv.findById((solution).getIdSolution()));
+		Utilisateur util = (Utilisateur)session.getAttribute("Utilisateur");
+		prop.setId(new PropositionId(util.getIdUtilisateur(), solution.getIdSolution()));
+		prop.setSolution(solution);
+		prop.setUtilisateur(util);
+		java.util.Date date = new java.util.Date();
+		java.sql.Date d = new java.sql.Date(date.getTime());
+		prop.setDateProp(d);
+		
+		propserv.save(prop);
+		model.addAttribute("Solution", solserv.findById((solution).getIdSolution()));
 		return "focusBug";
 	}
 	
 	//Afin de back d'une page direction l'accueil des Solutions soit a la liste du tableau
+	@RequestMapping(value="/back", method = RequestMethod.POST)
 	public String back() {
 		return "redirect:/Solution/init";
 
@@ -96,6 +110,17 @@ public class ControllerSolutions {
 	public String endSessionHandlingMethod(HttpSession session) {
 		session.invalidate();
 		return "byebye";
+	} 
+	
+//Affiche l'ensemble des bugs associés a un utilisateur
+	@RequestMapping(value = "/mybugs", method = RequestMethod.POST)
+	public String printmybugs(HttpSession session, Model model) {
+		Utilisateur util = (Utilisateur) session.getAttribute("Utilisateur");
+		List<Solution> listesol = solserv.getByUtilisateur(util);
+		
+		model.addAttribute("listesol", listesol);
+
+		return "myBugs";
 	} 
 
 }
