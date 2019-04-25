@@ -37,20 +37,29 @@ body {
 	<!-- Navbar -->
 
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		<img src="../resources/img/DT.png" width="2%">
-		<a class="navbar-brand ml-2" href="#">Debugathor</a>
+		<img src="../resources/img/DT.png" width="2%"> <a
+			class="navbar-brand ml-2" href="#">Debugathor</a>
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link"
-					href="http://localhost:8080/TestDebugathor/tabBug.jsp">Liste
-						des solutions </a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="http://localhost:8080/TestDebugathor/myBugs.jsp">Mes
+				<li class="nav-item"><form id="list" action="back"
+						method="post">
+						<input type="hidden" />
+					</form> <a class="nav-link" href="#"
+					onclick='document.getElementById("list").submit()'>Liste des
+						solutions</a></li>
+				<li class="nav-item"><form id="mySol" action="mybugs"
+						method="post">
+						<input type="hidden" />
+					</form> <a class="nav-link" href="#"
+					onclick='document.getElementById("mySol").submit()'>Mes
 						solutions</a></li>
 				<li class="nav-item">
-				<form action="initaddsoluce" method="post">
-						<button class="nav-link">Ajouter une solution</button>
-					</form></li>
+					<form id="addSol" action="initaddsoluce" method="post">
+						<input type="hidden" />
+					</form> <a class="nav-link" href="#"
+					onclick='document.getElementById("addSol").submit()'>Ajouter
+						une solution</a>
+				</li>
 			</ul>
 			<form class="form-inline mt-2 mt-md-0" action="disconnect"
 				method="post">
@@ -80,11 +89,17 @@ body {
 
 		<br>
 
-		<!-- Bouton d'annulation et de confirmation d'ajout-->
-		<form class="form-inline col-6">
-			<button class="btn btn-outline-secondary" type="submit" style="width: 120px;">Annuler</button>
+		<!-- Bouton d'annulation et de confirmation de proposition-->
+		<div class="form-group row col-md-6 ml-2">
+		<form class="form-inline" action="back" method="post">
+			<button class="btn btn-outline-secondary" type="submit"
+				style="width: 120px;">Annuler</button>
+		</form>
+
+		<form class="form-inline" action="applyadd" method="post">
 			<button class="btn btn-success" type="submit" style="width: 120px;">Confirmer</button>
 		</form>
+		</div>
 
 		<!-- Footer -->
 		<hr>
