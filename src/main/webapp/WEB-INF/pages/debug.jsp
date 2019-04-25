@@ -5,6 +5,14 @@
 <html>
 
 <head>
+<style type="text/css">
+table {
+  width: 100%;
+}
+body{
+	margin-top: 70px;
+}
+</style>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>

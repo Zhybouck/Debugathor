@@ -39,11 +39,6 @@ public class PropositionService implements IPropositionService{
 		propDao.delete(obj);
 		
 	}
-
-	@Override
-	public Proposition findById(Long empId) {
-		return propDao.findById(empId);
-	}
 	
 	/* (non-Javadoc)
 	 * @see fr.formation.services.ILogicielService#getAll()

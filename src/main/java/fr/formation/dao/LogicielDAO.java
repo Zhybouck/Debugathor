@@ -13,7 +13,6 @@ import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import fr.formation.entities.Logiciel;
-import fr.formation.entities.Solution;
 
 /**
  * Home object for domain model class Logiciel.

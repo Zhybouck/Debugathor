@@ -100,8 +100,6 @@ public abstract class GenericDAO<T extends Serializable> implements IGenericDao<
 		CriteriaQuery<T> criteria = session.getCriteriaBuilder().createQuery(clazz);
 		criteria.select(criteria.from(clazz));
 		return session.createQuery(criteria).getResultList();
-
-		
 	}
 
 	/*

@@ -43,17 +43,17 @@ public class ControllerDebug {
 		Logiciel log=service.findById(2l);
 		Utilisateur u= serviceutil.findById(2l);
 		
-//		List<Solution> listsol = servicesol.getAll();
+		List<Solution> listsol = servicesol.getAll();
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		Date debut;
 		debut = simpleDateFormat.parse("2014/11/11");
 		Date fin;
 		fin = simpleDateFormat.parse("2021/12/25");
-		List<Solution> listsol=servicesol.getByUtilisateur(u);
+//		List<Solution> listsol=servicesol.getByUtilisateur(u);
 		List<Utilisateur> listutil = serviceutil.getByDateInsc(debut, fin);
 		List<Proposition> listprop = serviceprop.findAllPropbyUser(u);
-		for(Solution s: listsol)
-			System.out.println(s.toString());
+//		for(Solution s: listsol)
+//			System.out.println(s.toString());
 		
 //		for(Utilisateur u: listutil)
 //			System.out.println(u.toString());
@@ -61,7 +61,7 @@ public class ControllerDebug {
 //		for(Proposition p: listprop)
 //			System.out.println(p.toString());
 		
-//		model.addAttribute("list",listsol);
+		model.addAttribute("list",listsol);
 		return "debug";
 	}
 }

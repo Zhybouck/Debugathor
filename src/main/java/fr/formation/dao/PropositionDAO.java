@@ -9,6 +9,7 @@ import javax.persistence.criteria.Root;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
@@ -30,6 +31,56 @@ public class PropositionDAO extends GenericDAO<Proposition> implements IProposit
 	public PropositionDAO() {
 		setClazz(Proposition.class);
 	}
+	@Override
+	public void save(Proposition obj) {
+		Session session = sessionFactory.getCurrentSession();
+		try {
+			session.persist(obj);
+		} catch (HibernateException e) {
+			log.error(e.getLocalizedMessage());
+			e.printStackTrace();
+		}
+	}
+
+	/*
+	 * Mets à jout l'objet obj dans la base de données
+	 */
+	@Override
+	public void update(Proposition obj) {
+		Session session = sessionFactory.getCurrentSession();
+		try {
+			session.update(obj);
+		} catch (HibernateException e) {
+			log.error(e.getLocalizedMessage());
+			e.printStackTrace();
+		}
+	}
+
+	/*
+	 * supprime l'objet obj de la base de données
+	 */
+	@Override
+	public void delete(Proposition obj) {
+		Session session = sessionFactory.getCurrentSession();
+		try {
+			session.remove(obj);
+		} catch (HibernateException e) {
+			log.error(e.getLocalizedMessage());
+			e.printStackTrace();
+		}
+	}
+
+	/*
+	 * recupère toute la liste d'objets
+	 */
+	@Override
+	public List<Proposition> getAll() {
+		Session session = sessionFactory.getCurrentSession();
+		CriteriaQuery<Proposition> criteria = session.getCriteriaBuilder().createQuery(Proposition.class);
+		criteria.select(criteria.from(Proposition.class));
+		return session.createQuery(criteria).getResultList();
+	}
+
 	
 	/*
 	 * récupère toutes les proposition d'un utilisateur entré en paramètre

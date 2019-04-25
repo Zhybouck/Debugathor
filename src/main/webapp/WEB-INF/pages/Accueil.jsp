@@ -27,10 +27,10 @@
 			<form:form action="user/login" method="POST"
 			modelAttribute="userform">
 				<div class="form-group">
-					<label for="exampleInputEmail1">Mail</label>
+					<form:label path="mail">Mail</form:label>
 					<form:input type="email" class="form-control" id="exampleInputEmail1"
 						aria-describedby="emailHelp" placeholder="Identifiant" path="mail"/>
-					<small><form:errors path="mail" cssClass="errormsg" /></small>
+					<form:errors path="mail" cssClass="errormsg" />
 				</div>
 				<div class="form-group">
 					<label for="exampleInputPassword1">Mot de passe</label>
