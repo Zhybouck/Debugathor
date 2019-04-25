@@ -85,14 +85,14 @@ public class ControllerUtil {
 			Model model) {
 		java.util.Date date = new java.util.Date();
 		java.sql.Date d = new java.sql.Date(date.getTime());
-		System.out.println(crea.getMail());
-//		Utilisateur exist = service.getbyMail(crea.getMail());
-//		if (null != exist) {
-//			System.out.println("hey?");
+		Utilisateur exist = service.getbyMail(crea.getMail());
+		if (null == exist) {
 			if (crea.equals(null)) {
+				log.info("l'utilisateur ne peut pas etre créé");
 				return "inscription";
 			} else {
 				if (result.hasErrors()) {
+					log.info("l'utilisateur ne peut pas être créé à cause d'erreurs dans le formulaire");
 					return "inscription";
 				} else {
 					crea.setDateInsc(d);
@@ -101,11 +101,10 @@ public class ControllerUtil {
 					return "redirect:/user/init";
 				}
 			}
-//		} else {
-//			System.out.println("j'ai foiré maggle");
-//
-//			return "inscription";
-//		}
+		} else {
+			log.info("le mail est déjà utilisé");
+			return "inscription";
+		}
 	}
 
 	@RequestMapping(value = "/disconnect", method = RequestMethod.POST)

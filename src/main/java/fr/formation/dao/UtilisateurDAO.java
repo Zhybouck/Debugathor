@@ -4,6 +4,7 @@ package fr.formation.dao;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.NoResultException;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -43,7 +44,12 @@ public class UtilisateurDAO extends GenericDAO<Utilisateur> implements IUtilisat
         Root<Utilisateur> root = criteriaQuery.from(Utilisateur.class);
         CriteriaQuery<Utilisateur> select = criteriaQuery.select(root);
         criteriaQuery.where(builder.equal(root.get("mail"), mail));
-        Utilisateur util  = session.createQuery(criteriaQuery).getSingleResult();
+        Utilisateur util=null;
+        try {
+        util  = session.createQuery(criteriaQuery).getSingleResult();
+        }catch(NoResultException e) {
+        	log.info("l'utilisateur n'a pas été trouvé");
+        }
 //        session.close();
 
         return util;
