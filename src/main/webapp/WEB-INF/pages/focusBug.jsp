@@ -49,19 +49,28 @@ body {
 
 	<!-- Navbar -->
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		<img src="../resources/img/DT.png" width="2%">
-		<a class="navbar-brand ml-2" href="#">Debugathor</a>
+		<img src="../resources/img/DT.png" width="2%"> <a
+			class="navbar-brand ml-2" href="#">Debugathor</a>
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link"
-					href="http://localhost:8080/TestDebugathor/tabBug.jsp">Liste
-						des solutions</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="http://localhost:8080/TestDebugathor/myBugs.jsp">Mes
+				<li class="nav-item"><form id="list" action="back"
+						method="post">
+						<input type="hidden" />
+					</form> <a class="nav-link" href="#"
+					onclick='document.getElementById("list").submit()'>Liste des
 						solutions</a></li>
-				<li class="nav-item"><form action="initaddsoluce" method="post">
-						<button class="nav-link">Ajouter une solution</button>
-					</form></li>
+				<li class="nav-item"><form id="mySol" action="mybugs"
+						method="post">
+						<input type="hidden" />
+					</form> <a class="nav-link" href="#"
+					onclick='document.getElementById("mySol").submit()'>Mes
+						solutions</a></li>
+				<li class="nav-item"><form id="addSol" action="initaddsoluce"
+						method="post">
+						<input type="hidden" />
+					</form> <a class="nav-link" href="#"
+					onclick='document.getElementById("addSol").submit()'>Ajouter
+						une solution</a></li>
 			</ul>
 
 			<form class="form-inline mt-2 mt-md-0" action="disconnect"
@@ -80,39 +89,52 @@ body {
 		<hr>
 
 		<div class="row ml-2">
-			<div class="col-1"><b>ID :</b> 1 </div>
+			<div class="col-1">
+				<b>ID :</b> 1
+			</div>
 
-			<div class="col-3"><b>Technologie :</b> Java</div>
+			<div class="col-3">
+				<b>Technologie :</b> Java
+			</div>
 
-			<div class="col-4"><b>Type :</b> java.io.FileNotFoundException</div>
+			<div class="col-4">
+				<b>Type :</b> java.io.FileNotFoundException
+			</div>
 
-			<div class="col-3"><b>Date :</b> 29/03/2018</div>
+			<div class="col-3">
+				<b>Date :</b> 29/03/2018
+			</div>
 
 			<div class="col-1"></div>
 		</div>
 
 		<div class="row ml-2">
-			<div class="col-1"><b>Titre :</b></div>
+			<div class="col-1">
+				<b>Titre :</b>
+			</div>
 			<div class="col-9">Impossible de trouver le fichier</div>
 			<div class="col-2"></div>
 		</div>
 
 		<div class="row ml-2">
-			<div class="col-1"><b>Description :</b> </div>
-				
-			<div class="col-8">Donec id elit non mi porta
-				gravida at eget metus. Fusce dapibus, tellus ac cursus commodo,
-				tortor mauris condimentum nibh, ut fermentum massa justo sit amet
-				risus. Etiam porta sem malesuada magna mollis euismod. Donec sed
-				odio dui.</div>
+			<div class="col-1">
+				<b>Description :</b>
+			</div>
+
+			<div class="col-8">Donec id elit non mi porta gravida at eget
+				metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+				condimentum nibh, ut fermentum massa justo sit amet risus. Etiam
+				porta sem malesuada magna mollis euismod. Donec sed odio dui.</div>
 			<div class="col-3"></div>
 		</div>
 
 		<div class="row ml-2">
-			<div class="col-1"><b>Démarche :</b> </div>
-			<div class="col-8">Donec sed odio dui. Fusce
-				dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-				ut fermentum massa justo sit amet risus.</div>
+			<div class="col-1">
+				<b>Démarche :</b>
+			</div>
+			<div class="col-8">Donec sed odio dui. Fusce dapibus, tellus ac
+				cursus commodo, tortor mauris condimentum nibh, ut fermentum massa
+				justo sit amet risus.</div>
 			<div class="col-3"></div>
 		</div>
 	</div>

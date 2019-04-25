@@ -53,22 +53,30 @@ body {
 
 	<!-- Navbar -->
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		<img src="../resources/img/DT.png" width="4%"> <a
-			class="navbar-brand" href="#">Debugathor</a>
+		<img src="../resources/img/DT.png" width="2%"> <a
+			class="navbar-brand ml-2" href="#">Debugathor</a>
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link"
-					href="http://localhost:8080/TestDebugathor/tabBug.jsp">Liste
-						des solutions <span class="sr-only">(current)</span>
-				</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="http://localhost:8080/TestDebugathor/myBugs.jsp">Mes
+				<li class="nav-item active"><form id="list" action="back"
+						method="post">
+						<input type="hidden" />
+					</form> <a class="nav-link" href="#"
+					onclick='document.getElementById("list").submit()'>Liste des
+						solutions</a></li>
+				<li class="nav-item"><form id="mySol" action="mybugs"
+						method="post">
+						<input type="hidden" />
+					</form> <a class="nav-link" href="#"
+					onclick='document.getElementById("mySol").submit()'>Mes
 						solutions</a></li>
 				<li class="nav-item">
-				
-					<form action="initaddsoluce" method="post">
-						<a class="nav-link" type="submit">Ajouter une solution</a>
-					</form>
+
+					<form id="addSol" action="initaddsoluce" method="post">
+						<input type="hidden" />
+					</form> <a class="nav-link" href="#"
+					onclick='document.getElementById("addSol").submit()'>Ajouter
+						une solution</a>
+
 				</li>
 			</ul>
 
