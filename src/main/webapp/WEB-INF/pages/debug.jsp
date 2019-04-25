@@ -3,6 +3,7 @@
 <%@page
 	import="fr.formation.dao.ILogicielDAO,fr.formation.dao.LogicielDAO,fr.formation.entities.Logiciel,java.util.ArrayList"%>
 <html>
+
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
