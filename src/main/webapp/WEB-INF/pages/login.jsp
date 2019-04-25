@@ -47,8 +47,8 @@ a {
 				<!-- Navbar -->
 				<!-- 	Rajouter les form -->
 				<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-					<img src="../resources/img/DT.png" width="8%"> <a
-						class="navbar-brand" href="#">Debugathor</a>
+					<img src="../resources/img/DT.png" width="4%"> <a
+						class="navbar-brand ml-2" href="#">Debugathor</a>
 				</nav>
 
 				<div class="text-center">

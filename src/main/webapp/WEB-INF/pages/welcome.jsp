@@ -53,8 +53,8 @@ body {
 
 		<!-- Navbar -->
 		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-			<img src="resources/img/DT.png" width="4%" alt="">
-			<a class="navbar-brand" href="#">Debugathor</a>
+			<img src="resources/img/DT.png" width="2%" alt="">
+			<a class="navbar-brand ml-2" href="#">Debugathor</a>
 			<ul class="nav navbar-nav ml-auto">
 				<li><form action="user/init" method="get">
 						<button class="btn btn-outline-light custom" type="submit">Se

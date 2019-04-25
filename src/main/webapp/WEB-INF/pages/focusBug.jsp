@@ -49,8 +49,8 @@ body {
 
 	<!-- Navbar -->
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		<img src="../resources/img/DT.png" width="4%">
-		<a class="navbar-brand" href="#">Debugathor</a>
+		<img src="../resources/img/DT.png" width="2%">
+		<a class="navbar-brand ml-2" href="#">Debugathor</a>
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"><a class="nav-link"
@@ -59,12 +59,13 @@ body {
 				<li class="nav-item"><a class="nav-link"
 					href="http://localhost:8080/TestDebugathor/myBugs.jsp">Mes
 						solutions</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="http://localhost:8080/TestDebugathor/addBug.jsp">Ajouter
-						une solution</a></li>
+				<li class="nav-item"><form action="initaddsoluce" method="post">
+						<button class="nav-link">Ajouter une solution</button>
+					</form></li>
 			</ul>
 
-			<form class="form-inline mt-2 mt-md-0">
+			<form class="form-inline mt-2 mt-md-0" action="disconnect"
+				method="post">
 				<button class="btn btn-danger my-2 my-sm-0" type="submit">Se
 					deconnecter</button>
 			</form>

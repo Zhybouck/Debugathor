@@ -5,6 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,6 +45,8 @@ body {
 }
 </style>
 
+
+
 </head>
 
 <body>
@@ -61,9 +64,12 @@ body {
 				<li class="nav-item"><a class="nav-link"
 					href="http://localhost:8080/TestDebugathor/myBugs.jsp">Mes
 						solutions</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="http://localhost:8080/TestDebugathor/addBug.jsp">Ajouter
-						une solution</a></li>
+				<li class="nav-item">
+				
+					<form action="initaddsoluce" method="post">
+						<a class="nav-link" type="submit">Ajouter une solution</a>
+					</form>
+				</li>
 			</ul>
 
 			<form class="form-inline mt-2 mt-md-0" action="disconnect"
@@ -131,12 +137,12 @@ body {
 						<td><c:out value="${solution.demarche}" /></td>
 
 						<td>
-						<form action="focus" method="POST">
-						<input  name="Id" type = "hidden" value="${solution.idSolution}">
-						<button type="submit"
-									class="btn btn-outline-secondary">Consulter</button>
-						</form></td>
-						
+							<form action="focus" method="POST">
+								<input name="Id" type="hidden" value="${solution.idSolution}">
+								<button type="submit" class="btn btn-outline-secondary">Consulter</button>
+							</form>
+						</td>
+
 
 					</tr>
 				</tbody>
