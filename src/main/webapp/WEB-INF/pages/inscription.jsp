@@ -128,10 +128,15 @@ a {
 							onkeypress="checkMatchingPasswords();"
 							required="required">
 					</div>
+					
+					<button id="button" name="button" class="btn btn-lg btn-primary btn-block ml-3 col-3"
+						type="submit" name="submit">S'inscrire</button>
 
 					<script>
+					
     $(document).ready(function(){
-        var $submitBtn = $("#form input[type='submit']");
+    	
+        var $submitBtn = $("#button input[type='submit']");
         var $passwordBox = $("#inputPassword");
         var $confirmBox = $("#inputConfPassword");
         var $errorMsg =  $('<span id="error_msg">Passwords do not match.</span>');
@@ -176,9 +181,6 @@ a {
 
     });
   </script>
-
-					<button class="btn btn-lg btn-primary btn-block ml-3 col-3"
-						type="submit" name="submit">S'inscrire</button>
 
 				</form:form>
 
