@@ -97,7 +97,7 @@ body {
 
 		<table
 			class="datatable table table-striped table-hover table-bordered">
-			<c:forEach items="${listesol}" var="solution">
+			
 				<!-- Entête du tableau -->
 				<thead>
 					<tr>
@@ -135,6 +135,7 @@ body {
 
 				<!-- Corps du tableau -->
 				<tbody>
+				<c:forEach items="${listesol}" var="solution">
 					<tr>
 						<td><c:out value="${solution.idSolution}" /></td>
 						<td><c:out value="${solution.technologie}" /></td>
@@ -153,9 +154,10 @@ body {
 
 
 					</tr>
+					</c:forEach>
+					
 				</tbody>
-			</c:forEach>
-
+			
 		</table>
 
 		<div class="col-4 mt-5">

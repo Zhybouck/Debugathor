@@ -8,7 +8,7 @@
 
 <html lang="en">
 <head>
-<title>Ajouter une solution !</title>
+<title>Mise à jour d'une solution !</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -72,9 +72,9 @@ body {
 	<!-- Formulaire d'ajout d'une solution -->
 
 	<div class="container-fluid col-md-6">
-		<h1 class="display-4" style="margin-top: 80px">Ajouter une
+		<h1 class="display-4" style="margin-top: 80px">Mettre à jour une
 			solution</h1>
-		<p>Veuillez remplir le formulaire ci-dessous pour ajouter une
+		<p>Veuillez remplir le formulaire ci-dessous pour mettre à jour une
 			solution.</p>
 		<hr>
 		<form>
