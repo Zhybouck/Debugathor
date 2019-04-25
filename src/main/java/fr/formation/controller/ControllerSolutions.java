@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import fr.formation.entities.Proposition;
 import fr.formation.entities.Solution;
+import fr.formation.services.IPropositionService;
 import fr.formation.services.ISolutionService;
 
 @Controller
@@ -26,11 +28,15 @@ public class ControllerSolutions {
 	@Autowired
 	ISolutionService solserv;
 	
+	@Autowired
+	IPropositionService propserv;
+	
 	//Controller des solutions (ou Bugs)
 	//Init est la première methode par laquelle on apsse, genere, la liste des Solutions par appel du GetAll
 	@RequestMapping(value = "/init", method = RequestMethod.GET)
 	public String init(Model model) {
 		List<Solution> liste = solserv.getAll();
+		
 		model.addAttribute("listesol", liste);
 		return "tabBug";
 	}
@@ -39,6 +45,7 @@ public class ControllerSolutions {
 	@RequestMapping(value = "/focus", method = RequestMethod.POST)
 	public String focusOnOne(@RequestParam("Id")Long Id, Model model) {
 		model.addAttribute("focusedSol", solserv.findById(Id));
+		model.addAttribute("Commentaire", new Proposition());
 		return "focusBug";
 	}
 	
@@ -64,20 +71,14 @@ public class ControllerSolutions {
 	
 	@RequestMapping(value = "/initaddsoluce", method = RequestMethod.POST)
 	public String initaddsoluce(Solution solution, Model model ,BindingResult result) {
-		
 		model.addAttribute("Solution", new Solution());
 		return "addBug";
 		
 	}
 	
-	
-	
-	
-	
 	//Cette requête est faite pour ajouter une solution à la base de donnee
 	@RequestMapping(value = "/applyadd", method = RequestMethod.POST)
-	public String saveeOne(@ModelAttribute("Solution")Solution solution, Model model ,BindingResult result) {
-		
+	public String saveOne(@ModelAttribute("Solution")Solution solution, Model model, BindingResult result) {
 		if(result.hasErrors()) {
 			return "addBug";
 		}
@@ -86,11 +87,17 @@ public class ControllerSolutions {
 		return "focusBug";
 	}
 	
+	
+	
 	//Afin de back d'une page direction l'accueil des Solutions soit a la liste du tableau
+	@RequestMapping(value = "/back", method = RequestMethod.POST)
 	public String back() {
 		return "redirect:/Solution/init";
-
 	}
+	
+	
+	
+	
 	
 	@RequestMapping(value = "/disconnect", method = RequestMethod.POST)
 	public String endSessionHandlingMethod(HttpSession session) {

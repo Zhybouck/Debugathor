@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 
 import fr.formation.cryptlogin.LoginUtils;
@@ -42,10 +43,10 @@ public class ControllerUtil {
 	}
 
 	@RequestMapping(value = "/id", method = RequestMethod.POST)
-	public String doLogin(@ModelAttribute("userform") Utilisateur utilisateur, BindingResult result, Model model,
+	public String doLogin(@ModelAttribute("userform")Utilisateur utilisateur, BindingResult result, Model model,
 			HttpSession session) {
 		log.info("-------------------------Login---------------------");
-
+		
 		
 		if (utilisateur.getMail().equals(null)) {
 			log.info("-------------------------L'utilisateur est null---------------------");
@@ -81,10 +82,11 @@ public class ControllerUtil {
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String add(@Valid @ModelAttribute("creationutilisateur") Utilisateur crea, BindingResult result,
+	public String add(@RequestParam("confmdp") String confmdp, @RequestParam("mdp1")String mdp1, @Valid @ModelAttribute("creationutilisateur") Utilisateur crea, BindingResult result,
 			Model model) {
-		System.out.println("Je passe par add");
-
+		if(LoginUtils.checkmdp(confmdp, mdp1) == false) {
+			return "inscription";
+		}
 		java.util.Date date = new java.util.Date();
 		java.sql.Date d = new java.sql.Date(date.getTime());
 		System.out.println(crea.getMail());
@@ -92,22 +94,18 @@ public class ControllerUtil {
 //		if (null != exist) {
 //			System.out.println("hey?");
 			if (crea.equals(null)) {
-				System.out.println("creation nulle");
 				return "inscription";
 			} else {
 				if (result.hasErrors()) {
-					System.out.println("result has error");
 					return "inscription";
 				} else {
-					System.out.println("J'ai tout passé utilisateur créé");
-
-					System.out.println("else");
 					crea.setDateInsc(d);
 					crea.setMdp(LoginUtils.hashPassword(crea.getMdp()));
 					service.save(crea);
 					return "redirect:/user/init";
 				}
 			}
+		
 //		} else {
 //			System.out.println("j'ai foiré maggle");
 //

@@ -105,21 +105,21 @@ a {
 					<div class="form-label-group col-7">
 						Adresse mail
 						<form:input type="mail" id="inputMail" class="form-control mt-1"
-							placeholder="Adresse mail" path="mail" required="required"/>
+							placeholder="Adresse mail" path="mail" required="required" name="adressemail"/>
 						<small><form:errors path="mail" cssClass="errormsg" /></small>
 					</div>
 
 					<div class="form-label-group col-5">
 						Mot de passe
 						<form:input type="password" id="inputPassword" class="form-control mt-1"
-							placeholder="Mot de passe" path="mdp" required="required"/>
+							placeholder="Mot de passe" path="mdp" required="required" name="mdp1"/>
 						<small><form:errors path="mdp" cssClass="errormsg" /></small>
 					</div>
 
 					<div class="form-label-group col-5">
 						Confirmation de votre mot de passe <input type="password"
 							id="inputPassword" class="form-control mt-1"
-							placeholder="Mot de passe" required="required">
+							placeholder="Mot de passe" required="required" name="confmdp">
 					</div>
 
 					<button class="btn btn-lg btn-primary btn-block ml-3 col-3"
