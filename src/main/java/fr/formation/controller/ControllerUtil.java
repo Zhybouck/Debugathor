@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -76,15 +77,12 @@ public class ControllerUtil {
 	@RequestMapping(value = "/addone", method = RequestMethod.POST)
 	public String addUser(Model model) {
 		model.addAttribute("creationutilisateur", new Utilisateur());
-		System.out.println("Je passe par addone");
 		return "inscription";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String add(@Valid @ModelAttribute("creationutilisateur") Utilisateur crea, BindingResult result,
+	public String add(@Validated @ModelAttribute("creationutilisateur") Utilisateur crea, BindingResult result,
 			Model model) {
-		System.out.println("Je passe par add");
-
 		java.util.Date date = new java.util.Date();
 		java.sql.Date d = new java.sql.Date(date.getTime());
 		System.out.println(crea.getMail());
@@ -92,16 +90,11 @@ public class ControllerUtil {
 //		if (null != exist) {
 //			System.out.println("hey?");
 			if (crea.equals(null)) {
-				System.out.println("creation nulle");
 				return "inscription";
 			} else {
 				if (result.hasErrors()) {
-					System.out.println("result has error");
 					return "inscription";
 				} else {
-					System.out.println("J'ai tout passé utilisateur créé");
-
-					System.out.println("else");
 					crea.setDateInsc(d);
 					crea.setMdp(LoginUtils.hashPassword(crea.getMdp()));
 					service.save(crea);

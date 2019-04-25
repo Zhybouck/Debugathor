@@ -17,6 +17,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 /**
@@ -50,6 +51,7 @@ public class Utilisateur implements java.io.Serializable {
 	private String rang;
 	
 	@NotEmpty
+	@NotBlank
 	@Email
 	private String mail;
 	
