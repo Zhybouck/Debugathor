@@ -43,6 +43,7 @@ body {
 .row {
 	margin-bottom: 10px;
 }
+
 .cadre {
 	border-left-style: groove;
 	padding: 25px 25px 25px 25px;
@@ -103,19 +104,19 @@ body {
 		<div class="cadre">
 			<div class="row ml-2">
 				<div class="col-1">
-					<b>ID :</b> (id à récupérer)
+					<b>ID :</b> ${focusedSol.idSolution}
 				</div>
 
 				<div class="col-3">
-					<b>Technologie :</b> (tech à récupérer)
+					<b>Technologie :</b> ${focusedSol.technologie}
 				</div>
 
 				<div class="col-4">
-					<b>Type :</b> (type à récupérer)
+					<b>Type :</b> ${focusedSol.type}
 				</div>
 
 				<div class="col-3">
-					<b>Date :</b> (date à récupérer)
+					<b>Date :</b> ${focusedSol.dateBug}
 				</div>
 
 				<div class="col-1"></div>
@@ -125,7 +126,7 @@ body {
 				<div class="col-1">
 					<b>Titre :</b>
 				</div>
-				<div class="col-9">(titre à récupérer)</div>
+				<div class="col-9">${focusedSol.titre}</div>
 				<div class="col-2"></div>
 			</div>
 
@@ -134,7 +135,7 @@ body {
 					<b>Description :</b>
 				</div>
 
-				<div class="col-8">(description à récupérer)</div>
+				<div class="col-8">${focusedSol.description}</div>
 				<div class="col-3"></div>
 			</div>
 
@@ -142,7 +143,7 @@ body {
 				<div class="col-1">
 					<b>Démarche :</b>
 				</div>
-				<div class="col-8">(démarche à récupérer)</div>
+				<div class="col-8">${focusedSol.demarche}</div>
 				<div class="col-3"></div>
 			</div>
 		</div>
@@ -156,14 +157,20 @@ body {
 	<table class="tabcomp table">
 
 		<!-- 		Boucle forEach pour les propositions associées à la solution affichée -->
-		<%-- 		<c:forEach items="" var=""> --%>
-
 		<tr>
-			<td><c:out value="" />(date prop à récup)</td>
-			<td><c:out value="" />(proosition à récupérer)</td>
+		<th> Nom utilisateur</th>
+		<th> Prénom utilisateur</th>
+		<th> Date proposition</th>
+		<th> Commentaire</th>
 		</tr>
-
-		<%-- 		</c:forEach> --%>
+		<c:forEach items="${focusedSol.propositions}" var="proposition">
+			<tr>
+				<td><c:out value="${proposition.utilisateur.nom}" /></td>
+				<td><c:out value="${proposition.utilisateur.prenom}" /></td>
+				<td><c:out value="${proposition.dateProp}" /></td>
+				<td><c:out value="${proposition.commentaire}" /></td>
+			</tr>
+		</c:forEach>
 
 	</table>
 
