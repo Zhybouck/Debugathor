@@ -59,11 +59,11 @@ body {
 			<img src="../resources/img/DT.png" width="2%"> <a
 				class="navbar-brand ml-2" href="#">Debugathor</a>
 			<ul class="nav navbar-nav ml-auto">
-				<li><form action="user/init" method="get">
+				<li><form action="/Debugathor/user/init" method="get">
 						<button class="btn btn-outline-light custom" type="submit">Se
 							connecter</button>
 					</form></li>
-				<li><form action="user/addone" method="post">
+				<li><form action="/Debugathor/user/addone" method="post">
 						<button class="btn btn-light custom" type="submit">S'inscrire</button>
 					</form></li>
 			</ul>

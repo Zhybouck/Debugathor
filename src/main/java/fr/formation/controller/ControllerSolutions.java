@@ -93,7 +93,7 @@ public class ControllerSolutions {
 	public String initaddsoluce(Solution solution, Model model, BindingResult result) {
 		model.addAttribute("Solution", new Solution());
 		model.addAttribute("Proposition", new Proposition());
-		return "addBug2";
+		return "addBug";
 
 	}
 
@@ -104,7 +104,7 @@ public class ControllerSolutions {
 			HttpSession session, @RequestParam("inputNomLogiciel") String nomlogiciel, @RequestParam("inputVersionLogiciel") String versionlogiciel) {
 		
 		if(result.hasErrors()) {
-			return "addBug2";
+			return "addBug";
 		}
 		
 		boolean logexists  = false;
