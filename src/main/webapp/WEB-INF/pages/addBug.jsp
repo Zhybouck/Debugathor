@@ -12,7 +12,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Lien pour Bootstrap -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
@@ -29,7 +28,7 @@ body {
 
 	<!-- Navbar -->
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		<img src="../resources/img/DT.png" width="2%"> <a
+		<img src="../resources/img/DT.png" width="2%" alt=""> <a
 			class="navbar-brand ml-2" href="#">Debugathor</a>
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="navbar-nav mr-auto">
@@ -64,61 +63,86 @@ body {
 	<!-- Formulaire d'ajout d'une solution -->
 
 	<div class="container-fluid col-md-6">
-		<h1 class="display-4" style="margin-top: 90px">Ajouter une
+	
+		<h1 class="display-4" style="margin-top: 100px">Ajouter une
 			solution</h1>
 		<p>Veuillez remplir le formulaire ci-dessous pour ajouter une
 			solution.</p>
 		<hr>
-		<form>
-			<div class="form-group col-md-6">
-				<label for="inputTechnologie">Technologie</label> <input
-					type="text" class="form-control" id="inputTechnologie"/>
-			</div>
-			<div class="form-group col-md-6">
-				<label for="inputVersion">Version</label> <input
-					type="text" class="form-control" id="inputVersion">
+		
+		<form:form class="form-signin ml-5 mt-5 mb-5" action="applyadd"
+			method="post" modelAttribute="Solution">
+
+			<!-- 			<div class="form-group col-md-6"> -->
+			<%-- 				<label for="inputVersion">Version</label> <form:input --%>
+			<%-- 					type="text" class="form-control" id="inputVersion" path="version"/> --%>
+			<!-- 			</div> -->
+			<div class="form-group col-md-10">
+				<label for="inputType">Type de bug</label>
+				<form:input type="text" class="form-control" id="inputType"
+					path="Type" />
 			</div>
 
 			<div class="form-group col-md-10">
-				<label for="inputType">Type de bug</label> <input
-					type="text" class="form-control" id="inputType">
+				<label for="inputType">Titre</label>
+				<form:input type="text" class="form-control" id="inputTitre"
+					path="Titre" />
 			</div>
+
 			<div class="form-group col-md-10">
 				<label for="inputDescription">Description du bug</label>
-				<textarea class="form-control" id="inputDescription"
-					rows="6"></textarea>
+				<form:textarea class="form-control" id="inputDescription" rows="6"
+					path="Description"></form:textarea>
 			</div>
 			<div class="form-group col-md-10">
 				<label for="inputDemarche">Démarche à suivre</label>
-				<textarea class="form-control" id="inputDemarche"
-					rows="6"></textarea>
+				<form:textarea class="form-control" id="inputDemarche" rows="6"
+					path="Demarche"></form:textarea>
 			</div>
-		</form>
 
-		<!-- Importer le fichier Log -->
-
-		<form>
 			<div class="form-group col-md-6">
-				<label for="exampleFormControlFile1">Importer votre fichier
-					logs</label> <input type="file" class="form-control-file"
-					id="exampleFormControlFile1">
+				<label for="inputTechnologie">Technologie</label>
+				<form:input type="text" class="form-control" id="inputTechnologie"
+					path="Technologie" />
 			</div>
-		</form>
+
+			<div class="form-group col-md-6">
+				<label for="inputNomLogiciel">Nom du logiciel</label> <input
+					type="text" class="form-control" name="inputNomLogiciel" />
+			</div>
+
+			<div class="form-group col-md-6">
+				<label for="inputVersionLogiciel">Version du logiciel</label> <input
+					type="text" class="form-control" name="inputVersionLogiciel" />
+			</div>
+
+			<!-- Importer le fichier Log -->
+
+			<form>
+				<div class="form-group col-md-6">
+					<label for="exampleFormControlFile1">Importer votre fichier
+						logs</label> <input type="file" class="form-control-file"
+						id="exampleFormControlFile1">
+				</div>
+			</form>
+
+			<!-- Bouton d'annulation et de confirmation d'ajout-->
+			<div class="container-fluid form-group row col-md-6 ml-5 mb-5">
+			
+				<form class="form-inline" action="back" method="post">
+					<button class="btn btn-outline-secondary" type="submit"
+						style="width: 120px;">Annuler</button>
+				</form>
+				
+				<form class="form-inline" action="applyadd" method="post">
+					<button class="btn btn-success" type="submit" style="width: 120px;">Confirmer</button>
+				</form>
+				
+			</div>
+			
+		</form:form>
 
 		<br>
-
-		<!-- Bouton d'annulation et de confirmation d'ajout-->
-		<div class="form-group row col-md-6 ml-2">
-			<form class="form-inline" action="back" method="post">
-				<button class="btn btn-outline-secondary" type="submit"
-					style="width: 120px;">Annuler</button>
-			</form>
-
-			<form class="form-inline" action="applyadd" method="post">
-				<button class="btn btn-success" type="submit" style="width: 120px;">Confirmer</button>
-			</form>
-		</div>
-
 
 		<!-- Footer -->
 		<hr>
