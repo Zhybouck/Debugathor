@@ -80,14 +80,14 @@ a {
 					<div class="form-label-group col-7">
 						Adresse mail
 						<form:input type="email" id="inputEmail" class="form-control mt-2"
-							placeholder="Adresse mail" path="mail" />
+							placeholder="Adresse mail" path="mail"  required="required"/>
 						<small><form:errors path="mail" cssClass="errormsg" /></small>
 					</div>
 
 					<div class="form-label-group col-5">
 						Mot de passe
 						<form:input type="password" id="inputPassword"
-							class="form-control mt-2" placeholder="Mot de passe" path="mdp" />
+							class="form-control mt-2" placeholder="Mot de passe" path="mdp" required="required"/>
 						<small><form:errors path="mdp" cssClass="errormsg" /></small>
 					</div>
 
