@@ -2,7 +2,6 @@ package fr.formation.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -32,7 +31,7 @@ public class ControllerUtil {
 
 	@RequestMapping(value = "/init", method = RequestMethod.GET)
 	public String initView(Model model, HttpSession session, HttpServletRequest request) {
-		log.info("-------------------------Initialisation des utilisateurs controlleurs---------------------");
+		log.debug("-------------------------Initialisation des utilisateurs controlleurs---------------------");
 		if (null != request.getSession().getAttribute("Utilisateur")) {
 			return "redirect:/Solution/init";
 		}
@@ -61,7 +60,6 @@ public class ControllerUtil {
 			if ((utilisateur.getMail().equals(checkeur.getMail()))) {
 				log.info("-------------------------Cryptage mdp---------------------");
 
-				String hashed_mdp = LoginUtils.hashPassword(utilisateur.getMdp());
 				if (LoginUtils.checkmdp(utilisateur.getMdp(), checkeur.getMdp())) {
 					session.setAttribute("Utilisateur", checkeur);
 					return "redirect:/Solution/init";
@@ -88,7 +86,7 @@ public class ControllerUtil {
 		Utilisateur exist = service.getbyMail(crea.getMail());
 		if (null == exist) {
 			if (crea.equals(null)) {
-				log.info("l'utilisateur ne peut pas etre créé");
+				log.info("l'utilisateur ne peut pas etre créé car il existe déjà");
 				return "inscription";
 			} else {
 				if (result.hasErrors()) {
@@ -98,6 +96,7 @@ public class ControllerUtil {
 					crea.setDateInsc(d);
 					crea.setMdp(LoginUtils.hashPassword(crea.getMdp()));
 					service.save(crea);
+				
 					return "redirect:/user/init";
 				}
 			}
