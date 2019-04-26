@@ -4,8 +4,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <title>Zoom solution</title>
@@ -36,10 +36,21 @@ body {
 
 .tabcomp {
 	width: 80% !important;
+	margin-right: 150px;
+	margin-left: 90px;
 }
 
 .row {
 	margin-bottom: 10px;
+}
+.cadre {
+	border-left-style: groove;
+	padding: 25px 25px 25px 25px;
+	border-color: #343a40;
+	background-color: #e2e3e3;
+	border-width: 5px;
+	margin-right: 150px;
+	margin-left: 90px;
 }
 </style>
 
@@ -81,102 +92,88 @@ body {
 		</div>
 	</nav>
 
-	<!-- Tableau qui regroupe l'ensemble des bugs postés-->
-
 	<div class="container-fluid mb-5" style="padding-top: 90px;">
 
+		<!-- Partie haute de la vue - Zoom sur la solution sélectionnée-->
 		<h1 class="display-4">Zoom sur une solution</h1>
 		<hr>
 
-		<div class="row ml-2">
-			<div class="col-1">
-				<b>ID :</b> 1
+		<!-- Trouver un moyen de récupérer les éléments (c:forEach / form) -->
+
+		<div class="cadre">
+			<div class="row ml-2">
+				<div class="col-1">
+					<b>ID :</b> (id à récupérer)
+				</div>
+
+				<div class="col-3">
+					<b>Technologie :</b> (tech à récupérer)
+				</div>
+
+				<div class="col-4">
+					<b>Type :</b> (type à récupérer)
+				</div>
+
+				<div class="col-3">
+					<b>Date :</b> (date à récupérer)
+				</div>
+
+				<div class="col-1"></div>
 			</div>
 
-			<div class="col-3">
-				<b>Technologie :</b> Java
+			<div class="row ml-2">
+				<div class="col-1">
+					<b>Titre :</b>
+				</div>
+				<div class="col-9">(titre à récupérer)</div>
+				<div class="col-2"></div>
 			</div>
 
-			<div class="col-4">
-				<b>Type :</b> java.io.FileNotFoundException
+			<div class="row ml-2">
+				<div class="col-1">
+					<b>Description :</b>
+				</div>
+
+				<div class="col-8">(description à récupérer)</div>
+				<div class="col-3"></div>
 			</div>
 
-			<div class="col-3">
-				<b>Date :</b> 29/03/2018
+			<div class="row ml-2">
+				<div class="col-1">
+					<b>Démarche :</b>
+				</div>
+				<div class="col-8">(démarche à récupérer)</div>
+				<div class="col-3"></div>
 			</div>
-
-			<div class="col-1"></div>
-		</div>
-
-		<div class="row ml-2">
-			<div class="col-1">
-				<b>Titre :</b>
-			</div>
-			<div class="col-9">Impossible de trouver le fichier</div>
-			<div class="col-2"></div>
-		</div>
-
-		<div class="row ml-2">
-			<div class="col-1">
-				<b>Description :</b>
-			</div>
-
-			<div class="col-8">Donec id elit non mi porta gravida at eget
-				metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-				condimentum nibh, ut fermentum massa justo sit amet risus. Etiam
-				porta sem malesuada magna mollis euismod. Donec sed odio dui.</div>
-			<div class="col-3"></div>
-		</div>
-
-		<div class="row ml-2">
-			<div class="col-1">
-				<b>Démarche :</b>
-			</div>
-			<div class="col-8">Donec sed odio dui. Fusce dapibus, tellus ac
-				cursus commodo, tortor mauris condimentum nibh, ut fermentum massa
-				justo sit amet risus.</div>
-			<div class="col-3"></div>
 		</div>
 	</div>
 
+
+	<!-- Partie basse de la vue - Liste des compléments de la solution -->
 	<h1 class="display-4 mt-5">Compléments</h1>
 	<hr>
 
 	<table class="tabcomp table">
-		<tr>
-			<td>28/04/2019</td>
-			<td>Illud tamen clausos vehementer angebat quod captis navigiis,
-				quae frumenta vehebant per flumen, Isauri quidem alimentorum copiis
-				adfluebant, ipsi vero solitarum rerum cibos iam consumendo inediae
-				propinquantis aerumnas exitialis horrebant.</td>
 
-		</tr>
+		<!-- 		Boucle forEach pour les propositions associées à la solution affichée -->
+		<%-- 		<c:forEach items="" var=""> --%>
 
 		<tr>
-			<td>25/02/2019</td>
-			<td>Procedente igitur mox tempore cum adventicium nihil
-				inveniretur, relicta ora maritima in Lycaoniam adnexam Isauriae se
-				contulerunt ibique densis intersaepientes itinera praetenturis
-				provincialium et viatorum opibus pascebantur.</td>
-
+			<td><c:out value="" />(date prop à récup)</td>
+			<td><c:out value="" />(proosition à récupérer)</td>
 		</tr>
 
-		<tr>
-			<td>12/12/2018</td>
-			<td>Nemo quaeso miretur, si post exsudatos labores itinerum
-				longos congestosque adfatim commeatus fiducia vestri ductante
-				barbaricos pagos adventans velut mutato repente consilio ad
-				placidiora deverti.</td>
-
-		</tr>
+		<%-- 		</c:forEach> --%>
 
 	</table>
 
-	</div>
-
 	<div class="col-4 mt-5">
-		<button type="button" class="btn btn-success">Compléter cette
-			solution</button>
+
+		<!-- 		Formulaire pour ajouter une proposition -->
+		<form>
+			<button type="button" class="btn btn-success">Compléter
+				cette solution</button>
+		</form>
 	</div>
 
 

@@ -12,17 +12,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!-- Lien pour Bootstrap -->
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
-
-<!-- Liens nécessaires pour le datepicker  -->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js"
-	type="text/javascript"></script>
-<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css"
-	rel="stylesheet" type="text/css" />
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 <!-- Style CSS -->
 <style type="text/css">
@@ -37,7 +29,7 @@ body {
 
 	<!-- Navbar -->
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		<img src="../resources/img/DT.png" width="2%" alt=""> <a
+		<img src="../resources/img/DT.png" width="2%"> <a
 			class="navbar-brand ml-2" href="#">Debugathor</a>
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="navbar-nav mr-auto">
@@ -72,7 +64,7 @@ body {
 	<!-- Formulaire d'ajout d'une solution -->
 
 	<div class="container-fluid col-md-6">
-		<h1 class="display-4" style="margin-top: 80px">Ajouter une
+		<h1 class="display-4" style="margin-top: 90px">Ajouter une
 			solution</h1>
 		<p>Veuillez remplir le formulaire ci-dessous pour ajouter une
 			solution.</p>

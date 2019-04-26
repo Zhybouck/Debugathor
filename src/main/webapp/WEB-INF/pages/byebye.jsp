@@ -7,13 +7,15 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
 <title>A bientôt !</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Lien pour Bootstrap -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
 
 <!-- Style CSS -->
 <style type="text/css">
@@ -38,7 +40,7 @@ body {
 	color: #343a40;
 }
 
-/* Pour éviter d'avoir une ligne grise sous la navbar */
+/* Permet de ne pas voir la scission entre Navbar et Jumbotron */
 .topwelcome {
 	background-color: #343a40;
 	color: #eff2f3;
@@ -49,12 +51,13 @@ body {
 
 <body>
 
+	<!-- Partie haute de la vue - Navbar et Jumbotron-->
 	<div class="topwelcome">
 
 		<!-- Navbar -->
 		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-			<img src="../resources/img/DT.png" width="2%">
-			<a class="navbar-brand ml-2" href="#">Debugathor</a>
+			<img src="../resources/img/DT.png" width="2%"> <a
+				class="navbar-brand ml-2" href="#">Debugathor</a>
 			<ul class="nav navbar-nav ml-auto">
 				<li><form action="user/init" method="get">
 						<button class="btn btn-outline-light custom" type="submit">Se
@@ -68,19 +71,19 @@ body {
 
 		<!-- Jumbotron -->
 		<div class="jumbotron text-center">
-			<img class="img-fluid" src="../resources/img/logoDT.png"
-				width="40%">
+			<img class="img-fluid" src="../resources/img/logoDT.png" width="30%">
 		</div>
 	</div>
+	
 
-	<!-- Contenu -->
+	<!-- Partie basse de la vue - Lien vers l'accueil -->
 	<div class="container-fluid col-md-6 down">
 		
 			<div class="col-md-6">
 				
-				<form action="user/init" method="get">
+				<form action="../">
 					<p>
-						<button class="btn btn-secondary" type="submit">Retour à la page d'accueil
+						<button class="btn btn-secondary text-center" type="submit">Retour à la page d'accueil
 							&raquo;</button>
 					</p>
 				</form>

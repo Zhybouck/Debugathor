@@ -4,17 +4,18 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
 <title>Se connecter</title>
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Lien pour Bootstrap -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
 
 <!-- Style CSS -->
 <style type="text/css">
@@ -45,7 +46,6 @@ a {
 			<div class="col-4 div-left">
 
 				<!-- Navbar -->
-				<!-- 	Rajouter les form -->
 				<nav class="navbar navbar-expand-md navbar-dark bg-dark">
 					<img src="../resources/img/DT.png" width="4%"> <a
 						class="navbar-brand ml-2" href="#">Debugathor</a>
@@ -90,13 +90,6 @@ a {
 							class="form-control mt-2" placeholder="Mot de passe" path="mdp" />
 						<small><form:errors path="mdp" cssClass="errormsg" /></small>
 					</div>
-
-					<!-- A voir si on l'utilise -->
-					<!-- 					<div class="checkbox mb-3 col-5"> -->
-					<!-- 						<label> <input type="checkbox" value="remember-me"> -->
-					<!-- 							Se souvenir de moi -->
-					<!-- 						</label> -->
-					<!-- 					</div> -->
 
 					<button class="btn btn-lg btn-primary btn-block ml-3 mt-4 col-3"
 						type="submit">Se connecter</button>

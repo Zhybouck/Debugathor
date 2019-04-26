@@ -7,10 +7,13 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
 <title>Bienvenu sur Debugathor!</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Lien pour Bootstrap -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
@@ -21,24 +24,20 @@
 	background-color: #343a40;
 	color: #eff2f3;
 }
-
 /* Permet d'aligner les boutons à droite */
 .ml-auto {
 	left: auto !important;
 	right: 0px;
 }
-
 /* Fixe la taille des boutons */
 .custom {
 	width: 120px !important;
 }
-
 body {
 	background-color: #eff2f3;
 	color: #343a40;
 }
-
-/* Pour éviter d'avoir une ligne grise sous la navbar */
+/* Permet de ne pas voir la scission entre Navbar et Jumbotron */
 .topwelcome {
 	background-color: #343a40;
 	color: #eff2f3;
@@ -49,13 +48,13 @@ body {
 
 <body>
 
+	<!-- Partie haute de la vue - Navbar et Jumbotron-->
 	<div class="topwelcome">
-
 
 		<!-- Navbar -->
 		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-			<img src="resources/img/DT.png" width="2%" alt="">
-			<a class="navbar-brand ml-2" href="#">Debugathor</a>
+			<img src="resources/img/DT.png" width="2%"> <a
+				class="navbar-brand ml-2" href="#">Debugathor</a>
 			<ul class="nav navbar-nav ml-auto">
 				<li><form action="user/init" method="get">
 						<button class="btn btn-outline-light custom" type="submit">Se
@@ -69,20 +68,21 @@ body {
 
 		<!-- Jumbotron -->
 		<div class="jumbotron text-center">
-			<img class="img-fluid" src="resources/img/logoDT.png"
-				width="40%" alt="Responsive image">
+			<img class="img-fluid" src="resources/img/logoDT.png" width="30%">
 		</div>
 	</div>
+	
 
-	<!-- Contenu -->
+	<!-- Partie basse de la vue - Liens vers s'inscrire et se connecter -->
 	<div class="container-fluid col-md-6 down">
 		<div class="row">
+		
 			<div class="col-md-6">
 				<h2>Déjà inscrit ?</h2>
-				<p>Donec id elit non mi porta gravida at eget metus. Fusce
-					dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-					ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-					magna mollis euismod. Donec sed odio dui.</p>
+				<p>Debugathor est le fruit de la collaboration de trois petits
+					hexapodes qui luttent activement contre la malveillance organisée
+					des problèmes de programmation. Connectez-vous pour agir face à la
+					menace grandissante des Bugs.</p>
 
 				<form action="user/init" method="get">
 					<p>
@@ -90,13 +90,15 @@ body {
 							connecter &raquo;</button>
 					</p>
 				</form>
+				
 			</div>
+			
 			<div class="col-md-6">
 				<h2>Nous rejoindre !</h2>
-				<p>Donec id elit non mi porta gravida at eget metus. Fusce
-					dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-					ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-					magna mollis euismod. Donec sed odio dui.</p>
+				<p>Vous n’avez pas encore de compte ? Pas de problèmes la
+					communauté de Debugathor est ouverte et vous pouvez la rejoindre
+					afin de partager vos techniques et stratégies d’éradication et
+					faire face au terrible Hector le carabidae.</p>
 
 				<form action="user/addone" method="post">
 					<p>
@@ -106,17 +108,16 @@ body {
 				</form>
 
 			</div>
+			
 		</div>
 
 		<hr>
 
-
-
 		<!-- Footer -->
-
 		<footer class="container">
 			<p>&copy; Debugathor 2019</p>
 		</footer>
+		
 	</div>
 
 	<!-- Les balises script sont à mettre à la fin du body pour éviter de surcharger le chargement de la page -->

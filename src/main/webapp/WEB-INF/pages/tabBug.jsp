@@ -4,10 +4,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
-
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
 <title>Liste des solutions</title>
 <meta charset="UTF-8">
@@ -27,7 +27,6 @@
 <link rel="stylesheet"
 	href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 
-
 <!-- Style CSS -->
 <style type="text/css">
 body {
@@ -44,8 +43,6 @@ body {
 	width: 100% !important;
 }
 </style>
-
-
 
 </head>
 

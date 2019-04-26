@@ -5,24 +5,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
 <title>Faire une proposition</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Lien pour Bootstrap -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 <!-- Lien pour les tableaux -->
 <link rel="stylesheet"
 	href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-
-<!-- Liens nécessaires pour le datepicker	 -->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js"
-	type="text/javascript"></script>
-<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css"
-	rel="stylesheet" type="text/css" />
 
 <!-- Style CSS -->
 <style type="text/css">
