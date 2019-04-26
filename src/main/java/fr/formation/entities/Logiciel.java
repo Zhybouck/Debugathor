@@ -1,6 +1,8 @@
 package fr.formation.entities;
 // Generated 15 avr. 2019 13:33:11 by Hibernate Tools 5.1.10.Final
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -8,6 +10,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -42,7 +45,7 @@ public class Logiciel implements Serializable {
 	}
 
 	@Id
-
+	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "idLogiciel", unique = true, nullable = false)
 	public Long getIdLogiciel() {
 		return this.idLogiciel;

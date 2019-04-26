@@ -63,7 +63,6 @@ public class Solution implements java.io.Serializable {
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
-
 	@Column(name = "idSolution", unique = true, nullable = false)
 	public Long getIdSolution() {
 		return this.idSolution;
