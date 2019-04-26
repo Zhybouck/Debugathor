@@ -118,8 +118,9 @@ a {
 						Mot de passe
 						<form:input type="password" name="inputPassword" id="inputPassword"
 							class="mdp form-control mt-1" placeholder="Mot de passe"
-							path="mdp" required="required" />
-						<small><form:errors path="mdp" cssClass="errormsg" /></small>
+							path="mdp" required="required" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Votre mot de passe doit faire au moins 8 caractères, contenir une majuscule et une minuscule"/>
+							
+						<small><form:errors path="mdp" cssClass="errormsg"/></small>
 					</div>
 
 					<div class="form-label-group col-5">
@@ -127,11 +128,14 @@ a {
 							name="inputConfPassword" id="inputConfPassword"
 							class="confmdp form-control mt-1"
 							placeholder="Confirmer votre mot de passe"
-							required="required">
+							required="required"/>
+							<div class = "text-danger">
+							<small><c:out value="${confMdp}" /></small>
+					</div>
 					</div>
 					
-					<button id="button" name="button" class="btn btn-lg btn-primary btn-block ml-3 col-3 mt-2"
-						type="submit" name="submit">S'inscrire</button>
+					<button class="btn btn-lg btn-primary btn-block ml-3 col-3 mt-5"
+						type="submit" >S'inscrire</button>
 
 
 				</form:form>
@@ -156,6 +160,7 @@ a {
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		
 </body>
 
 

@@ -14,6 +14,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 
 import fr.formation.cryptlogin.LoginUtils;
@@ -37,7 +38,7 @@ public class ControllerUtil {
 		}
 		session.setAttribute("Utilisateur", null);
 		model.addAttribute("userform", new Utilisateur());
-		
+
 		return "login";
 	}
 
@@ -46,7 +47,6 @@ public class ControllerUtil {
 			HttpSession session) {
 		log.info("-------------------------Login---------------------");
 
-		
 		if (utilisateur.getMail().equals(null)) {
 			log.info("-------------------------L'utilisateur est null---------------------");
 
@@ -80,29 +80,35 @@ public class ControllerUtil {
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String add(@Validated @ModelAttribute("creationutilisateur") Utilisateur crea, BindingResult result,
-			Model model) {
-		java.util.Date date = new java.util.Date();
-		java.sql.Date d = new java.sql.Date(date.getTime());
-		Utilisateur exist = service.getbyMail(crea.getMail());
-		if (null == exist) {
-			if (crea.equals(null)) {
-				log.info("l'utilisateur ne peut pas etre créé car il existe déjà");
-				return "inscription";
-			} else {
-				if (result.hasErrors()) {
-					log.info("l'utilisateur ne peut pas être créé à cause d'erreurs dans le formulaire");
+			Model model, @RequestParam("inputConfPassword") String inputConfPassword) {
+
+		if(!crea.getMdp().equals(inputConfPassword)) {
+			model.addAttribute("confMdp", "Les mots de passes ne correspondent pas");
+			return "inscription";
+		} else {
+			java.util.Date date = new java.util.Date();
+			java.sql.Date d = new java.sql.Date(date.getTime());
+			Utilisateur exist = service.getbyMail(crea.getMail());
+			if (null == exist) {
+				if (crea.equals(null)) {
+					log.info("l'utilisateur ne peut pas etre créé car il existe déjà");
 					return "inscription";
 				} else {
-					crea.setDateInsc(d);
-					crea.setMdp(LoginUtils.hashPassword(crea.getMdp()));
-					service.save(crea);
-				
-					return "redirect:/user/init";
+					if (result.hasErrors()) {
+						log.info("l'utilisateur ne peut pas être créé à cause d'erreurs dans le formulaire");
+						return "inscription";
+					} else {
+						crea.setDateInsc(d);
+						crea.setMdp(LoginUtils.hashPassword(crea.getMdp()));
+						service.save(crea);
+
+						return "redirect:/user/init";
+					}
 				}
+			} else {
+				log.info("le mail est déjà utilisé");
+				return "inscription";
 			}
-		} else {
-			log.info("le mail est déjà utilisé");
-			return "inscription";
 		}
 	}
 
@@ -110,6 +116,6 @@ public class ControllerUtil {
 	public String endSessionHandlingMethod(SessionStatus status, HttpSession session) {
 		session.invalidate();
 		return "byebye";
-	} 
+	}
 
 }
