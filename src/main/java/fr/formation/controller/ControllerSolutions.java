@@ -101,14 +101,14 @@ public class ControllerSolutions {
 	@RequestMapping(value = "/applyadd", method = RequestMethod.POST)
 	public String saveOne(@ModelAttribute("Solution")Solution solution,
 			@ModelAttribute("Proposition")Proposition prop, Model model ,BindingResult result,
-			HttpSession session, @RequestParam("inputNomLogiciel") String nomlogiciel, @RequestParam("inputVersionLogiciel") String versionlogiciel) {
+			HttpSession session, @RequestParam("inputNomLogiciel") String inputNomLogiciel, @RequestParam("inputVersionLogiciel") String versionlogiciel) {
 		
 		if(result.hasErrors()) {
 			return "addBug";
 		}
 		
 		boolean logexists  = false;
-		List<Logiciel> logiciels = logserv.findByName(nomlogiciel);
+		List<Logiciel> logiciels = logserv.findByName(inputNomLogiciel);
 		for(Logiciel l : logiciels) {
 			if(l.getVersion().equals(versionlogiciel)) {
 				solution.setLogiciel(l);
@@ -117,7 +117,7 @@ public class ControllerSolutions {
 		}
 		Logiciel log = new Logiciel();
 		if(logexists==false) {
-			log.setNomLogiciel(nomlogiciel);
+			log.setNomLogiciel(inputNomLogiciel);
 			log.setVersion(versionlogiciel);
 			logserv.save(log);
 //			List<Logiciel> logs = logserv.getAll();

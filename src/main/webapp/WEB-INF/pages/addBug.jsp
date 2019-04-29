@@ -63,13 +63,13 @@ body {
 	<!-- Formulaire d'ajout d'une solution -->
 
 	<div class="container-fluid col-md-6">
-	
+
 		<h1 class="display-4" style="margin-top: 100px">Ajouter une
 			solution</h1>
 		<p>Veuillez remplir le formulaire ci-dessous pour ajouter une
 			solution.</p>
 		<hr>
-		
+
 		<form:form class="form-signin ml-5 mt-5 mb-5" action="applyadd"
 			method="post" modelAttribute="Solution">
 
@@ -118,30 +118,27 @@ body {
 
 			<!-- Importer le fichier Log -->
 
-			<form>
-				<div class="form-group col-md-6">
-					<label for="exampleFormControlFile1">Importer votre fichier
-						logs</label> <input type="file" class="form-control-file"
-						id="exampleFormControlFile1">
-				</div>
-			</form>
+<%-- 			<form> --%>
+<!-- 				<div class="form-group col-md-6"> -->
+<!-- 					<label for="exampleFormControlFile1">Importer votre fichier -->
+<!-- 						logs</label> <input type="file" class="form-control-file" -->
+<!-- 						id="exampleFormControlFile1"> -->
+<!-- 				</div> -->
+<%-- 			</form> --%>
 
 			<!-- Bouton d'annulation et de confirmation d'ajout-->
 			<div class="container-fluid form-group row col-md-6 ml-5 mb-5">
-			
-				<form class="form-inline" action="back" method="post">
-					<button class="btn btn-outline-secondary" type="submit"
-						style="width: 120px;">Annuler</button>
-				</form>
-				
-				<form class="form-inline" action="applyadd" method="post">
-					<button class="btn btn-success" type="submit" style="width: 120px;">Confirmer</button>
-				</form>
-				
+
+			<button class="btn btn-success" type="submit" style="width: 120px;">Confirmer</button>
+
 			</div>
-			
+
 		</form:form>
 
+		<form class="form-inline" action="back" method="post">
+			<button class="btn btn-outline-secondary" type="submit"
+				style="width: 120px;">Annuler</button>
+		</form>
 		<br>
 
 		<!-- Footer -->
