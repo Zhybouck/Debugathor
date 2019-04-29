@@ -35,7 +35,8 @@ public class PropositionDAO extends GenericDAO<Proposition> implements IProposit
 	public void save(Proposition obj) {
 		Session session = sessionFactory.getCurrentSession();
 		try {
-			session.persist(obj);
+			session.clear();
+			session.save(obj);
 		} catch (HibernateException e) {
 			log.error(e.getLocalizedMessage());
 			e.printStackTrace();

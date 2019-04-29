@@ -1,17 +1,14 @@
 package fr.formation.entities;
 // Generated 15 avr. 2019 13:33:11 by Hibernate Tools 5.1.10.Final
 
-import static javax.persistence.GenerationType.IDENTITY;
-
 import java.util.Date;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -30,7 +27,6 @@ public class Proposition implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Long idproposition;
 	private PropositionId id;
 	private Solution solution;
 	private Utilisateur utilisateur;
@@ -41,16 +37,14 @@ public class Proposition implements java.io.Serializable {
 	public Proposition() {
 	}
 
-	public Proposition(Long idproposition, PropositionId id, Solution solution, Utilisateur utilisateur) {
-		this.idproposition=idproposition;
+	public Proposition(PropositionId id, Solution solution, Utilisateur utilisateur) {
 		this.id = id;
 		this.solution = solution;
 		this.utilisateur = utilisateur;
 	}
 
-	public Proposition(Long idproposition,PropositionId id, Solution solution, Utilisateur utilisateur, Date dateProp, String commentaire,
+	public Proposition(PropositionId id, Solution solution, Utilisateur utilisateur, Date dateProp, String commentaire,
 			Integer note) {
-		this.idproposition=idproposition;
 		this.id = id;
 		this.solution = solution;
 		this.utilisateur = utilisateur;
@@ -59,19 +53,9 @@ public class Proposition implements java.io.Serializable {
 		this.note = note;
 	}
 
-	
-	@Id
-	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "idProposition", unique = true, nullable = false)
-	public Long getIdproposition() {
-		return idproposition;
-	}
 
-	public void setIdproposition(Long idproposition) {
-		this.idproposition = idproposition;
-	}
 
-	//@EmbeddedId
+	@EmbeddedId
 	@AttributeOverrides({
 			@AttributeOverride(name = "utilisateurIdUtilisateur", column = @Column(name = "utilisateur_IdUtilisateur", nullable = false)),
 			@AttributeOverride(name = "solutionIdSolution", column = @Column(name = "solution_idSolution", nullable = false)) })

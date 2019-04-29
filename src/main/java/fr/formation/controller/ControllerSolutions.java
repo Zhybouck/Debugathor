@@ -1,6 +1,7 @@
 package fr.formation.controller;
 
 import java.text.DateFormat;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -80,12 +81,43 @@ public class ControllerSolutions {
 	// Cette requeête est faite pour vérifier les erreurs et renvoyer vers l'update
 	// si nécessaire elle renvoie ensuite vers focusBug
 	@RequestMapping(value = "/applyUpdate", method = RequestMethod.POST)
-	public String updateOne(@Valid @ModelAttribute("toUpBug") Solution toUpBug, Model model, BindingResult result) {
+	public String updateOne(@Valid @ModelAttribute("toUpBug") Solution toUpBug, Model model, BindingResult result
+			,@RequestParam("inputNomLogiciel")String inputNomLogiciel,@RequestParam("inputVersionLogiciel") String versionlogiciel) {
 		if (result.hasErrors()) {
 			return "uppBug";
 		} else {
+			//gestion du logiciel
+			boolean logexists  = false;
+			List<Logiciel> logiciels = logserv.findByName(inputNomLogiciel);
+			for(Logiciel l : logiciels) {
+				if(l.getVersion().equals(versionlogiciel)) {
+					toUpBug.setLogiciel(l);
+					logexists = true;
+				}
+			}
+			Logiciel log = new Logiciel();
+			if(logexists==false) {
+				log.setNomLogiciel(inputNomLogiciel);
+				log.setVersion(versionlogiciel);
+				logserv.save(log);
+//				List<Logiciel> logs = logserv.getAll();
+//				log=logs.get(logs.size()-1);
+				toUpBug.setLogiciel(log);
+			}
+			java.util.Date date = new java.util.Date();
+			java.sql.Date datebug = new java.sql.Date(date.getTime());
+			toUpBug.setDateBug(datebug);
+			List<Proposition> props =  propserv.findAllPropbySolution(toUpBug);
+			Set<Proposition> propsset = new HashSet<Proposition>();
+			for(Proposition p : props)
+				propsset.add(p); 
+			toUpBug.setPropositions(propsset);
+			//update
 			solserv.update(toUpBug);
-			model.addAttribute("Id", toUpBug.getIdSolution());
+			
+			//ajout des attributs
+			model.addAttribute("focusedSol", toUpBug);
+			model.addAttribute("nouvProp", new Proposition());
 			return "focusBug";
 		}
 	}
@@ -139,7 +171,8 @@ public class ControllerSolutions {
 		prop.setDateProp(d);
 		prop.setCommentaire("Creation de la solution le " + DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG).format(date)+ " par " + util.getPrenom()+ " "+ util.getNom());
 		propserv.save(prop);
-		model.addAttribute("Solution", solserv.findById((solution).getIdSolution()));
+		model.addAttribute("focusedSol", solserv.findById((solution).getIdSolution()));
+		model.addAttribute("nouvProp",new Proposition());
 		return "focusBug";
 	}
 
