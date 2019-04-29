@@ -72,11 +72,23 @@ body {
 
 		<form:form class="form-signin ml-5 mt-5 mb-5" action="applyadd"
 			method="post" modelAttribute="Solution">
+			
+			<div class="form-group col-md-6">
+				<label for="inputTechnologie">Technologie</label>
+				<form:input type="text" class="form-control" id="inputTechnologie"
+					path="Technologie" />
+			</div>
 
-			<!-- 			<div class="form-group col-md-6"> -->
-			<%-- 				<label for="inputVersion">Version</label> <form:input --%>
-			<%-- 					type="text" class="form-control" id="inputVersion" path="version"/> --%>
-			<!-- 			</div> -->
+			<div class="form-group col-md-6">
+				<label for="inputNomLogiciel">Nom du logiciel</label> <input
+					type="text" class="form-control" name="inputNomLogiciel" />
+			</div>
+
+			<div class="form-group col-md-6">
+				<label for="inputVersionLogiciel">Version du logiciel</label> <input
+					type="text" class="form-control" name="inputVersionLogiciel" />
+			</div>
+
 			<div class="form-group col-md-10">
 				<label for="inputType">Type de bug</label>
 				<form:input type="text" class="form-control" id="inputType"
@@ -100,52 +112,37 @@ body {
 					path="Demarche"></form:textarea>
 			</div>
 
-			<div class="form-group col-md-6">
-				<label for="inputTechnologie">Technologie</label>
-				<form:input type="text" class="form-control" id="inputTechnologie"
-					path="Technologie" />
-			</div>
-
-			<div class="form-group col-md-6">
-				<label for="inputNomLogiciel">Nom du logiciel</label> <input
-					type="text" class="form-control" name="inputNomLogiciel" />
-			</div>
-
-			<div class="form-group col-md-6">
-				<label for="inputVersionLogiciel">Version du logiciel</label> <input
-					type="text" class="form-control" name="inputVersionLogiciel" />
-			</div>
-
 			<!-- Importer le fichier Log -->
 
-<%-- 			<form> --%>
-<!-- 				<div class="form-group col-md-6"> -->
-<!-- 					<label for="exampleFormControlFile1">Importer votre fichier -->
-<!-- 						logs</label> <input type="file" class="form-control-file" -->
-<!-- 						id="exampleFormControlFile1"> -->
-<!-- 				</div> -->
-<%-- 			</form> --%>
+			<%-- 			<form> --%>
+			<!-- 				<div class="form-group col-md-6"> -->
+			<!-- 					<label for="exampleFormControlFile1">Importer votre fichier -->
+			<!-- 						logs</label> <input type="file" class="form-control-file" -->
+			<!-- 						id="exampleFormControlFile1"> -->
+			<!-- 				</div> -->
+			<%-- 			</form> --%>
 
 			<!-- Bouton d'annulation et de confirmation d'ajout-->
-			<div class="container-fluid form-group row col-md-6 ml-5 mb-5">
+			<div class="container-fluid row col-6 mt-5 mb-5 ml-2">
 
-			<button class="btn btn-success" type="submit" style="width: 120px;">Confirmer</button>
-
-			</div>
-
+				<button class="btn btn-success" type="submit" style="width: 120px;">Confirmer</button>
 		</form:form>
 
 		<form class="form-inline" action="back" method="post">
 			<button class="btn btn-outline-secondary" type="submit"
 				style="width: 120px;">Annuler</button>
 		</form>
-		<br>
 
-		<!-- Footer -->
-		<hr>
-		<footer class="container-fluid">
-			<p>&copy; Debugathor 2019</p>
-		</footer>
+	</div>
+
+
+	<br>
+
+	<!-- Footer -->
+	<hr>
+	<footer class="container-fluid">
+		<p>&copy; Debugathor 2019</p>
+	</footer>
 
 	</div>
 
