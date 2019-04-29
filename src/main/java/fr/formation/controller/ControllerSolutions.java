@@ -213,9 +213,12 @@ public class ControllerSolutions {
 		Solution solution = solserv.findById(id);
 		proposition.setSolution(solution);
 		propserv.save(proposition);
-		Set<Proposition> props = solution.getPropositions();
-		props.add(proposition);
-		solution.setPropositions(props);
+		List<Proposition> props = propserv.findAllPropbySolution(solution);
+		Set<Proposition> propsset = solution.getPropositions();
+		for(Proposition p : props) {
+			propsset.add(p);
+		}
+		solution.setPropositions(propsset);
 		solserv.update(solution);
 		solution = solserv.findById(id);
 		model.addAttribute("focusedSol", solution);
