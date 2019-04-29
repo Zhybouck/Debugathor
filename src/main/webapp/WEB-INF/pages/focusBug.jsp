@@ -32,6 +32,7 @@
 body {
 	background-color: #eff2f3;
 	color: #343a40;
+	padding-left: 25px;
 }
 
 .tabcomp {
@@ -50,6 +51,10 @@ body {
 	border-color: #343a40;
 	background-color: #e2e3e3;
 	border-width: 5px;
+	margin-right: 150px;
+	margin-left: 90px;
+}
+.mb-5{
 	margin-right: 150px;
 	margin-left: 90px;
 }
@@ -93,7 +98,7 @@ body {
 		</div>
 	</nav>
 
-	<div class="container-fluid mb-5" style="padding-top: 90px;">
+	<div class="mb-5" style="padding-top: 90px;">
 
 		<!-- Partie haute de la vue - Zoom sur la solution sélectionnée-->
 		<h1 class="display-4">Zoom sur une solution</h1>
@@ -158,10 +163,10 @@ body {
 
 		<!-- 		Boucle forEach pour les propositions associées à la solution affichée -->
 		<tr>
-		<th> Nom utilisateur</th>
-		<th> Prénom utilisateur</th>
-		<th> Date proposition</th>
-		<th> Commentaire</th>
+			<th>Nom utilisateur</th>
+			<th>Prénom utilisateur</th>
+			<th>Date proposition</th>
+			<th>Commentaire</th>
 		</tr>
 		<c:forEach items="${focusedSol.propositions}" var="proposition">
 			<tr>
@@ -171,17 +176,28 @@ body {
 				<td><c:out value="${proposition.commentaire}" /></td>
 			</tr>
 		</c:forEach>
-
 	</table>
-
-	<div class="col-4 mt-5">
-
-		<!-- 		Formulaire pour ajouter une proposition -->
-		<form>
-			<button type="button" class="btn btn-success">Compléter
+	
+	<h1 class="display-4 mt-5">Ajouter une proposition</h1>
+	<hr>
+	<div class="mb-5">
+		<form:form class="form-signin ml-5 mt-5 mb-5" action="addprop"
+			method="post" modelAttribute="nouvProp">
+			<input name="idSol" type="hidden" value="${focusedSol.idSolution}"/>
+			<tr>
+				<form:textarea class="form-control" id="inputCommentaire" rows="6"
+					path="Commentaire"></form:textarea>
+			</tr>
+			<br/>
+			<button type="submit" class="btn btn-success">Compléter
 				cette solution</button>
-		</form>
+		</form:form>
 	</div>
+	<!-- 	<div class="col-4 mt-5"> -->
+	<!-- 			<button type="button" class="btn btn-success">Compléter -->
+	<!-- 				cette solution</button> -->
+	<%-- 		</form:form> --%>
+	<!-- 	</div> -->
 
 
 	<!-- Footer -->

@@ -34,5 +34,4 @@ public class ControllerProp {
 		return "PropForOne";
 	}
 	
-	
 }

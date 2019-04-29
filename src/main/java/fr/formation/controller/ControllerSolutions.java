@@ -2,6 +2,7 @@ package fr.formation.controller;
 
 import java.text.DateFormat;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -165,5 +166,28 @@ public class ControllerSolutions {
 
 		return "myBugs";
 	}
+	
+	
+	@RequestMapping(value = "/addprop", method = RequestMethod.POST)
+	public String addProposition(HttpSession session, Model model, @ModelAttribute("nouvProp")Proposition proposition,@RequestParam("idSol")Long id) {
+		Utilisateur util = (Utilisateur) session.getAttribute("Utilisateur");
+		PropositionId propId = new PropositionId(util.getIdUtilisateur(), id) ;
+		proposition.setId(propId);
+		java.util.Date date = new java.util.Date();
+		java.sql.Date dateprop = new java.sql.Date(date.getTime());
+		proposition.setDateProp(dateprop);
+		proposition.setUtilisateur(util);
+		Solution solution = solserv.findById(id);
+		proposition.setSolution(solution);
+		propserv.save(proposition);
+		Set<Proposition> props = solution.getPropositions();
+		props.add(proposition);
+		solution.setPropositions(props);
+		solserv.update(solution);
+		solution = solserv.findById(id);
+		model.addAttribute("focusedSol", solution);
+		model.addAttribute("nouvProp", new Proposition());
 
+		return "focusBug";
+	}
 }
