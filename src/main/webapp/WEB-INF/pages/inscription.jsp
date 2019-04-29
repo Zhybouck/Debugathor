@@ -11,8 +11,9 @@
 <head>
 <title>Se connecter</title>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 <!-- Lien pour Bootstrap -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -58,10 +59,11 @@ a {
 				</div>
 
 				<div class="text-center mb-5">
-				<p>Déjà inscrit ?</p>
-				<form action="init" method="get">
+					<p>Déjà inscrit ?</p>
+					<form action="init" method="get">
 						<p>
-							<button class="btn btn-outline-light" type="submit">Se connecter &raquo;</button>
+							<button class="btn btn-outline-light" type="submit">Se
+								connecter &raquo;</button>
 						</p>
 					</form>
 
@@ -70,7 +72,7 @@ a {
 
 
 			<div class="col-8 div-right">
-			
+
 				<form:form class="form-signin ml-5 mt-5 mb-5" action="add"
 					method="post" modelAttribute="creationutilisateur">
 					<h1 class="display-4">Inscription</h1>
@@ -116,26 +118,27 @@ a {
 
 					<div class="form-label-group col-5">
 						Mot de passe
-						<form:input type="password" name="inputPassword" id="inputPassword"
-							class="mdp form-control mt-1" placeholder="Mot de passe"
-							path="mdp" required="required" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Votre mot de passe doit faire au moins 8 caractères, contenir une majuscule et une minuscule"/>
-							
-						<small><form:errors path="mdp" cssClass="errormsg"/></small>
+						<form:input type="password" name="inputPassword"
+							id="inputPassword" class="mdp form-control mt-1"
+							placeholder="Mot de passe" path="mdp" required="required"
+							pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+							title="Votre mot de passe doit faire au moins 8 caractères, contenir au moins une majuscule, une minuscule et un caractère spécial." />
+
+						<small><form:errors path="mdp" cssClass="errormsg" /></small>
 					</div>
 
 					<div class="form-label-group col-5">
 						Confirmation de votre mot de passe <input type="password"
 							name="inputConfPassword" id="inputConfPassword"
 							class="confmdp form-control mt-1"
-							placeholder="Confirmer votre mot de passe"
-							required="required"/>
-							<div class = "text-danger">
+							placeholder="Confirmer votre mot de passe" required="required" />
+						<div class="text-danger">
 							<small><c:out value="${confMdp}" /></small>
+						</div>
 					</div>
-					</div>
-					
+
 					<button class="btn btn-lg btn-primary btn-block ml-3 col-3 mt-5"
-						type="submit" >S'inscrire</button>
+						type="submit">S'inscrire</button>
 
 
 				</form:form>
@@ -160,7 +163,7 @@ a {
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-		
+
 </body>
 
 

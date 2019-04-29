@@ -17,6 +17,9 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <!-- Lien pour les tableaux -->
 <link rel="stylesheet"
 	href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
@@ -94,44 +97,44 @@ body {
 
 		<table
 			class="datatable table table-striped table-hover table-bordered">
-			
-				<!-- Entête du tableau -->
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Technologie</th>
-						<th>Type</th>
-						<th>Date</th>
-						<th>Titre</th>
-						<th>Description</th>
-						<th>Démarche</th>
-						<th>Consulter</th>
-					</tr>
-				</thead>
 
-				<!-- Ligne filtres -->
-				<tfoot>
-					<tr>
-						<th><input type="text"
-							class="form-control input-sm filter-column"></th>
-						<th><input type="text"
-							class="form-control input-sm filter-column"></th>
-						<th><input type="text"
-							class="form-control input-sm filter-column"></th>
-						<th><input type="text"
-							class="form-control input-sm filter-column"></th>
-						<th><input type="text"
-							class="form-control input-sm filter-column"></th>
-						<th><input type="text"
-							class="form-control input-sm filter-column"></th>
-						<th><input type="text"
-							class="form-control input-sm filter-column"></th>
-						<th></th>
-					</tr>
-				</tfoot>
+			<!-- Entête du tableau -->
+			<thead>
+				<tr>
+					<th width="3%">ID</th>
+					<th>Technologie</th>
+					<th>Type</th>
+					<th>Date</th>
+					<th>Titre</th>
+					<th>Description</th>
+					<th>Démarche</th>
+					<th width="7%">Consulter</th>
+				</tr>
+			</thead>
 
-				<!-- Corps du tableau -->
-				<tbody>
+			<!-- Ligne filtres -->
+			<tfoot>
+				<tr>
+					<th><input type="text"
+						class="form-control input-sm filter-column"></th>
+					<th><input type="text"
+						class="form-control input-sm filter-column"></th>
+					<th><input type="text"
+						class="form-control input-sm filter-column"></th>
+					<th><input type="text"
+						class="form-control input-sm filter-column"></th>
+					<th><input type="text"
+						class="form-control input-sm filter-column"></th>
+					<th><input type="text"
+						class="form-control input-sm filter-column"></th>
+					<th><input type="text"
+						class="form-control input-sm filter-column"></th>
+					<th></th>
+				</tr>
+			</tfoot>
+
+			<!-- Corps du tableau -->
+			<tbody>
 				<c:forEach items="${listesol}" var="solution">
 					<tr>
 						<td><c:out value="${solution.idSolution}" /></td>
@@ -142,19 +145,21 @@ body {
 						<td><c:out value="${solution.description}" /></td>
 						<td><c:out value="${solution.demarche}" /></td>
 
-						<td>
+						<td class="text-center">
 							<form action="focus" method="POST">
 								<input name="Id" type="hidden" value="${solution.idSolution}">
-								<button type="submit" class="btn btn-outline-secondary">Consulter</button>
+								<button type="submit" class="btn btn-outline-secondary">
+									<span class="fa fa-search"></span> Consulter
+								</button>
 							</form>
 						</td>
 
 
 					</tr>
-					</c:forEach>
-					
-				</tbody>
-			
+				</c:forEach>
+
+			</tbody>
+
 		</table>
 
 		<div class="col-4 mt-5">

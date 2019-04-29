@@ -54,7 +54,8 @@ body {
 	margin-right: 150px;
 	margin-left: 90px;
 }
-.mb-5{
+
+.mb-5 {
 	margin-right: 150px;
 	margin-left: 90px;
 }
@@ -98,7 +99,7 @@ body {
 		</div>
 	</nav>
 
-	<div class="mb-5" style="padding-top: 90px;">
+	<div class="mb-5" style="padding-top: 100px;">
 
 		<!-- Partie haute de la vue - Zoom sur la solution sélectionnée-->
 		<h1 class="display-4">Zoom sur une solution</h1>
@@ -106,106 +107,106 @@ body {
 
 		<!-- Trouver un moyen de récupérer les éléments (c:forEach / form) -->
 
-		<div class="cadre">
-			<div class="row ml-2">
-				<div class="col-1">
-					<b>ID :</b> ${focusedSol.idSolution}
+		<div class="cadre mt-5">
+			<div class="row ml-1 mb-2">
+				<div class="col-2">
+					<b>ID : </b> ${focusedSol.idSolution}
 				</div>
 
 				<div class="col-3">
-					<b>Technologie :</b> ${focusedSol.technologie}
+					<b>Technologie : </b> ${focusedSol.technologie}
 				</div>
 
 				<div class="col-4">
-					<b>Type :</b> ${focusedSol.type}
+					<b>Type : </b> ${focusedSol.type}
 				</div>
 
 				<div class="col-3">
-					<b>Date :</b> ${focusedSol.dateBug}
+					<b>Date : </b> ${focusedSol.dateBug}
 				</div>
 
+			</div>
+
+			<div class="row ml-1 mb-2">
+				<div class="col-2">
+					<b>Titre : </b>
+				</div>
+				<div class="col-9">${focusedSol.titre}</div>
 				<div class="col-1"></div>
 			</div>
 
-			<div class="row ml-2">
-				<div class="col-1">
-					<b>Titre :</b>
+			<div class="row ml-1 mb-2">
+				<div class="col-2">
+					<b>Description : </b>
 				</div>
-				<div class="col-9">${focusedSol.titre}</div>
-				<div class="col-2"></div>
+
+				<div class="col-9">${focusedSol.description}</div>
+				<div class="col-1"></div>
 			</div>
 
-			<div class="row ml-2">
-				<div class="col-1">
-					<b>Description :</b>
+			<div class="row ml-1 mb-2">
+				<div class="col-2">
+					<b>Démarche : </b>
 				</div>
-
-				<div class="col-8">${focusedSol.description}</div>
-				<div class="col-3"></div>
-			</div>
-
-			<div class="row ml-2">
-				<div class="col-1">
-					<b>Démarche :</b>
-				</div>
-				<div class="col-8">${focusedSol.demarche}</div>
-				<div class="col-3"></div>
+				<div class="col-9">${focusedSol.demarche}</div>
+				<div class="col-1"></div>
 			</div>
 		</div>
-	</div>
 
+		<!-- Partie basse de la vue - Liste des compléments de la solution -->
+		<h1 class="display-4 mt-5">Compléments</h1>
+		<hr>
 
-	<!-- Partie basse de la vue - Liste des compléments de la solution -->
-	<h1 class="display-4 mt-5">Compléments</h1>
-	<hr>
+		<table class="tabcomp table">
 
-	<table class="tabcomp table">
-
-		<!-- 		Boucle forEach pour les propositions associées à la solution affichée -->
-		<tr>
-			<th>Nom utilisateur</th>
-			<th>Prénom utilisateur</th>
-			<th>Date proposition</th>
-			<th>Commentaire</th>
-		</tr>
-		<c:forEach items="${focusedSol.propositions}" var="proposition">
+			<!-- 		Boucle forEach pour les propositions associées à la solution affichée -->
 			<tr>
-				<td><c:out value="${proposition.utilisateur.nom}" /></td>
-				<td><c:out value="${proposition.utilisateur.prenom}" /></td>
-				<td><c:out value="${proposition.dateProp}" /></td>
-				<td><c:out value="${proposition.commentaire}" /></td>
+				<th width="20%">Nom utilisateur</th>
+				<th width="20%">Prénom utilisateur</th>
+				<th width="20%">Date proposition</th>
+				<th width="40%">Commentaire</th>
 			</tr>
-		</c:forEach>
-	</table>
-	
-	<h1 class="display-4 mt-5">Ajouter une proposition</h1>
-	<hr>
-	<div class="mb-5">
-		<form:form class="form-signin ml-5 mt-5 mb-5" action="addprop"
-			method="post" modelAttribute="nouvProp">
-			<input name="idSol" type="hidden" value="${focusedSol.idSolution}"/>
-			<tr>
-				<form:textarea class="form-control" id="inputCommentaire" rows="6"
-					path="Commentaire"></form:textarea>
-			</tr>
-			<br/>
-			<button type="submit" class="btn btn-success">Compléter
-				cette solution</button>
-		</form:form>
+			<c:forEach items="${focusedSol.propositions}" var="proposition">
+				<tr>
+					<td><c:out value="${proposition.utilisateur.nom}" /></td>
+					<td><c:out value="${proposition.utilisateur.prenom}" /></td>
+					<td><c:out value="${proposition.dateProp}" /></td>
+					<td><c:out value="${proposition.commentaire}" /></td>
+				</tr>
+			</c:forEach>
+		</table>
+
+		<h1 class="display-4 mt-5">Ajouter une proposition</h1>
+		<hr>
+		<div class="mb-5">
+			<form:form class="form-signin ml-5 mt-5 mb-5" action="addprop"
+				method="post" modelAttribute="nouvProp">
+				<input name="idSol" type="hidden" value="${focusedSol.idSolution}" />
+				<tr>
+					<form:textarea class="form-control" id="inputCommentaire" name="inputCommentaire" rows="6"
+						path="Commentaire" maxlength="500"
+						title="Votre commentaire ne doit pas excéder 500 caractères."></form:textarea>
+				</tr>
+				
+				<br />
+				<button type="submit" class="btn btn-success">Compléter
+					cette solution</button>
+			</form:form>
+		</div>
+		<!-- 	<div class="col-4 mt-5"> -->
+		<!-- 			<button type="button" class="btn btn-success">Compléter -->
+		<!-- 				cette solution</button> -->
+		<%-- 		</form:form> --%>
+		<!-- 	</div> -->
+
+
+		<!-- Footer -->
+		<hr>
+		<footer class="container-fluid">
+			<p>&copy; Debugathor 2019</p>
+		</footer>
+
 	</div>
-	<!-- 	<div class="col-4 mt-5"> -->
-	<!-- 			<button type="button" class="btn btn-success">Compléter -->
-	<!-- 				cette solution</button> -->
-	<%-- 		</form:form> --%>
-	<!-- 	</div> -->
-
-
-	<!-- Footer -->
-	<hr>
-	<footer class="container-fluid">
-		<p>&copy; Debugathor 2019</p>
-	</footer>
-
 
 	<!-- Les balises script sont à mettre à la fin du body pour éviter de surcharger le chargement de la page -->
 	<script

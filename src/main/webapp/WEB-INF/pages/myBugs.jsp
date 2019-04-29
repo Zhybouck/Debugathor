@@ -17,6 +17,9 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <!-- Lien pour les tableaux -->
 <link rel="stylesheet"
 	href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
@@ -84,7 +87,7 @@ body {
 
 	<!-- Tableau qui regroupe l'ensemble des bugs postés par l'utilisateur connecté-->
 
-	<div class="container-fluid mb-5" style="padding-top: 90px;">
+	<div class="container-fluid mb-5" style="padding-top: 100px;">
 
 		<h1 class="display-4">Mes solutions</h1>
 		<hr>
@@ -96,14 +99,15 @@ body {
 			<!-- Entête du tableau -->
 			<thead>
 				<tr>
-					<th>ID</th>
+					<th width="3%">ID</th>
 					<th>Technologie</th>
 					<th>Type</th>
 					<th>Date</th>
 					<th>Titre</th>
 					<th>Description</th>
 					<th>Démarche</th>
-					<th>Mise à jour</th>
+					<th width="7%">Mise à jour</th>
+					<th width="7%">Consulter</th>
 				</tr>
 			</thead>
 
@@ -125,6 +129,7 @@ body {
 					<th><input type="text"
 						class="form-control input-sm filter-column"></th>
 					<th></th>
+					<th></th>
 				</tr>
 			</tfoot>
 
@@ -143,8 +148,18 @@ body {
 						<td>
 							<form action="update" method="POST">
 								<input name="Id" type="hidden" value="${solution.idSolution}">
-								<button type="submit" class="btn btn-outline-secondary">Mise
-									à jour</button>
+								<button type="submit" class="btn btn-outline-secondary">
+									Mise à jour
+								</button>
+							</form>
+						</td>
+
+						<td>
+							<form action="focus" method="POST">
+								<input name="Id" type="hidden" value="${solution.idSolution}">
+								<button type="submit" class="btn btn-outline-secondary">
+									<span class="fa fa-search"></span> Consulter
+								</button>
 							</form>
 						</td>
 					</tr>
