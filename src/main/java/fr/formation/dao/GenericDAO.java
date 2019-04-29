@@ -60,7 +60,7 @@ public abstract class GenericDAO<T extends Serializable> implements IGenericDao<
 	public void update(T obj) {
 		Session session = sessionFactory.getCurrentSession();
 		try {
-			session.update(obj);
+			session.merge(obj);
 		} catch (HibernateException e) {
 			log.error(e.getLocalizedMessage());
 			e.printStackTrace();

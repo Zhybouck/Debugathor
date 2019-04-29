@@ -76,6 +76,13 @@ body {
 			<%-- 				<label for="inputVersion">Version</label> <form:input --%>
 			<%-- 					type="text" class="form-control" id="inputVersion" path="version"/> --%>
 			<!-- 			</div> -->
+			
+			<div class="form-group col-md-10">
+				<label for="inputId"></label>
+				<form:input type="hidden" class="form-control" id="inputId"
+					path="idSolution" value="${ToUpBug.idSolution}"/>
+			</div>
+			
 			<div class="form-group col-md-10">
 				<label for="inputType">Type de bug</label>
 				<form:input type="text" class="form-control" id="inputType"
@@ -83,7 +90,7 @@ body {
 			</div>
 
 			<div class="form-group col-md-10">
-				<label for="inputType">Titre</label>
+				<label for="inputTitre">Titre</label>
 				<form:input type="text" class="form-control" id="inputTitre"
 					path="Titre" />
 			</div>
