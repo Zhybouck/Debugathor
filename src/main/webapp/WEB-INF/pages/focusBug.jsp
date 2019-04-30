@@ -91,7 +91,9 @@ body {
 			</ul>
 
 			<form class="form-inline mt-2 mt-md-0" action="disconnect">
-				<i class="nav-item nav-link" style="color: #eff2f3; margin-right:20px;">Bonjour ${Utilisateur.prenom}</i>
+				<i class="nav-item nav-link"
+					style="color: #eff2f3; margin-right: 20px;">Bonjour
+					${Utilisateur.prenom}</i>
 				<button class="btn btn-danger my-2 my-sm-0" type="submit">Se
 					deconnecter</button>
 			</form>
@@ -182,17 +184,27 @@ body {
 				method="post" modelAttribute="nouvProp">
 				<input name="idSol" type="hidden" value="${focusedSol.idSolution}" />
 				<tr>
-					<form:textarea class="form-control" id="inputCommentaire" name="inputCommentaire" rows="6"
-						path="Commentaire" maxlength="500"
+					<form:textarea class="form-control" id="inputCommentaire"
+						name="inputCommentaire" rows="6" path="Commentaire"
+						maxlength="500" onkeyup="success()"
 						title="Votre commentaire ne doit pas excéder 500 caractères."></form:textarea>
 				</tr>
-				
+
 				<br />
-				<button type="submit" class="btn btn-success">Compléter
-					cette solution</button>
+				<button type="submit" class="btn btn-success" id="sendButton"
+					class="sendButton" disabled>Compléter cette solution</button>
+				<script>
+				function success() {
+					 if(document.getElementById("inputCommentaire").value==="") { 
+				            document.getElementById('sendButton').disabled = true; 
+				        } else { 
+				            document.getElementById('sendButton').disabled = false;
+				        }
+				    }
+				</script>
 			</form:form>
 		</div>
-		
+
 		<!-- Footer -->
 		<hr>
 		<footer class="container-fluid">
