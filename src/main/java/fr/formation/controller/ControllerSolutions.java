@@ -75,6 +75,7 @@ public class ControllerSolutions {
 	@RequestMapping(value = "/update")
 	public String updateInit(@RequestParam("Id") Long Id, Model model) {
 		model.addAttribute("toUpBug", solserv.findById(Id));
+		model.addAttribute("Logiciel", solserv.findById(Id).getLogiciel());
 		return "uppBug";
 	}
 
@@ -100,8 +101,6 @@ public class ControllerSolutions {
 				log.setNomLogiciel(inputNomLogiciel);
 				log.setVersion(versionlogiciel);
 				logserv.save(log);
-//				List<Logiciel> logs = logserv.getAll();
-//				log=logs.get(logs.size()-1);
 				toUpBug.setLogiciel(log);
 			}
 			java.util.Date date = new java.util.Date();
@@ -151,8 +150,6 @@ public class ControllerSolutions {
 			log.setNomLogiciel(inputNomLogiciel);
 			log.setVersion(versionlogiciel);
 			logserv.save(log);
-//			List<Logiciel> logs = logserv.getAll();
-//			log=logs.get(logs.size()-1);
 			solution.setLogiciel(log);
 		}
 		java.util.Date date = new java.util.Date();
