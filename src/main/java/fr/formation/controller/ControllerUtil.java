@@ -64,12 +64,12 @@ public class ControllerUtil {
 					session.setAttribute("Utilisateur", checkeur);
 					return "redirect:/Solution/init";
 				} else {
-					model.addAttribute("Connect", "Mot de passe ou e-mail incorrects");
+					model.addAttribute("Connect", "Mot de passe ou e-mail incorrect");
 
 					return "login";
 				}
 			} else {
-				model.addAttribute("Connect", "Mot de passe ou e-mail incorrects");
+				model.addAttribute("Connect", "Mot de passe ou e-mail incorrect");
 
 				return "login";
 			}

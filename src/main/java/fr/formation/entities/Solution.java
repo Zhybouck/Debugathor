@@ -35,7 +35,6 @@ public class Solution implements java.io.Serializable {
 	private Logiciel logiciel;
 	@NotEmpty
 	private String type;
-	@NotEmpty
 	private Date dateBug;
 	@NotEmpty
 	private String titre;
