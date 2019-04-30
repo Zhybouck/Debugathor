@@ -60,7 +60,7 @@ body {
 						<button class="btn btn-outline-light custom" type="submit">Se
 							connecter</button>
 					</form></li>
-				<li><form action="user/addone" method="post">
+				<li><form action="user/addone">
 						<button class="btn btn-light custom" type="submit">S'inscrire</button>
 					</form></li>
 			</ul>
@@ -100,7 +100,7 @@ body {
 					afin de partager vos techniques et stratégies d’éradication et
 					faire face au terrible Hector le carabidae.</p>
 
-				<form action="user/addone" method="post">
+				<form action="user/addone">
 					<p>
 						<button class="btn btn-secondary" type="submit">S'inscrire
 							&raquo;</button>

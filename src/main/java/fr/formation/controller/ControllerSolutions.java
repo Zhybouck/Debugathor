@@ -43,7 +43,7 @@ public class ControllerSolutions {
 	// Controller des solutions (ou Bugs)
 	// Init est la première methode par laquelle on apsse, genere, la liste des
 	// Solutions par appel du GetAll
-	@RequestMapping(value = "/init", method = RequestMethod.GET)
+	@RequestMapping(value = "/init")
 	public String init(Model model) {
 		List<Solution> liste = solserv.getAll();
 		model.addAttribute("listesol", liste);
@@ -52,7 +52,7 @@ public class ControllerSolutions {
 
 	// lorsque l'on sélectionne une solution cette methode est appelée et renvoie
 	// vers la méthode focusBug
-	@RequestMapping(value = "/focus", method = RequestMethod.POST)
+	@RequestMapping(value = "/focus")
 	public String focusOnOne(@RequestParam("Id") Long Id, Model model) {
 		Solution solution = solserv.findById(Id);
 		model.addAttribute("focusedSol", solution);
@@ -72,7 +72,7 @@ public class ControllerSolutions {
 
 	// Depusi une page avec plusieurs ou un seul bug on peut appeler cette méthode
 	// afin d'update un Bug/solution
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	@RequestMapping(value = "/update")
 	public String updateInit(@RequestParam("Id") Long Id, Model model) {
 		model.addAttribute("toUpBug", solserv.findById(Id));
 		return "uppBug";
@@ -120,7 +120,7 @@ public class ControllerSolutions {
 	}
 
 	//Initialise  ajout d'une solution
-	@RequestMapping(value = "/initaddsoluce", method = RequestMethod.POST)
+	@RequestMapping(value = "/initaddsoluce")
 	public String initaddsoluce(Solution solution, Model model, BindingResult result) {
 		model.addAttribute("Solution", new Solution());
 		model.addAttribute("Proposition", new Proposition());
@@ -176,7 +176,7 @@ public class ControllerSolutions {
 
 
 //Affiche l'ensemble des bugs associés a un utilisateur
-	@RequestMapping(value = "/mybugs", method = RequestMethod.POST)
+	@RequestMapping(value = "/mybugs")
 	public String printmybugs(HttpSession session, Model model) {
 		Utilisateur util = (Utilisateur) session.getAttribute("Utilisateur");
 		List<Solution> listesol = solserv.getByUtilisateur(util);
@@ -185,9 +185,13 @@ public class ControllerSolutions {
 	}
 	
 	//Supprime un bug lié à la session en cours et donc à l'utilisateur connecté
-	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	@RequestMapping(value = "/delete")
 	public String delete(HttpSession session, Utilisateur Utils, @RequestParam("Id") Long id) {
 		Solution solution = solserv.findById(id);
+		List<Proposition> props = propserv.findAllPropbySolution(solution);
+		for (Proposition p: props) {
+			propserv.delete(p);
+		}
 		solserv.delete(solution);
 		return "redirect:/Solution/mybugs";
 	}
@@ -215,12 +219,12 @@ public class ControllerSolutions {
 	
 	// Afin de back d'une page direction l'accueil des Solutions soit a la liste du
 	// tableau
-	@RequestMapping(value = "/back", method = RequestMethod.POST)
+	@RequestMapping(value = "/back")
 	public String back() {
 		return "redirect:/Solution/init";
 	}
 
-	@RequestMapping(value = "/disconnect", method = RequestMethod.POST)
+	@RequestMapping(value = "/disconnect")
 	public String endSessionHandlingMethod(HttpSession session) {
 		session.invalidate();
 		return "byebye";

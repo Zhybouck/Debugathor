@@ -59,7 +59,7 @@ a {
 				<div class="text-center mb-5">
 					<p>Pas encore inscrit ?</p>
 
-					<form action="addone" method="post">
+					<form action="addone">
 						<p>
 							<button class="btn btn-outline-light" type="submit">Nous
 								rejoindre ! &raquo;</button>

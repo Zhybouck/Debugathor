@@ -33,28 +33,25 @@ body {
 			class="navbar-brand ml-2" href="#">Debugathor</a>
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><form id="list" action="back"
-						method="post">
+				<li class="nav-item"><form id="list" action="back">
 						<input type="hidden" />
 					</form> <a class="nav-link" href="#"
 					onclick='document.getElementById("list").submit()'>Liste des
 						solutions</a></li>
-				<li class="nav-item"><form id="mySol" action="mybugs"
-						method="post">
+				<li class="nav-item"><form id="mySol" action="mybugs">
 						<input type="hidden" />
 					</form> <a class="nav-link" href="#"
 					onclick='document.getElementById("mySol").submit()'>Mes
 						solutions</a></li>
 				<li class="nav-item active">
-					<form id="addSol" action="initaddsoluce" method="post">
+					<form id="addSol" action="initaddsoluce">
 						<input type="hidden" />
 					</form> <a class="nav-link" href="#"
 					onclick='document.getElementById("addSol").submit()'>Ajouter
 						une solution</a>
 				</li>
 			</ul>
-			<form class="form-inline mt-2 mt-md-0" action="disconnect"
-				method="post">
+			<form class="form-inline mt-2 mt-md-0" action="disconnect">
 				<i class="nav-item nav-link" style="color: #eff2f3; margin-right:20px;">Bonjour ${Utilisateur.prenom}</i>
 				<button class="btn btn-danger my-2 my-sm-0" type="submit">Se
 					deconnecter</button>
@@ -138,14 +135,12 @@ body {
 
 
 
-				<form class="form-inline" action="applyupdate" method="post">
 					<button class="btn btn-success" type="submit" style="width: 120px;">Confirmer</button>
-				</form>
 
 			</div>
 
 		</form:form>
-		<form class="form-inline" action="back" method="post">
+		<form class="form-inline" action="back">
 			<button class="btn btn-outline-secondary" type="submit"
 				style="width: 120px;">Annuler</button>
 		</form>

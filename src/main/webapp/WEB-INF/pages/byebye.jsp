@@ -63,7 +63,7 @@ body {
 						<button class="btn btn-outline-light custom" type="submit">Se
 							connecter</button>
 					</form></li>
-				<li><form action="/Debugathor/user/addone" method="post">
+				<li><form action="/Debugathor/user/addone">
 						<button class="btn btn-light custom" type="submit">S'inscrire</button>
 					</form></li>
 			</ul>

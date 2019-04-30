@@ -30,7 +30,7 @@ public class ControllerUtil {
 	@Autowired
 	IUtilisateurService service;
 
-	@RequestMapping(value = "/init", method = RequestMethod.GET)
+	@RequestMapping(value = "/init")
 	public String initView(Model model, HttpSession session, HttpServletRequest request) {
 		log.debug("-------------------------Initialisation des utilisateurs controlleurs---------------------");
 		if (null != request.getSession().getAttribute("Utilisateur")) {
@@ -76,7 +76,7 @@ public class ControllerUtil {
 		}
 	}
 
-	@RequestMapping(value = "/addone", method = RequestMethod.POST)
+	@RequestMapping(value = "/addone")
 	public String addUser(Model model) {
 		model.addAttribute("creationutilisateur", new Utilisateur());
 		return "inscription";
@@ -118,7 +118,7 @@ public class ControllerUtil {
 		}
 	}
 
-	@RequestMapping(value = "/disconnect", method = RequestMethod.POST)
+	@RequestMapping(value = "/disconnect")
 	public String endSessionHandlingMethod(SessionStatus status, HttpSession session) {
 		session.invalidate();
 		return "byebye";

@@ -64,21 +64,19 @@ body {
 			class="navbar-brand ml-2" href="#">Debugathor</a>
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><form id="list" action="back"
-						method="post">
+				<li class="nav-item active"><form id="list" action="back">
 						<input type="hidden" />
 					</form> <a class="nav-link" href="#"
 					onclick='document.getElementById("list").submit()'>Liste des
 						solutions</a></li>
-				<li class="nav-item"><form id="mySol" action="mybugs"
-						method="post">
+				<li class="nav-item"><form id="mySol" action="mybugs">
 						<input type="hidden" />
 					</form> <a class="nav-link" href="#"
 					onclick='document.getElementById("mySol").submit()'>Mes
 						solutions</a></li>
 				<li class="nav-item">
 
-					<form id="addSol" action="initaddsoluce" method="post">
+					<form id="addSol" action="initaddsoluce">
 						<input type="hidden" />
 					</form> <a class="nav-link" href="#"
 					onclick='document.getElementById("addSol").submit()'>Ajouter
@@ -87,8 +85,7 @@ body {
 				</li>
 			</ul>
 
-			<form class="form-inline mt-2 mt-md-0" action="disconnect"
-				method="post">
+			<form class="form-inline mt-2 mt-md-0" action="disconnect">
 				<i class="nav-item nav-link" style="color: #eff2f3; margin-right:20px;">Bonjour ${Utilisateur.prenom}</i>
 				<button class="btn btn-danger my-2 my-sm-0" type="submit">Se
 					deconnecter</button>
@@ -154,7 +151,7 @@ body {
 						<td class="ellipsis"><c:out value="${solution.demarche}" /></td>
 
 						<td class="text-center">
-							<form action="focus" method="POST">
+							<form action="focus">
 								<input name="Id" type="hidden" value="${solution.idSolution}">
 								<button type="submit" class="btn btn-outline-secondary">
 									<span class="fa fa-search"></span> Consulter
@@ -171,7 +168,7 @@ body {
 		</table>
 
 		<div class="col-4 mt-5">
-			<form action="initaddsoluce" method="post">
+			<form action="initaddsoluce">
 				<button class="btn btn-success"><span class="fa fa-plus"></span> Ajouter une solution</button>
 			</form>
 		</div>
