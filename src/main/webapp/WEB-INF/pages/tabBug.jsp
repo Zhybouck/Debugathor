@@ -10,7 +10,7 @@
 
 <head>
 <title>Liste des solutions</title>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Lien pour Bootstrap -->
@@ -44,6 +44,13 @@ body {
 
 .datatable tfoot .filter-column {
 	width: 100% !important;
+}
+
+.ellipsis {
+    max-width: 40px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 </style>
 
@@ -82,6 +89,7 @@ body {
 
 			<form class="form-inline mt-2 mt-md-0" action="disconnect"
 				method="post">
+				<i class="nav-item nav-link" style="color: #eff2f3; margin-right:20px;">Bonjour ${Utilisateur.prenom}</i>
 				<button class="btn btn-danger my-2 my-sm-0" type="submit">Se
 					deconnecter</button>
 			</form>
@@ -142,8 +150,8 @@ body {
 						<td><c:out value="${solution.type}" /></td>
 						<td><c:out value="${solution.dateBug}" /></td>
 						<td><c:out value="${solution.titre}" /></td>
-						<td><c:out value="${solution.description}" /></td>
-						<td><c:out value="${solution.demarche}" /></td>
+						<td class="ellipsis"><c:out value="${solution.description}" /></td>
+						<td class="ellipsis"><c:out value="${solution.demarche}" /></td>
 
 						<td class="text-center">
 							<form action="focus" method="POST">
@@ -230,6 +238,7 @@ body {
 				}
 			});
 		});
+
 	</script>
 
 </body>

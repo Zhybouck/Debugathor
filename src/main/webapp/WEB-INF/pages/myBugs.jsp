@@ -10,7 +10,7 @@
 
 <head>
 <title>Mes solutions</title>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Lien pour Bootstrap -->
@@ -79,6 +79,9 @@ body {
 
 			<form class="form-inline mt-2 mt-md-0" action="disconnect"
 				method="post">
+				<i class="nav-item nav-link"
+					style="color: #eff2f3; margin-right: 20px;">Bonjour
+					${Utilisateur.prenom}</i>
 				<button class="btn btn-danger my-2 my-sm-0" type="submit">Se
 					deconnecter</button>
 			</form>
@@ -149,7 +152,7 @@ body {
 							<form action="update" method="POST">
 								<input name="Id" type="hidden" value="${solution.idSolution}">
 								<button type="submit" class="btn btn-outline-secondary">
-									Mise à jour
+									<span class="glyphicon glyphicon-pencil"></span> Mise à jour
 								</button>
 							</form>
 						</td>
@@ -179,6 +182,7 @@ body {
 
 
 	<!-- Les balises script sont à mettre à la fin du body pour éviter de surcharger le chargement de la page -->
+
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script
