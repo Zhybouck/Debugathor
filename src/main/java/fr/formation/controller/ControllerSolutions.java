@@ -129,13 +129,14 @@ public class ControllerSolutions {
 
 	// Cette requête est faite pour ajouter une solution à la base de donnee suite au remplissage du formulaire
 	@RequestMapping(value = "/applyadd", method = RequestMethod.POST)
-	public String saveOne(@ModelAttribute("Solution")Solution solution,
+	public String saveOne(@Valid @ModelAttribute("Solution")Solution solution,
 			@ModelAttribute("Proposition")Proposition prop, Model model ,BindingResult result,
 			HttpSession session, @RequestParam("inputNomLogiciel") String inputNomLogiciel, @RequestParam("inputVersionLogiciel") String versionlogiciel) {
 		
 		if(result.hasErrors()) {
+			model.addAttribute("completer", "Tous les champs doivent être remplis");
 			return "addBug";
-		}
+		} else {
 		
 		boolean logexists  = false;
 		List<Logiciel> logiciels = logserv.findByName(inputNomLogiciel);
@@ -168,6 +169,7 @@ public class ControllerSolutions {
 		model.addAttribute("focusedSol", solserv.findById((solution).getIdSolution()));
 		model.addAttribute("nouvProp",new Proposition());
 		return "focusBug";
+	}
 	}
 
 
