@@ -45,7 +45,7 @@ public class Utilisateur implements java.io.Serializable {
 	@NotEmpty
 	private String rang;
 	@NotEmpty
-	@Email
+	@Email(message = "Veuillez entrer une adresse courriel valide")
 	private String mail;
 	private List<Proposition> propositions = new ArrayList<Proposition>(0);
 

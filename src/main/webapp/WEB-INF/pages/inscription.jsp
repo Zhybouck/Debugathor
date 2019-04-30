@@ -113,7 +113,8 @@ a {
 						Adresse mail
 						<form:input type="mail" id="inputMail" class="form-control mt-1"
 							placeholder="Adresse mail" path="mail" required="required" />
-						<small><c:out value="${alreadyinsc}" /></small>
+						<small style="color: red;"><form:errors path="mail" cssClass="errormsg" /></small>
+						<small style="color: red;"><c:out value="${alreadyinsc}" /></small>
 					</div>
 
 					<div class="form-label-group col-5">
@@ -133,7 +134,7 @@ a {
 							class="confmdp form-control mt-1"
 							placeholder="Confirmer votre mot de passe" required="required" />
 						<div class="text-danger">
-							<small><c:out value="${confMdp}" /></small>
+							<small style="color: red;"><c:out value="${confMdp}" /></small>
 						</div>
 					</div>
 
