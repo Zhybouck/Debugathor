@@ -16,7 +16,6 @@ import org.springframework.stereotype.Repository;
 
 import fr.formation.entities.Logiciel;
 import fr.formation.entities.Proposition;
-import fr.formation.entities.PropositionId;
 import fr.formation.entities.Solution;
 import fr.formation.entities.Utilisateur;
 import fr.formation.services.ILogicielService;
@@ -149,20 +148,19 @@ public class SolutionDAO extends GenericDAO<Solution> implements ISolutionDAO {
 	 */
 	@Override
 	public List<Solution> getByUtilisateur(Utilisateur util) {
-		Long id = util.getIdUtilisateur();
 		Session session = sessionFactory.getCurrentSession();
 
 		// create Criteria
 		CriteriaBuilder builder = session.getCriteriaBuilder();
 		CriteriaQuery<Solution> criteriaQuery = builder.createQuery(Solution.class);
 		Root<Solution> solroot = criteriaQuery.from(Solution.class);
-		Root<Proposition> propidroot = criteriaQuery.from(Proposition.class);
+		Root<Proposition> proproot = criteriaQuery.from(Proposition.class);
 		criteriaQuery.select(solroot); // on sélectionne uniquement les solutions
 		
 		//la jointure est faite dans la 1ere partie puis on applique la condition sur l'id
 		//on doit utiliser propidroot.get("id").get("solutionIdSolution") pour accéder à l'id qui est situé dans PropositionId
-		criteriaQuery.where(builder.equal(propidroot.get("id").get("solutionIdSolution"), solroot.get("idSolution")),
-				builder.equal(propidroot.get("id").get("utilisateurIdUtilisateur"), id));
+		criteriaQuery.where(builder.equal(proproot.get("solution").get("idSolution"), solroot.get("idSolution")),
+				builder.equal(proproot.get("utilisateur"), util));
 		criteriaQuery.groupBy(solroot.get("idSolution"));
 		List<Solution> listutil = session.createQuery(criteriaQuery).getResultList();
 

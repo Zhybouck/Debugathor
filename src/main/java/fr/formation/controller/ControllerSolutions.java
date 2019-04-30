@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.formation.entities.Logiciel;
 import fr.formation.entities.Proposition;
-import fr.formation.entities.PropositionId;
 import fr.formation.entities.Solution;
 import fr.formation.entities.Utilisateur;
 import fr.formation.services.ILogicielService;
@@ -108,10 +107,7 @@ public class ControllerSolutions {
 			java.sql.Date datebug = new java.sql.Date(date.getTime());
 			toUpBug.setDateBug(datebug);
 			List<Proposition> props =  propserv.findAllPropbySolution(toUpBug);
-			Set<Proposition> propsset = new HashSet<Proposition>();
-			for(Proposition p : props)
-				propsset.add(p); 
-			toUpBug.setPropositions(propsset);
+			toUpBug.setPropositions(props);
 			//update
 			solserv.update(toUpBug);
 			
@@ -164,7 +160,6 @@ public class ControllerSolutions {
 		
 		solserv.save(solution);
 		Utilisateur util = (Utilisateur)session.getAttribute("Utilisateur");
-		prop.setId(new PropositionId(util.getIdUtilisateur(), solution.getIdSolution()));
 		prop.setSolution(solution);
 		prop.setUtilisateur(util);
 		java.sql.Date d = new java.sql.Date(date.getTime());
@@ -204,8 +199,6 @@ public class ControllerSolutions {
 	@RequestMapping(value = "/addprop", method = RequestMethod.POST)
 	public String addProposition(HttpSession session, Model model, @ModelAttribute("nouvProp")Proposition proposition,@RequestParam("idSol")Long id) {
 		Utilisateur util = (Utilisateur) session.getAttribute("Utilisateur");
-		PropositionId propId = new PropositionId(util.getIdUtilisateur(), id) ;
-		proposition.setId(propId);
 		java.util.Date date = new java.util.Date();
 		java.sql.Date dateprop = new java.sql.Date(date.getTime());
 		proposition.setDateProp(dateprop);
@@ -214,11 +207,7 @@ public class ControllerSolutions {
 		proposition.setSolution(solution);
 		propserv.save(proposition);
 		List<Proposition> props = propserv.findAllPropbySolution(solution);
-		Set<Proposition> propsset = solution.getPropositions();
-		for(Proposition p : props) {
-			propsset.add(p);
-		}
-		solution.setPropositions(propsset);
+		solution.setPropositions(props);
 		solserv.update(solution);
 		solution = solserv.findById(id);
 		model.addAttribute("focusedSol", solution);

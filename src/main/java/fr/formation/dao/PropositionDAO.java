@@ -94,7 +94,7 @@ public class PropositionDAO extends GenericDAO<Proposition> implements IProposit
 		CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<Proposition> criteriaQuery = builder.createQuery(Proposition.class);
         Root<Proposition> root = criteriaQuery.from(Proposition.class);
-//        CriteriaQuery<Proposition> select = criteriaQuery.select(root);
+        CriteriaQuery<Proposition> select = criteriaQuery.select(root);
         criteriaQuery.where(builder.equal(root.get("utilisateur"), util));
         List<Proposition> listProp = session.createQuery(criteriaQuery).getResultList();
 //        session.close();
@@ -113,7 +113,7 @@ public class PropositionDAO extends GenericDAO<Proposition> implements IProposit
 		CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<Proposition> criteriaQuery = builder.createQuery(Proposition.class);
         Root<Proposition> root = criteriaQuery.from(Proposition.class);
-//        CriteriaQuery<Proposition> select = criteriaQuery.select(root);
+        CriteriaQuery<Proposition> select = criteriaQuery.select(root);
         criteriaQuery.where(builder.equal(root.get("solution"), sol));
         List<Proposition> listProp = session.createQuery(criteriaQuery).getResultList();
 //        session.close();

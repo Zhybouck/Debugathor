@@ -19,7 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 import fr.formation.config.ApplicationContextConfig;
 import fr.formation.config.SpringWebAppInitializer;
 import fr.formation.entities.Proposition;
-import fr.formation.entities.PropositionId;
 import fr.formation.entities.Solution;
 import fr.formation.entities.Utilisateur;
 
@@ -42,14 +41,10 @@ public class PropositionDAOTest {
 	@Rollback(true)
 	public void saveProposition() {
 		Proposition prop = new Proposition();
-		PropositionId propid=new PropositionId();
 		Solution s = solutionDAO.findById(2l);
 		Utilisateur u = UtilisateurDAO.findById(3l);
 		prop.setSolution(s);
 		prop.setUtilisateur(u);
-		propid.setSolutionIdSolution(2l);
-		propid.setUtilisateurIdUtilisateur(3l);
-		prop.setId(propid);
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		java.util.Date datejava=null;
 		try {
