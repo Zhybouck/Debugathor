@@ -60,6 +60,7 @@ public class ControllerSolutions {
 		return "focusBug";
 	}
 
+	
 	@RequestMapping(value = "/focusplusprop", method = RequestMethod.POST)
 	public String focusPlusProp(@RequestParam("Id") Long Id, @ModelAttribute("focusedSol") Solution solution,
 			Model model, HttpSession session, @ModelAttribute("nouvProp") Proposition proposition) {
@@ -118,6 +119,7 @@ public class ControllerSolutions {
 		}
 	}
 
+	//Initialise  ajout d'une solution
 	@RequestMapping(value = "/initaddsoluce", method = RequestMethod.POST)
 	public String initaddsoluce(Solution solution, Model model, BindingResult result) {
 		model.addAttribute("Solution", new Solution());
@@ -126,7 +128,7 @@ public class ControllerSolutions {
 
 	}
 
-	// Cette requête est faite pour ajouter une solution à la base de donnee
+	// Cette requête est faite pour ajouter une solution à la base de donnee suite au remplissage du formulaire
 	@RequestMapping(value = "/applyadd", method = RequestMethod.POST)
 	public String saveOne(@ModelAttribute("Solution")Solution solution,
 			@ModelAttribute("Proposition")Proposition prop, Model model ,BindingResult result,
@@ -171,28 +173,23 @@ public class ControllerSolutions {
 		return "focusBug";
 	}
 
-	// Afin de back d'une page direction l'accueil des Solutions soit a la liste du
-	// tableau
-	@RequestMapping(value = "/back", method = RequestMethod.POST)
-	public String back() {
-		return "redirect:/Solution/init";
-	}
 
-	@RequestMapping(value = "/disconnect", method = RequestMethod.POST)
-	public String endSessionHandlingMethod(HttpSession session) {
-		session.invalidate();
-		return "byebye";
-	}
 
 //Affiche l'ensemble des bugs associés a un utilisateur
 	@RequestMapping(value = "/mybugs", method = RequestMethod.POST)
 	public String printmybugs(HttpSession session, Model model) {
 		Utilisateur util = (Utilisateur) session.getAttribute("Utilisateur");
 		List<Solution> listesol = solserv.getByUtilisateur(util);
-
 		model.addAttribute("listesol", listesol);
-
 		return "myBugs";
+	}
+	
+	//Supprime un bug lié à la session en cours et donc à l'utilisateur connecté
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public String delete(HttpSession session, Utilisateur Utils, @RequestParam("Id") Long id) {
+		Solution solution = solserv.findById(id);
+		solserv.delete(solution);
+		return "redirect:/Solution/mybugs";
 	}
 	
 	
@@ -214,5 +211,18 @@ public class ControllerSolutions {
 		model.addAttribute("nouvProp", new Proposition());
 
 		return "focusBug";
+	}
+	
+	// Afin de back d'une page direction l'accueil des Solutions soit a la liste du
+	// tableau
+	@RequestMapping(value = "/back", method = RequestMethod.POST)
+	public String back() {
+		return "redirect:/Solution/init";
+	}
+
+	@RequestMapping(value = "/disconnect", method = RequestMethod.POST)
+	public String endSessionHandlingMethod(HttpSession session) {
+		session.invalidate();
+		return "byebye";
 	}
 }

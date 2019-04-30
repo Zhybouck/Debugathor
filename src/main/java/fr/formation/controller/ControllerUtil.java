@@ -54,19 +54,23 @@ public class ControllerUtil {
 		} else {
 			log.info("-------------------------L'utilisateur est pas null---------------------");
 			log.info("-------------------------Creation du checkeur---------------------");
-			Utilisateur checkeur = service.getbyMail(utilisateur.getMail());
-			log.info("-------------------------Creation du Checkeur de l'utilisateur---------------------");
+			
+			if (null != (service.getbyMail(utilisateur.getMail()))) {
+				log.info("-------------------------Creation du Checkeur de l'utilisateur---------------------");
 
-			if ((utilisateur.getMail().equals(checkeur.getMail()))) {
-				log.info("-------------------------Cryptage mdp---------------------");
+				Utilisateur checkeur = service.getbyMail(utilisateur.getMail());
 
 				if (LoginUtils.checkmdp(utilisateur.getMdp(), checkeur.getMdp())) {
 					session.setAttribute("Utilisateur", checkeur);
 					return "redirect:/Solution/init";
 				} else {
+					model.addAttribute("Connect", "Mot de passe ou e-mail incorrects");
+
 					return "login";
 				}
 			} else {
+				model.addAttribute("Connect", "Mot de passe ou e-mail incorrects");
+
 				return "login";
 			}
 		}
@@ -92,6 +96,8 @@ public class ControllerUtil {
 			if (null == exist) {
 				if (crea.equals(null)) {
 					log.info("l'utilisateur ne peut pas etre créé car il existe déjà");
+					model.addAttribute("alreadyinsc", "Cette adresse mail est déjà liée à un compte utilisateur");
+					
 					return "inscription";
 				} else {
 					if (result.hasErrors()) {
