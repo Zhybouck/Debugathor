@@ -55,7 +55,7 @@ a {
 
 				<div class="text-center">
 					<img class="img-fluid mt-5 mb-5" src="../resources/img/logoDT.png"
-						width="80%">
+						width="60%">
 				</div>
 
 				<div class="text-center mb-5">

@@ -49,6 +49,13 @@ body {
 .datatable tfoot .filter-column {
 	width: 100% !important;
 }
+
+.ellipsis {
+    max-width: 40px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
 </style>
 
 </head>
@@ -151,8 +158,8 @@ body {
 						<td><c:out value="${solution.type}" /></td>
 						<td><c:out value="${solution.dateBug}" /></td>
 						<td><c:out value="${solution.titre}" /></td>
-						<td><c:out value="${solution.description}" /></td>
-						<td><c:out value="${solution.demarche}" /></td>
+						<td class="ellipsis"><c:out value="${solution.description}" /></td>
+						<td class="ellipsis"><c:out value="${solution.demarche}" /></td>
 
 						<td>
 							<form action="focus" method="POST">

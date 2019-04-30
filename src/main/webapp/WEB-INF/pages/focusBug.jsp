@@ -39,6 +39,7 @@ body {
 	width: 80% !important;
 	margin-right: 150px;
 	margin-left: 90px;
+	hyphens: auto;
 }
 
 .row {
@@ -142,16 +143,16 @@ body {
 					<b>Description : </b>
 				</div>
 
-				<div class="col-8">${focusedSol.description}</div>
-				<div class="col-2"></div>
+				<div class="col-9">${focusedSol.description}</div>
+				<div class="col-1"></div>
 			</div>
 
 			<div class="row ml-1 mb-2">
 				<div class="col-2">
 					<b>Démarche : </b>
 				</div>
-				<div class="col-8">${focusedSol.demarche}</div>
-				<div class="col-2"></div>
+				<div class="col-9">${focusedSol.demarche}</div>
+				<div class="col-1"></div>
 			</div>
 		</div>
 
@@ -195,13 +196,7 @@ body {
 					cette solution</button>
 			</form:form>
 		</div>
-		<!-- 	<div class="col-4 mt-5"> -->
-		<!-- 			<button type="button" class="btn btn-success">Compléter -->
-		<!-- 				cette solution</button> -->
-		<%-- 		</form:form> --%>
-		<!-- 	</div> -->
-
-
+		
 		<!-- Footer -->
 		<hr>
 		<footer class="container-fluid">
