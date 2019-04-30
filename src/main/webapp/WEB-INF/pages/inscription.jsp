@@ -113,7 +113,7 @@ a {
 						Adresse mail
 						<form:input type="mail" id="inputMail" class="form-control mt-1"
 							placeholder="Adresse mail" path="mail" required="required" />
-						<small><form:errors path="mail" cssClass="errormsg" /></small>
+						<small><c:out value="${alreadyinsc}" /></small>
 					</div>
 
 					<div class="form-label-group col-5">

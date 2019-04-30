@@ -152,7 +152,7 @@ body {
 							<form action="update" method="POST">
 								<input name="Id" type="hidden" value="${solution.idSolution}">
 								<button type="submit" class="btn btn-outline-secondary">
-									<span class="glyphicon glyphicon-pencil"></span> Mise à jour
+									<i class="fas fa-sign-out-alt"></i> Mise à jour
 								</button>
 							</form>
 						</td>
