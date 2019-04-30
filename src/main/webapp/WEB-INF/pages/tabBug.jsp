@@ -172,7 +172,7 @@ body {
 
 		<div class="col-4 mt-5">
 			<form action="initaddsoluce" method="post">
-				<button class="btn btn-success">Ajouter une solution</button>
+				<button class="btn btn-success"><span class="fa fa-plus"></span> Ajouter une solution</button>
 			</form>
 		</div>
 

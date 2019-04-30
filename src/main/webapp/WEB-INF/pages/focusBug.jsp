@@ -53,6 +53,7 @@ body {
 	border-width: 5px;
 	margin-right: 150px;
 	margin-left: 90px;
+	hyphens: auto;
 }
 
 .mb-5 {
@@ -141,16 +142,16 @@ body {
 					<b>Description : </b>
 				</div>
 
-				<div class="col-9">${focusedSol.description}</div>
-				<div class="col-1"></div>
+				<div class="col-8">${focusedSol.description}</div>
+				<div class="col-2"></div>
 			</div>
 
 			<div class="row ml-1 mb-2">
 				<div class="col-2">
 					<b>Démarche : </b>
 				</div>
-				<div class="col-9">${focusedSol.demarche}</div>
-				<div class="col-1"></div>
+				<div class="col-8">${focusedSol.demarche}</div>
+				<div class="col-2"></div>
 			</div>
 		</div>
 

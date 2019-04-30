@@ -20,6 +20,10 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<link href="/open-iconic/font/css/open-iconic.css" rel="stylesheet">
+
+
+
 <!-- Lien pour les tableaux -->
 <link rel="stylesheet"
 	href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
@@ -111,6 +115,7 @@ body {
 					<th>Démarche</th>
 					<th width="7%">Mise à jour</th>
 					<th width="7%">Consulter</th>
+					<th width="7%">Supprimer</th>
 				</tr>
 			</thead>
 
@@ -133,6 +138,7 @@ body {
 						class="form-control input-sm filter-column"></th>
 					<th></th>
 					<th></th>
+					<th></th>
 				</tr>
 			</tfoot>
 
@@ -149,20 +155,28 @@ body {
 						<td><c:out value="${solution.demarche}" /></td>
 
 						<td>
-							<form action="update" method="POST">
-								<input name="Id" type="hidden" value="${solution.idSolution}">
-								<button type="submit" class="btn btn-outline-secondary">
-									<i class="fas fa-sign-out-alt"></i> Mise à jour
-								</button>
-							</form>
-						</td>
-
-						<td>
 							<form action="focus" method="POST">
 								<input name="Id" type="hidden" value="${solution.idSolution}">
 								<button type="submit" class="btn btn-outline-secondary">
 									<span class="fa fa-search"></span> Consulter
 								</button>
+							</form>
+						</td>
+
+						<td>
+							<form action="update" method="POST">
+								<input name="Id" type="hidden" value="${solution.idSolution}">
+								<button type="submit" class="btn btn-outline-secondary">
+								<span class="fa fa-edit"></span> Mise à jour
+								</button>
+							</form>
+						</td>
+
+						<td>
+							<form action="delete" method="POST">
+								<input name="Id" type="hidden" value="${solution.idSolution}">
+								<button type="submit" class="btn btn-outline-danger">
+								<span class="fa fa-remove"></span> Supprimer</button>
 							</form>
 						</td>
 					</tr>

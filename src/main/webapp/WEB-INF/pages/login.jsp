@@ -88,10 +88,10 @@ a {
 						Mot de passe
 						<form:input type="password" id="inputPassword"
 							class="form-control mt-2" placeholder="Mot de passe" path="mdp" required="required"/>
-						<small><form:errors path="mdp" cssClass="errormsg" /></small>
+						<small style="color: red;"><c:out value="${Connect}" /></small>
 					</div>
 					
-					<small><c:out value="${Connect}" /></small>
+					
 					<button class="btn btn-lg btn-primary btn-block ml-3 mt-4 col-3"
 						type="submit">Se connecter</button>
 				</form:form>
