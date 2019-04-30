@@ -52,7 +52,9 @@ body {
 				</li>
 			</ul>
 			<form class="form-inline mt-2 mt-md-0" action="disconnect">
-				<i class="nav-item nav-link" style="color: #eff2f3; margin-right:20px;">Bonjour ${Utilisateur.prenom}</i>
+				<i class="nav-item nav-link"
+					style="color: #eff2f3; margin-right: 20px;">Bonjour
+					${Utilisateur.prenom}</i>
 				<button class="btn btn-danger my-2 my-sm-0" type="submit">Se
 					deconnecter</button>
 			</form>
@@ -62,29 +64,29 @@ body {
 	<!-- Formulaire d'ajout d'une solution -->
 
 	<div class="container-fluid col-md-6">
-		<h1 class="display-4" style="margin-top: 80px">Mettre à jour une
+		<h1 class="display-4" style="margin-top: 100px">Mettre à jour une
 			solution</h1>
 		<p>Veuillez remplir le formulaire ci-dessous pour mettre à jour
 			une solution.</p>
 		<hr>
-		<form:form class="form-signin ml-5 mt-5 mb-5" action="applyUpdate"
+		<form:form class="form-signin ml-5 mb-5" action="applyUpdate"
 			method="post" modelAttribute="toUpBug">
 
 			<!-- 			<div class="form-group col-md-6"> -->
 			<%-- 				<label for="inputVersion">Version</label> <form:input --%>
 			<%-- 					type="text" class="form-control" id="inputVersion" path="version"/> --%>
 			<!-- 			</div> -->
-			
+
 			<div class="form-group col-md-10">
 				<label for="inputId"></label>
 				<form:input type="hidden" class="form-control" id="inputId"
-					path="idSolution" value="${ToUpBug.idSolution}"/>
+					path="idSolution" value="${ToUpBug.idSolution}" />
 			</div>
-			
+
 			<div class="form-group col-md-10">
 				<label for="inputType">Type de bug</label>
 				<form:input type="text" class="form-control" id="inputType"
-					path="Type" value="${ToUpBug.type}"/>
+					path="Type" value="${ToUpBug.type}" />
 			</div>
 
 			<div class="form-group col-md-10">
@@ -112,12 +114,14 @@ body {
 
 			<div class="form-group col-md-6">
 				<label for="inputNomLogiciel">Nom du logiciel</label> <input
-					type="text" class="form-control" name="inputNomLogiciel" />
+					type="text" class="form-control" name="inputNomLogiciel"
+					value="<c:out value="${Logiciel.nomLogiciel}"/>" />
 			</div>
 
 			<div class="form-group col-md-6">
 				<label for="inputVersionLogiciel">Version du logiciel</label> <input
-					type="text" class="form-control" name="inputVersionLogiciel" />
+					type="text" class="form-control" name="inputVersionLogiciel"
+					value="<c:out value="${Logiciel.version}"/>" />
 			</div>
 
 			<!-- Importer le fichier Log -->
@@ -131,25 +135,21 @@ body {
 			<%-- 			</form> --%>
 
 			<!-- Bouton d'annulation et de confirmation d'ajout-->
-			<div class="container-fluid form-group row col-md-6 ml-5 mb-5">
-
-
-
-					<button class="btn btn-success" type="submit" style="width: 120px;">Confirmer</button>
-
-			</div>
-
+			<div class="container-fluid row col-6 mt-5 mb-5 ml-2">
+				<button class="btn btn-success" type="submit" style="width: 120px;">Confirmer</button>
 		</form:form>
+
 		<form class="form-inline" action="back">
 			<button class="btn btn-outline-secondary" type="submit"
 				style="width: 120px;">Annuler</button>
 		</form>
+	</div>
 
-		<!-- Footer -->
-		<hr>
-		<footer class="container-fluid">
-			<p>&copy; Debugathor 2019</p>
-		</footer>
+	<!-- Footer -->
+	<hr>
+	<footer class="container-fluid">
+		<p>&copy; Debugathor 2019</p>
+	</footer>
 
 	</div>
 
