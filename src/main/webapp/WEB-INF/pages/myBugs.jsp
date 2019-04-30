@@ -239,7 +239,7 @@ body {
 	<!-- 	JS pour les filtres et les tris du tableau -->
 
 	<script>
-		var dataTable = $('.datatable').DataTable({"pagingType":"full_numbers"});
+		var dataTable = $('.datatable').DataTable();
 
 		// 		Filtre dans les colonnes
 		dataTable.columns().every(function() {
