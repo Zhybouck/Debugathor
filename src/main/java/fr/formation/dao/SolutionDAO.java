@@ -160,10 +160,12 @@ public class SolutionDAO extends GenericDAO<Solution> implements ISolutionDAO {
 		//la jointure est faite dans la 1ere partie puis on applique la condition sur l'id
 		//on doit utiliser propidroot.get("id").get("solutionIdSolution") pour accéder à l'id qui est situé dans PropositionId
 		criteriaQuery.where(builder.equal(proproot.get("solution").get("idSolution"), solroot.get("idSolution")),
-				builder.equal(proproot.get("utilisateur"), util));
+				builder.equal(proproot.get("utilisateur"), util),
+				builder.like(proproot.get("commentaire"), "Creation de la solution le %"),
+				builder.like(proproot.get("commentaire"), "%" + util.getPrenom()+" "+util.getNom()));
 		criteriaQuery.groupBy(solroot.get("idSolution"));
 		List<Solution> listutil = session.createQuery(criteriaQuery).getResultList();
-
+		
 		return listutil;
 	}
 }
