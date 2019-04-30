@@ -58,7 +58,7 @@ public class SolutionDAOTest {
 		sol.setDemarche(
 				"avec le débug on peut voir ou ca bug du coup on peut par exemple initialiser sa variable à 1 comme ca plus de null pointer");
 		sol.setTechnologie("java");
-		Logiciel l=logicielDAO.findById(1l);
+		Logiciel l=logicielDAO.findById(21l);
 		sol.setLogiciel(l);
 		List<Solution> sols = solutionDAO.getAll();
 		int sizeoftable = sols.size();
@@ -71,7 +71,7 @@ public class SolutionDAOTest {
 	@Test
 	@Rollback(true)
 	public void updateSolution() {
-		Solution sol = solutionDAO.findById(1l);
+		Solution sol = solutionDAO.findById(11l);
 		sol.setTitre("test");
 		List<Solution> sols = solutionDAO.getAll();
 		int sizeoftable = sols.size();
@@ -103,7 +103,7 @@ public class SolutionDAOTest {
 		sol.setDemarche(
 				"avec le débug on peut voir ou ca bug du coup on peut par exemple initialiser sa variable à 1 comme ca plus de null pointer");
 		sol.setTechnologie("java");
-		Logiciel l=logicielDAO.findById(1l);
+		Logiciel l=logicielDAO.findById(21l);
 		sol.setLogiciel(l);
 		solutionDAO.save(sol);
 		List<Solution> sols = solutionDAO.getAll();
@@ -121,7 +121,7 @@ public class SolutionDAOTest {
 		java.util.Date datefin=null;
 		try {
 			datedebut = simpleDateFormat.parse("2014/11/11");
-			datefin = simpleDateFormat.parse("2018/01/01");
+			datefin = simpleDateFormat.parse("2020/01/01");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -130,13 +130,13 @@ public class SolutionDAOTest {
 		Date fin = new Date(datefin.getTime());
 		
 		List<Solution> utils = solutionDAO.getByDateBug(debut, fin);
-		assertEquals(utils.size(), 1);
+		assertEquals(utils.size(), 3);
 	}
 	
 	@Test
 	@Rollback(true)
 	public void getSolutionByTitre() {
-		List<Solution> sol = solutionDAO.getByTitre("ca marche po");
+		List<Solution> sol = solutionDAO.getByTitre("test");
 		assertEquals(sol.size(), 1);
 	}
 	
@@ -150,23 +150,36 @@ public class SolutionDAOTest {
 	@Test
 	@Rollback(true)
 	public void getSolutionByIdLogiciel() {
-		List<Solution> sol = solutionDAO.getByidLogiciel(1l);
-		assertEquals(sol.size(), 1);
+		List<Solution> sol = solutionDAO.getByidLogiciel(21l);
+		assertEquals(sol.size(), 2);
 	}
 	
 	@Test
 	@Rollback(true)
 	public void getSolutionByLogiciel() {
-		Logiciel l=logicielDAO.findById(1l);
+		Logiciel l=logicielDAO.findById(21l);
 		List<Solution> sol = solutionDAO.getByLogiciel(l);
-		assertEquals(sol.size(), 1);
+		assertEquals(sol.size(), 2);
 	}
 	
 	@Test
 	@Rollback(true)
 	public void getSolutionByUtilisateur() {
-		Utilisateur u = utilisateurDAO.findById(1l);
+		Utilisateur u = utilisateurDAO.findById(8l);
 		List<Solution> sol = solutionDAO.getByUtilisateur(u);
 		assertEquals(sol.size(), 2);
+	}
+	
+	@Test
+	public void findByIdSolution() {
+		Solution sol = new Solution();
+		sol=solutionDAO.findById(13l);
+		assertEquals(sol.getDescription(),"c'est un bug");
+	}
+	
+	@Test
+	public void getAllSolution() {
+		List<Solution> sols = solutionDAO.getAll();
+		assertEquals(sols.size(), 3);
 	}
 }

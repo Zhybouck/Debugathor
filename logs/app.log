@@ -1,0 +1,9 @@
+30 avr. 2019 10:40:36,715 {http-nio-8080-exec-3} INFO  fr.formation.controller.ControllerUtil  - -------------------------Login---------------------
+30 avr. 2019 10:40:36,717 {http-nio-8080-exec-3} INFO  fr.formation.controller.ControllerUtil  - -------------------------L'utilisateur est pas null---------------------
+30 avr. 2019 10:40:36,717 {http-nio-8080-exec-3} INFO  fr.formation.controller.ControllerUtil  - -------------------------Creation du checkeur---------------------
+30 avr. 2019 10:40:37,230 {http-nio-8080-exec-3} INFO  fr.formation.controller.ControllerUtil  - -------------------------Creation du Checkeur de l'utilisateur---------------------
+30 avr. 2019 10:40:37,231 {http-nio-8080-exec-3} INFO  fr.formation.controller.ControllerUtil  - -------------------------Cryptage mdp---------------------
+30 avr. 2019 10:58:47,101 {http-nio-8080-exec-4} INFO  fr.formation.controller.ControllerUtil  - -------------------------Login---------------------
+30 avr. 2019 10:58:47,103 {http-nio-8080-exec-4} INFO  fr.formation.controller.ControllerUtil  - -------------------------L'utilisateur est pas null---------------------
+30 avr. 2019 10:58:47,103 {http-nio-8080-exec-4} INFO  fr.formation.controller.ControllerUtil  - -------------------------Creation du checkeur---------------------
+30 avr. 2019 10:58:47,941 {http-nio-8080-exec-4} INFO  fr.formation.controller.ControllerUtil  - -------------------------Creation du Checkeur de l'utilisateur---------------------

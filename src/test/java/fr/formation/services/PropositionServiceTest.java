@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.formation.config.ApplicationContextConfig;
 import fr.formation.config.SpringWebAppInitializer;
+import fr.formation.entities.Logiciel;
 import fr.formation.entities.Proposition;
 import fr.formation.entities.Solution;
 import fr.formation.entities.Utilisateur;
@@ -41,8 +42,8 @@ public class PropositionServiceTest {
 	@Rollback(true)
 	public void saveProposition() {
 		Proposition prop = new Proposition();
-		Solution s = solutionService.findById(2l);
-		Utilisateur u = UtilisateurService.findById(3l);
+		Solution s = solutionService.findById(11l);
+		Utilisateur u = UtilisateurService.findById(8l);
 		prop.setSolution(s);
 		prop.setUtilisateur(u);
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
@@ -68,7 +69,7 @@ public class PropositionServiceTest {
 	@Test
 	@Rollback(true)
 	public void updateProposition() {
-		Solution sol = solutionService.findById(1l);
+		Solution sol = solutionService.findById(11l);
 		List<Proposition> props = propositionService.findAllPropbySolution(sol);
 		Proposition prop= props.get(0);
 		prop.setCommentaire("on a update le commentaire");
@@ -84,12 +85,20 @@ public class PropositionServiceTest {
 	@Test
 	@Rollback(true)
 	public void deleteProposition() {
-		Solution s = solutionService.findById(2l);
+		Solution s = solutionService.findById(11l);
 		Proposition prop = propositionService.findAllPropbySolution(s).get(0);
 		List<Proposition> props=propositionService.getAll();
 		int sizeoftable=props.size();
 		propositionService.delete(prop);
 		props=propositionService.getAll();
 		assertEquals(props.size(),sizeoftable-1);
+	}
+
+	
+	
+	@Test
+	public void getAllProposition() {
+		List<Proposition> props = propositionService.getAll();
+		assertEquals(props.size(), 9);
 	}
 }

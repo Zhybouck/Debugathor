@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.formation.config.ApplicationContextConfig;
 import fr.formation.config.SpringWebAppInitializer;
+import fr.formation.entities.Logiciel;
 import fr.formation.entities.Proposition;
 import fr.formation.entities.Solution;
 import fr.formation.entities.Utilisateur;
@@ -41,8 +42,8 @@ public class PropositionDAOTest {
 	@Rollback(true)
 	public void saveProposition() {
 		Proposition prop = new Proposition();
-		Solution s = solutionDAO.findById(2l);
-		Utilisateur u = UtilisateurDAO.findById(3l);
+		Solution s = solutionDAO.findById(11l);
+		Utilisateur u = UtilisateurDAO.findById(8l);
 		prop.setSolution(s);
 		prop.setUtilisateur(u);
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
@@ -68,7 +69,7 @@ public class PropositionDAOTest {
 	@Test
 	@Rollback(true)
 	public void updateProposition() {
-		Solution sol = solutionDAO.findById(1l);
+		Solution sol = solutionDAO.findById(11l);
 		List<Proposition> props = propositionDAO.findAllPropbySolution(sol);
 		Proposition prop= props.get(0);
 		prop.setCommentaire("on a update le commentaire");
@@ -84,12 +85,18 @@ public class PropositionDAOTest {
 	@Test
 	@Rollback(true)
 	public void deleteProposition() {
-		Solution s = solutionDAO.findById(2l);
+		Solution s = solutionDAO.findById(11l);
 		Proposition prop = propositionDAO.findAllPropbySolution(s).get(0);
 		List<Proposition> props=propositionDAO.getAll();
 		int sizeoftable=props.size();
 		propositionDAO.delete(prop);
 		props=propositionDAO.getAll();
 		assertEquals(props.size(),sizeoftable-1);
+	}
+	
+	@Test
+	public void getAllProposition() {
+		List<Proposition> props = propositionDAO.getAll();
+		assertEquals(props.size(), 9);
 	}
 }

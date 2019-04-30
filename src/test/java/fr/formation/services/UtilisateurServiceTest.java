@@ -61,7 +61,7 @@ public class UtilisateurServiceTest {
 	@Test
 	@Rollback(true)
 	public void updateUtilisateur() {
-		Utilisateur util = utilisateurService.findById(1l);
+		Utilisateur util = utilisateurService.findById(8l);
 		util.setNom("test");
 		List<Utilisateur> utils=utilisateurService.getAll();
 		int sizeoftable=utils.size();
@@ -109,7 +109,7 @@ public class UtilisateurServiceTest {
 		java.util.Date datefin=null;
 		try {
 			datedebut = simpleDateFormat.parse("2014/11/11");
-			datefin = simpleDateFormat.parse("2018/01/01");
+			datefin = simpleDateFormat.parse("2020/01/01");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -118,16 +118,16 @@ public class UtilisateurServiceTest {
 		Date fin = new Date(datefin.getTime());
 		
 		List<Utilisateur> utils = utilisateurService.getByDateInsc(debut, fin);
-		assertEquals(utils.size(), 1);
+		assertEquals(utils.size(), 4);
 	}
 	
 	@Test
 	@Rollback(true)
 	public void getUtilisateurbyMail() {
-		String mail="test@mail";
+		String mail="oli@fisch.fr";
 		Utilisateur util = utilisateurService.getbyMail(mail);
 		assertNotNull(util);
-		assertEquals(util.getNom(), "fisch");
+		assertEquals(util.getNom(), "FISCHER");
 	}
 	
 	@Test
@@ -154,7 +154,7 @@ public class UtilisateurServiceTest {
 		String prenom="oli";
 		List<Utilisateur> utils = utilisateurService.getbyFirstName(prenom);
 		assertNotNull(utils);
-		assertEquals(utils.get(0).getNom(), "fisch");
+		assertEquals(utils.get(0).getNom(), "FISCHER");
 	}
 	
 	@Test
@@ -163,6 +163,19 @@ public class UtilisateurServiceTest {
 		String nom="fisch";
 		List<Utilisateur> utils = utilisateurService.getbyLastName(nom);
 		assertNotNull(utils);
-		assertEquals(utils.get(0).getPrenom(), "oli");
+		assertEquals(utils.get(0).getPrenom(), "Olivier");
+	}
+	
+	@Test
+	public void findByIdUtilisateur() {
+		Utilisateur util = new Utilisateur();
+		util=utilisateurService.findById(8l);
+		assertEquals(util.getMail(),"oli@fisch.fr");
+	}
+	
+	@Test
+	public void getAllSolution() {
+		List<Utilisateur> sols = utilisateurService.getAll();
+		assertEquals(sols.size(), 4);
 	}
 }

@@ -31,33 +31,31 @@ public class LogicielServiceTest {
 	@Rollback(true)
 	public void saveLogiciel() {
 		Logiciel log = new Logiciel();
-		log.setIdLogiciel(888l);
 		log.setNomLogiciel("test");
 		log.setVersion("v12.3");
 		logicielService.save(log);
 		List<Logiciel> logs=logicielService.getAll();
 		
-		assertEquals(logs.size(),4);
+		assertEquals(logs.size(),5);
 	}
 	
 	@Test
 	@Rollback(true)
 	public void updateLogiciel() {
-		Logiciel log = logicielService.findById(3l);
+		Logiciel log = logicielService.findById(18l);
 		log.setNomLogiciel("test");
 		log.setVersion("v22222");
 		logicielService.update(log);
 		List<Logiciel> logs=logicielService.getAll();
 		
-		assertEquals(logs.size(),3);
-		assertEquals(logicielService.findById(3l),log);
+		assertEquals(logs.size(),4);
+		assertEquals(logicielService.findById(18l),log);
 	}
 	
 	@Test
 	@Rollback(true)
 	public void deleteLogiciel() {
 		Logiciel log = new Logiciel();
-		log.setIdLogiciel(888l);
 		log.setNomLogiciel("test");
 		log.setVersion("v12.3");
 		logicielService.save(log);
@@ -65,13 +63,27 @@ public class LogicielServiceTest {
 		List<Logiciel> logs=logicielService.getAll();
 		System.out.println(logs.size());
 		
-		assertEquals(logs.size(),3);
+		assertEquals(logs.size(),4);
 	}
 	
 	@Test
 	public void findByName(){
 		List<Logiciel> logs=logicielService.findByName("eclipse");
 		assertNotNull(logs);
-		assertEquals(logs.size(), 2);
+		assertEquals(logs.size(), 3);
+	}
+	
+	@Test
+	public void findByIdLogiciel() {
+		Logiciel log = new Logiciel();
+		log=logicielService.findById(18l);
+		assertEquals(log.getNomLogiciel(),"test");
+		assertEquals(log.getVersion(),"test");
+	}
+	
+	@Test
+	public void getAllLogiciel() {
+		List<Logiciel> logs = logicielService.getAll();
+		assertEquals(logs.size(), 4);
 	}
 }

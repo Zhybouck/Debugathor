@@ -71,7 +71,14 @@ public class ApplicationContextConfig {
      // See: ds-hibernate-cfg.properties
      properties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
      properties.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
-     properties.put("current_session_context_class", env.getProperty("current_session_context_class"));
+     properties.put("hibernate.format_sql", env.getProperty("hibernate.format_sql"));
+//     properties.put("hibernate.connection.useUnicode", env.getProperty("hibernate.connection.useUnicode"));
+//     properties.put("current_session_context_class", env.getProperty("current_session_context_class"));
+//     properties.put("current_session_context_class", env.getProperty("current_session_context_class"));
+//     properties.put("current_session_context_class", env.getProperty("current_session_context_class"));
+//     <property name="hibernate.connection.CharSet">utf8</property>
+//     <property name="hibernate.connection.characterEncoding">utf8</property>
+//     <property name="hibernate.connection.useUnicode">true</property>
       
  
      LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
