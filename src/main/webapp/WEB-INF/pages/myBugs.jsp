@@ -110,12 +110,12 @@ body {
 			<thead>
 				<tr>
 					<th width="3%">ID</th>
-					<th>Technologie</th>
-					<th>Type</th>
-					<th>Date</th>
-					<th>Titre</th>
-					<th>Description</th>
-					<th>Démarche</th>
+					<th width="5%">Date</th>
+					<th width="5%">Technologie</th>
+					<th width="10%">Type</th>
+					<th width="10%">Titre</th>
+					<th width="23%">Description</th>
+					<th width="23%">Démarche</th>
 					<th width="7%">Mise à jour</th>
 					<th width="7%">Consulter</th>
 					<th width="7%">Supprimer</th>
@@ -150,9 +150,9 @@ body {
 				<c:forEach items="${listesol}" var="solution">
 					<tr>
 						<td><c:out value="${solution.idSolution}" /></td>
+						<td><c:out value="${solution.dateBug}" /></td>
 						<td><c:out value="${solution.technologie}" /></td>
 						<td><c:out value="${solution.type}" /></td>
-						<td><c:out value="${solution.dateBug}" /></td>
 						<td><c:out value="${solution.titre}" /></td>
 						<td class="ellipsis"><c:out value="${solution.description}" /></td>
 						<td class="ellipsis"><c:out value="${solution.demarche}" /></td>
