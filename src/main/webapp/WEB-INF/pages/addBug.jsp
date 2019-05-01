@@ -103,12 +103,12 @@ body {
 			<div class="form-group col-md-10">
 				<label for="inputDescription">Description du bug</label>
 				<form:textarea class="form-control" id="inputDescription" rows="6"
-					path="Description" required="required"></form:textarea>
+					path="Description" required="required" name="description"></form:textarea>
 			</div>
 			<div class="form-group col-md-10">
 				<label for="inputDemarche">Démarche à suivre</label>
 				<form:textarea class="form-control" id="inputDemarche" rows="6"
-					path="Demarche" required="required"></form:textarea>
+					path="Demarche" required="required" name="demarche"></form:textarea>
 			</div>
 
 			<!-- Importer le fichier Log -->
@@ -154,7 +154,17 @@ body {
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-
+		
+                <script src="https://cdn.ckeditor.com/4.11.3/standard/ckeditor.js"></script>
+                
+                
+                <script>
+                        CKEDITOR.replace( 'inputDescription' );
+                </script>
+               
+ 				<script>
+                        CKEDITOR.replace( 'inputDemarche' );
+                </script>
+               
 </body>
 </html>
