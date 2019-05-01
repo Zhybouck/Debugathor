@@ -42,7 +42,7 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
 				"-------------------------La Session N'existe pas ou l'URL n'est pas autorisée sans session---------------------");
 
 		response.sendRedirect(request.getContextPath());
-		return true;
+		return false;
 
 	}
 
