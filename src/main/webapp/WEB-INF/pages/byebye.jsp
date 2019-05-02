@@ -71,7 +71,7 @@ body {
 
 		<!-- Jumbotron -->
 		<div class="jumbotron text-center">
-			<img class="img-fluid" src="../resources/img/logoDT.png" width="30%">
+			<img class="img-fluid" src="../resources/img/logoDT.png" width="25%">
 		</div>
 	</div>
 	
