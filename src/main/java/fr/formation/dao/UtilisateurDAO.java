@@ -45,6 +45,7 @@ public class UtilisateurDAO extends GenericDAO<Utilisateur> implements IUtilisat
         CriteriaQuery<Utilisateur> select = criteriaQuery.select(root);
         criteriaQuery.where(builder.equal(root.get("mail"), mail));
         Utilisateur util=null;
+        //on utilise un try catch parce que le getsingleresult crash si aucun utilisateur est trouvé
         try {
         util  = session.createQuery(criteriaQuery).getSingleResult();
         }catch(NoResultException e) {
@@ -70,6 +71,7 @@ public class UtilisateurDAO extends GenericDAO<Utilisateur> implements IUtilisat
 		CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<Utilisateur> criteriaQuery = builder.createQuery(Utilisateur.class);
         Root<Utilisateur> root = criteriaQuery.from(Utilisateur.class);
+      //la date d'inscription de l'utilisateur doit etre comprise entre les dates entrées en argument
         criteriaQuery.where(builder.between(root.get("dateInsc"), debutsql, finsql));
         List<Utilisateur> listutil  = session.createQuery(criteriaQuery).getResultList();
 //        session.close();
@@ -128,6 +130,7 @@ public class UtilisateurDAO extends GenericDAO<Utilisateur> implements IUtilisat
         CriteriaQuery<Utilisateur> criteriaQuery = builder.createQuery(Utilisateur.class);
         Root<Utilisateur> root = criteriaQuery.from(Utilisateur.class);
         CriteriaQuery<Utilisateur> select = criteriaQuery.select(root);
+      //like pour récupérer les utilisateurs dont le nom contient la chaine de caractère
         criteriaQuery.where(builder.like(root.get("nom"),"%"+name+"%"));
         List<Utilisateur> list  = session.createQuery(criteriaQuery).getResultList();
 //        session.close();
@@ -148,6 +151,7 @@ public class UtilisateurDAO extends GenericDAO<Utilisateur> implements IUtilisat
         CriteriaQuery<Utilisateur> criteriaQuery = builder.createQuery(Utilisateur.class);
         Root<Utilisateur> root = criteriaQuery.from(Utilisateur.class);
         CriteriaQuery<Utilisateur> select = criteriaQuery.select(root);
+        //like pour récupérer les utilisateurs dont le prénom contient la chaine de caractère
         criteriaQuery.where(builder.like(root.get("prenom"),"%"+name+"%"));
         List<Utilisateur> list  = session.createQuery(criteriaQuery).getResultList();
 //        session.close();

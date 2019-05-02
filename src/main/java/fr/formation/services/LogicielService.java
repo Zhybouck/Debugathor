@@ -18,7 +18,8 @@ public class LogicielService implements ILogicielService{
 	
 	public LogicielService() {
 	}
-
+	
+	
 	@Override
 	public void save(Logiciel obj) {
 		logDao.save(obj);
@@ -42,14 +43,14 @@ public class LogicielService implements ILogicielService{
 		return logDao.findById(empId);
 	}
 	
-	/* (non-Javadoc)
-	 * @see fr.formation.services.ILogicielService#getAll()
-	 */
 	@Override
 	public List<Logiciel> getAll() {
 		return logDao.getAll();
 	}
 
+	/*
+	 * recupère une liste de logiciels en fonction de son nom
+	 */
 	@Override
 	public List<Logiciel> findByName(String name) {
 		return logDao.findByName(name);

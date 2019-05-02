@@ -144,7 +144,9 @@ public class SolutionDAO extends GenericDAO<Solution> implements ISolutionDAO {
 	}
 
 	/*
-	 * recupère les solutions liées a un utilisateur
+	 * recupère les solutions liées a un utilisateur. Cet utilisateur a CRÉÉ la solution
+	 * (la solution est lié à la proposition par le message de création de la solution)
+	 * voir controlleur solution /applyadd
 	 */
 	@Override
 	public List<Solution> getByUtilisateur(Utilisateur util) {
@@ -159,6 +161,7 @@ public class SolutionDAO extends GenericDAO<Solution> implements ISolutionDAO {
 		
 		//la jointure est faite dans la 1ere partie puis on applique la condition sur l'id
 		//on doit utiliser propidroot.get("id").get("solutionIdSolution") pour accéder à l'id qui est situé dans PropositionId
+		//la partie like permet de récupérer uniquement les solutions CRÉÉES par l'utilisateur sélectionné
 		criteriaQuery.where(builder.equal(proproot.get("solution").get("idSolution"), solroot.get("idSolution")),
 				builder.equal(proproot.get("utilisateur"), util),
 				builder.like(proproot.get("commentaire"), "Creation de la solution le %"),

@@ -59,22 +59,34 @@ public class SolutionService implements ISolutionService{
 	public List<Solution> getByTitre(String titre) {
 		return solDao.getByTitre(titre);
 	}
-
+	
+	/*
+	 * recupère une liste de solutions en fonction de la technologie associée
+	 */
 	@Override
 	public List<Solution> getByTechno(String technologie) {
 		return solDao.getByTechno(technologie);
 	}
 
+	/*
+	 * récupère une liste de solutions en fonction de l'id du logiciel
+	 */
 	@Override
 	public List<Solution> getByidLogiciel(Long idLogiciel) {
 		return solDao.getByidLogiciel(idLogiciel);
 	}
 
+	/*
+	 * récupère une liste de solutions en fonction du logiciel
+	 */
 	@Override
 	public List<Solution> getByLogiciel(Logiciel logiciel) {
 		return solDao.getByLogiciel(logiciel);
 	}
 
+	/*
+	 * recupère les solutions CRÉÉES par un certain utilisateur
+	 */
 	@Override
 	public List<Solution> getByUtilisateur(Utilisateur util) {
 		return solDao.getByUtilisateur(util);

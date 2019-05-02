@@ -43,45 +43,54 @@ public class UtilisateurService implements IGenericService<Utilisateur>, IUtilis
 		return utilDao.findById(empId);
 	}
 	
-	/* (non-Javadoc)
-	 * @see fr.formation.services.ILogicielService#getAll()
-	 */
 	@Override
 	public List<Utilisateur> getAll() {
 		return utilDao.getAll();
 	}
 
-
+	/*
+	 * recupère un utilisateur par son mail
+	 */
 	@Override
 	public Utilisateur getbyMail(String mail) {
 		return utilDao.getbyMail(mail);
 	}
 
-
+	/*
+	 * recupère un utilisateur inscrit entre deux dates
+	 */
 	@Override
 	public List<Utilisateur> getByDateInsc(Date debut, Date fin) {
 		return utilDao.getByDateInsc(debut, fin);
 	}
 
-
+	/*
+	 * recupère un utilisateur par son rang
+	 */
 	@Override
 	public List<Utilisateur> getbyRank(String rank) {
 		return utilDao.getbyRank(rank);
 	}
 
-
+	/*
+	 * recupère un utilisateur par son poste
+	 */
 	@Override
 	public List<Utilisateur> getbyPoste(String poste) {
 		return utilDao.getbyPoste(poste);
 	}
 
-
+	/*
+	 * recupère un utilisateur par son prénom
+	 */
 	@Override
 	public List<Utilisateur> getbyFirstName(String name) {
 		return utilDao.getbyFirstName(name);
 	}
 
-
+	/*
+	 * recupère un utilisateur par son nom
+	 */
 	@Override
 	public List<Utilisateur> getbyLastName(String name) {
 		return utilDao.getbyLastName(name);

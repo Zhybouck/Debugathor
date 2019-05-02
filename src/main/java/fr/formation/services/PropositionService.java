@@ -47,12 +47,18 @@ public class PropositionService implements IPropositionService{
 	public List<Proposition> getAll() {
 		return propDao.getAll();
 	}
-
+	
+	/*
+	 * recupère toutes les propositions liées à un utilisateur
+	 */
 	@Override
 	public List<Proposition> findAllPropbyUser(Utilisateur util) {
 		return propDao.findAllPropbyUser(util);
 	}
 
+	/*
+	 * recupère toutes les propositions liées à une solution
+	 */
 	@Override
 	public List<Proposition> findAllPropbySolution(Solution sol) {
 		return propDao.findAllPropbySolution(sol);
