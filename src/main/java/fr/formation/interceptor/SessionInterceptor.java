@@ -30,16 +30,16 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
 			throws Exception {
 		if (request.getServletPath().equals("/user/init") || request.getServletPath().equals("/user/id")
 				|| request.getServletPath().equals("/user/addone") || request.getServletPath().equals("/user/add")) {
-			log.info("-------------------------Initialisation des utilisateurs---------------------");
+			log.info("-------------------------Pages de connexions, accès autorisé par défaut--------------------");
 			return true;
 		}
 		if (null != request.getSession().getAttribute("Utilisateur")) {
 			log.info(
-					"-----------------------------------------La Session Existe---------------------------------------");
+					"-----------------------------------------La session et l'utilisateur existe---------------------------------------");
 			return true;
 		}
 		log.info(
-				"-------------------------La Session N'existe pas ou l'URL n'est pas autorisée sans session---------------------");
+				"-------------------------La Session N'existe pas ou l'accès à l'URL n'est pas autorisée sans session---------------------");
 
 		response.sendRedirect(request.getContextPath());
 		return false;

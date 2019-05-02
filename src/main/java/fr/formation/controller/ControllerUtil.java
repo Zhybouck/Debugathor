@@ -78,6 +78,8 @@ public class ControllerUtil {
 
 	@RequestMapping(value = "/addone")
 	public String addUser(Model model) {
+		log.debug("-------------------------Initialisation de l'ajout d'un utilisateur---------------------");
+
 		model.addAttribute("creationutilisateur", new Utilisateur());
 		return "inscription";
 	}
@@ -85,6 +87,7 @@ public class ControllerUtil {
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String add(@Validated @ModelAttribute("creationutilisateur") Utilisateur crea, BindingResult result,
 			Model model, @RequestParam("inputConfPassword") String inputConfPassword) {
+		log.debug("-------------------------Debut ajout utilisateur---------------------");
 
 		if(!crea.getMdp().equals(inputConfPassword)) {
 			model.addAttribute("confMdp", "Les mots de passes ne correspondent pas");
@@ -104,6 +107,8 @@ public class ControllerUtil {
 						log.info("l'utilisateur ne peut pas être créé à cause d'erreurs dans le formulaire");
 						return "inscription";
 					} else {
+						log.debug("-------------------------Ajout Utilisateur---------------------");
+
 						crea.setDateInsc(d);
 						crea.setMdp(LoginUtils.hashPassword(crea.getMdp()));
 						service.save(crea);
