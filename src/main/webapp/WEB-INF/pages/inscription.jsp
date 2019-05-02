@@ -82,7 +82,7 @@ a {
 			<div class="col-8 div-right">
 
 				<form:form class="form-signin ml-5 mt-5 mb-5" action="add"
-					method="post" modelAttribute="creationutilisateur">
+					method="post" modelAttribute="creationutilisateur" onsubmit="return confirm('Confirmez-vous votre inscription sur Debugathor ?');">
 					<h1 class="display-4" style="margin-bottom: 15px;">Inscription</h1>
 					<h6>
 						Veuillez remplir le formulaire ci-dessous pour créer un compte. <br>
@@ -150,7 +150,7 @@ a {
 					</div>
 
 					<button class="btn btn-lg btn-primary btn-block ml-3 col-3 mt-3"
-						type="submit">S'inscrire</button>
+						type="submit"> S'inscrire</button>
 
 
 				</form:form>

@@ -85,7 +85,7 @@ body {
 						une solution</a></li>
 			</ul>
 
-			<form class="form-inline mt-2 mt-md-0" action="disconnect">
+			<form class="form-inline mt-2 mt-md-0" action="disconnect" onsubmit="return confirm('Etes-vous sûr de vouloir vous déconnecter ?');">
 				<i class="nav-item nav-link"
 					style="color: #eff2f3; margin-right: 20px;">Bonjour
 					${Utilisateur.prenom}</i>
@@ -176,7 +176,7 @@ body {
 						</td>
 
 						<td>
-							<form action="delete">
+							<form action="delete" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer cette solution ?');">
 								<input name="Id" type="hidden" value="${solution.idSolution}">
 								<button type="submit" class="btn btn-outline-danger">
 								<span class="fa fa-remove"></span> Supprimer</button>

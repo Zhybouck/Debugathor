@@ -59,7 +59,7 @@ body {
 				</li>
 			</ul>
 			<form class="form-inline mt-2 mt-md-0" action="disconnect"
-				method="post">
+				onsubmit="return confirm('Etes-vous sûr de vouloir vous déconnecter ?');">
 				<i class="nav-item nav-link" style="color: #eff2f3; margin-right:20px;">Bonjour ${Utilisateur.prenom}</i>
 				<button class="btn btn-danger my-2 my-sm-0" type="submit">Se
 					deconnecter</button>
