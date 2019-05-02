@@ -67,61 +67,56 @@ body {
 		<h1 class="display-4" style="margin-top: 100px">Mettre à jour une
 			solution</h1>
 		<p>Veuillez remplir le formulaire ci-dessous pour mettre à jour
-			une solution.</p>
+			une solution. <br> <small>* Tous les champs sont obligatoires.</small></p>
 		<hr>
 		<form:form class="form-signin ml-5 mb-5" action="applyUpdate"
 			method="post" modelAttribute="toUpBug">
 
-			<!-- 			<div class="form-group col-md-6"> -->
-			<%-- 				<label for="inputVersion">Version</label> <form:input --%>
-			<%-- 					type="text" class="form-control" id="inputVersion" path="version"/> --%>
-			<!-- 			</div> -->
-
 			<div class="form-group col-md-10">
 				<label for="inputId"></label>
 				<form:input type="hidden" class="form-control" id="inputId"
-					path="idSolution" value="${ToUpBug.idSolution}" />
+					path="idSolution" value="${ToUpBug.idSolution}" required="required" maxlength="11"/>
 			</div>
 
 			<div class="form-group col-md-10">
 				<label for="inputType">Type de bug</label>
 				<form:input type="text" class="form-control" id="inputType"
-					path="Type" value="${ToUpBug.type}" />
+					path="Type" value="${ToUpBug.type}" required="required" maxlength="45"/>
 			</div>
 
 			<div class="form-group col-md-10">
 				<label for="inputTitre">Titre</label>
 				<form:input type="text" class="form-control" id="inputTitre"
-					path="Titre" />
+					path="Titre" required="required" maxlength="140"/>
 			</div>
 
 			<div class="form-group col-md-10">
 				<label for="inputDescription">Description du bug</label>
 				<form:textarea class="form-control" id="inputDescription" rows="6"
-					path="Description"></form:textarea>
+					path="Description" required="required"></form:textarea>
 			</div>
 			<div class="form-group col-md-10">
 				<label for="inputDemarche">Démarche à suivre</label>
 				<form:textarea class="form-control" id="inputDemarche" rows="6"
-					path="Demarche"></form:textarea>
+					path="Demarche" required="required"></form:textarea>
 			</div>
 
 			<div class="form-group col-md-6">
 				<label for="inputTechnologie">Technologie</label>
 				<form:input type="text" class="form-control" id="inputTechnologie"
-					path="Technologie" />
+					path="Technologie" required="required" maxlength="45"/>
 			</div>
 
 			<div class="form-group col-md-6">
 				<label for="inputNomLogiciel">Nom du logiciel</label> <input
 					type="text" class="form-control" name="inputNomLogiciel"
-					value="<c:out value="${Logiciel.nomLogiciel}"/>" />
+					value="<c:out value="${Logiciel.nomLogiciel}"/>" required="required" maxlength="45"/>
 			</div>
 
 			<div class="form-group col-md-6">
 				<label for="inputVersionLogiciel">Version du logiciel</label> <input
 					type="text" class="form-control" name="inputVersionLogiciel"
-					value="<c:out value="${Logiciel.version}"/>" />
+					value="<c:out value="${Logiciel.version}"/>" required="required" maxlength="45"/>
 			</div>
 
 			<!-- Importer le fichier Log -->

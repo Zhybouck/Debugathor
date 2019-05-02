@@ -150,10 +150,10 @@ body {
 				<c:forEach items="${listesol}" var="solution">
 					<tr>
 						<td><c:out value="${solution.idSolution}" /></td>
-						<td><c:out value="${solution.dateBug}" /></td>
-						<td><c:out value="${solution.technologie}" /></td>
-						<td><c:out value="${solution.type}" /></td>
-						<td><c:out value="${solution.titre}" /></td>
+						<td class="ellipsis"><c:out value="${solution.dateBug}" /></td>
+						<td class="ellipsis"><c:out value="${solution.technologie}" /></td>
+						<td class="ellipsis"><c:out value="${solution.type}" /></td>
+						<td class="ellipsis"><c:out value="${solution.titre}" /></td>
 						<td class="ellipsis"><c:out value="${solution.description}" /></td>
 						<td class="ellipsis"><c:out value="${solution.demarche}" /></td>
 

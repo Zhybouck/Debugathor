@@ -34,6 +34,14 @@
 a {
 	color: #eff2f3;
 }
+
+.form-label-group {
+	margin-bottom: 15px;
+}
+
+.errormsg {
+	color: red;
+}
 </style>
 
 </head>
@@ -78,14 +86,14 @@ a {
 					<hr>
 
 					<div class="form-label-group col-7">
-						Adresse mail
+						<label for="inputEmail">Adresse mail</label>
 						<form:input type="email" id="inputEmail" class="form-control mt-2"
-							placeholder="Adresse mail" path="mail"  required="required"/>
+							placeholder="Adresse mail" path="mail" required="required"/>
 						<small><form:errors path="mail" cssClass="errormsg" /></small>
 					</div>
 
 					<div class="form-label-group col-5">
-						Mot de passe
+						<label for="inputPassword">Mot de passe</label>
 						<form:input type="password" id="inputPassword"
 							class="form-control mt-2" placeholder="Mot de passe" path="mdp" required="required"/>
 						<small style="color: red;"><c:out value="${Connect}" /></small>

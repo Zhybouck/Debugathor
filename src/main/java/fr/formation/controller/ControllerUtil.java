@@ -117,6 +117,7 @@ public class ControllerUtil {
 					}
 				}
 			} else {
+				model.addAttribute("alreadyinsc", "Cette adresse mail est déjà liée à un compte utilisateur");
 				log.info("le mail est déjà utilisé");
 				return "inscription";
 			}

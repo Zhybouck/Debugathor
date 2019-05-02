@@ -78,9 +78,9 @@ body {
 		<form>
 
 			<div class="form-group col-md-10">
-				<label for="exampleFormControlTextarea1">Commentaire</label>
-				<textarea class="form-control" id="exampleFormControlTextarea1"
-					rows="6"></textarea>
+				<label for="inputCommentaire">Commentaire</label>
+				<textarea class="form-control" id="inputCommentaire"
+					rows="6" maxlength="500"></textarea>
 			</div>
 
 		</form>

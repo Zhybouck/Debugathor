@@ -127,15 +127,17 @@ body {
 				</div>
 
 			</div>
+			
+			<hr>
 
 			<div class="row ml-1 mb-2">
 				<div class="col-2">
 					<b>Titre : </b>
 				</div>
-				<div class="col-9">${focusedSol.titre}</div>
+				<div class="col-9"><h2>${focusedSol.titre}</h2></div>
 				<div class="col-1"></div>
 			</div>
-
+			
 			<div class="row ml-1 mb-2">
 				<div class="col-2">
 					<b>Description : </b>
@@ -143,7 +145,10 @@ body {
 
 				<div class="col-9">${focusedSol.description}</div>
 				<div class="col-1"></div>
+				
 			</div>
+			
+			<hr>
 
 			<div class="row ml-1 mb-2">
 				<div class="col-2">
@@ -162,10 +167,10 @@ body {
 
 			<!-- 		Boucle forEach pour les propositions associées à la solution affichée -->
 			<tr>
-				<th width="20%">Nom utilisateur</th>
-				<th width="20%">Prénom utilisateur</th>
-				<th width="20%">Date proposition</th>
-				<th width="40%">Commentaire</th>
+				<th width="15%">Nom utilisateur</th>
+				<th width="15%">Prénom utilisateur</th>
+				<th width="15%">Date proposition</th>
+				<th width="55%">Commentaire</th>
 			</tr>
 			<c:forEach items="${focusedSol.propositions}" var="proposition">
 				<tr>

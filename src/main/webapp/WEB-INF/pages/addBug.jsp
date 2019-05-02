@@ -65,7 +65,7 @@ body {
 		<h1 class="display-4" style="margin-top: 100px">Ajouter une
 			solution</h1>
 		<p>Veuillez remplir le formulaire ci-dessous pour ajouter une
-			solution.</p>
+			solution.<br> <small>* Tous les champs sont obligatoires.</small></p>
 		<hr>
 
 		<form:form class="form-signin ml-5 mt-5 mb-5" action="applyadd"
@@ -75,39 +75,39 @@ body {
 			<div class="form-group col-md-6">
 				<label for="inputTechnologie">Technologie</label>
 				<form:input type="text" class="form-control" id="inputTechnologie"
-					path="Technologie" required="required"/>
+					path="Technologie" required="required" maxlength="45"/>
 			</div>
 
 			<div class="form-group col-md-6">
 				<label for="inputNomLogiciel">Nom du logiciel</label> <input
-					type="text" class="form-control" name="inputNomLogiciel" required="required"/>
+					type="text" class="form-control" name="inputNomLogiciel" required="required" maxlength="45"/>
 			</div>
 
 			<div class="form-group col-md-6">
 				<label for="inputVersionLogiciel">Version du logiciel</label> <input
-					type="text" class="form-control" name="inputVersionLogiciel" required="required"/>
+					type="text" class="form-control" name="inputVersionLogiciel" required="required" maxlength="45"/>
 			</div>
 
 			<div class="form-group col-md-10">
 				<label for="inputType">Type de bug</label>
 				<form:input type="text" class="form-control" id="inputType"
-					path="Type" required="required"/>
+					path="Type" required="required" maxlength="45"/>
 			</div>
 
 			<div class="form-group col-md-10">
 				<label for="inputType">Titre</label>
 				<form:input type="text" class="form-control" id="inputTitre"
-					path="Titre" required="required"/>
+					path="Titre" required="required" maxlength="140"/>
 			</div>
 
-			<div class="form-group col-md-10">
+			<div class="form-group col-md-12">
 				<label for="inputDescription">Description du bug</label>
-				<form:textarea class="form-control" id="inputDescription" rows="6"
+				<form:textarea class="form-control" id="inputDescription" rows="8"
 					path="Description" required="required" name="description"></form:textarea>
 			</div>
-			<div class="form-group col-md-10">
+			<div class="form-group col-md-12">
 				<label for="inputDemarche">Démarche à suivre</label>
-				<form:textarea class="form-control" id="inputDemarche" rows="6"
+				<form:textarea class="form-control" id="inputDemarche" rows="8"
 					path="Demarche" required="required" name="demarche"></form:textarea>
 			</div>
 

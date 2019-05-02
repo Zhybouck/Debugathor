@@ -35,6 +35,14 @@
 a {
 	color: #eff2f3;
 }
+
+.form-label-group {
+	margin-bottom: 15px;
+}
+
+.errormsg {
+	color: red;
+}
 </style>
 
 </head>
@@ -75,50 +83,53 @@ a {
 
 				<form:form class="form-signin ml-5 mt-5 mb-5" action="add"
 					method="post" modelAttribute="creationutilisateur">
-					<h1 class="display-4">Inscription</h1>
-					<h6>Veuillez remplir tous les champs pour créer un compte.</h6>
+					<h1 class="display-4" style="margin-bottom: 15px;">Inscription</h1>
+					<h6>
+						Veuillez remplir le formulaire ci-dessous pour créer un compte. <br>
+						<small>* Tous les champs sont obligatoires.</small>
+					</h6>
 					<hr>
 
 
 					<div class="form-label-group col-4">
-						Prénom
+						<label for="inputFirstName">Prénom</label>
 						<form:input type="text" id="inputFirstName"
-							class="form-control mt-1" placeholder="Prénom" path="prenom" />
-						<small><form:errors path="prenom" cssClass="errormsg"
-								required="required" /></small>
+							class="form-control mt-1" placeholder="Prénom" path="prenom"
+							required="required" />
+						<small><form:errors path="prenom" cssClass="errormsg" /></small>
 					</div>
 
 					<div class="form-label-group col-4">
-						Nom
+						<label for="inputName">Nom</label>
 						<form:input type="text" id="inputName" class="form-control mt-1"
 							placeholder="Nom" path="nom" required="required" />
 						<small><form:errors path="nom" cssClass="errormsg" /></small>
 					</div>
 
 					<div class="form-label-group col-4">
-						Poste
+						<label for="inputPoste">Poste</label>
 						<form:input type="text" id="inputPoste" class="form-control mt-1"
 							placeholder="Poste" path="poste" required="required" />
 						<small><form:errors path="poste" cssClass="errormsg" /></small>
 					</div>
 
 					<div class="form-label-group col-4">
-						Rang
+						<label for="inputRang">Rang</label>
 						<form:input type="text" id="inputRang" class="form-control mt-1"
 							placeholder="Rang" path="rang" required="required" />
 						<small><form:errors path="rang" cssClass="errormsg" /></small>
 					</div>
 
 					<div class="form-label-group col-7">
-						Adresse mail
+						<label for="inputMail">Adresse mail</label>
 						<form:input type="mail" id="inputMail" class="form-control mt-1"
 							placeholder="Adresse mail" path="mail" required="required" />
-						<small style="color: red;"><form:errors path="mail" cssClass="errormsg" /></small>
-						<small style="color: red;"><c:out value="${alreadyinsc}" /></small>
+						<small><form:errors path="mail" cssClass="errormsg" /></small> <small
+							style="color: red;"><c:out value="${alreadyinsc}" /></small>
 					</div>
 
 					<div class="form-label-group col-5">
-						Mot de passe
+						<label for="inputPassword">Mot de passe</label>
 						<form:input type="password" name="inputPassword"
 							id="inputPassword" class="mdp form-control mt-1"
 							placeholder="Mot de passe" path="mdp" required="required"
@@ -129,16 +140,16 @@ a {
 					</div>
 
 					<div class="form-label-group col-5">
-						Confirmation de votre mot de passe <input type="password"
-							name="inputConfPassword" id="inputConfPassword"
-							class="confmdp form-control mt-1"
+						<label for="inputConfPassword">Confirmation de votre mot
+							de passe</label> <input type="password" name="inputConfPassword"
+							id="inputConfPassword" class="confmdp form-control mt-1"
 							placeholder="Confirmer votre mot de passe" required="required" />
 						<div class="text-danger">
 							<small style="color: red;"><c:out value="${confMdp}" /></small>
 						</div>
 					</div>
 
-					<button class="btn btn-lg btn-primary btn-block ml-3 col-3 mt-5"
+					<button class="btn btn-lg btn-primary btn-block ml-3 col-3 mt-3"
 						type="submit">S'inscrire</button>
 
 
