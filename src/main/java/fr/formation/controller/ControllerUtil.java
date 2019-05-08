@@ -124,6 +124,34 @@ public class ControllerUtil {
 		}
 	}
 
+	//Utilisateur en session récupéré et envoyé en model Attribute
+	@RequestMapping(value="/profile")
+	public String uppUser(HttpSession session, Model model) {
+		Utilisateur user = (Utilisateur) session.getAttribute("Utilisateur");
+		model.addAttribute("Utilisateur", user);
+		return "profiluser";
+	}
+	
+	
+	//La requête ici permet de controller lors de l'accès a une page uppprofile si l'utilisateur a le droit de la modifier
+	//L'objectif serait que un admin puisse modifier tout le monde et que les autres ne puissent que "consulter" le profil des autres utilisateurs et un utilisateur lambda ne peut modifier que SON mot de passe et mail
+	@RequestMapping(value="/uppProfile")
+	public String uppProfile(@RequestParam("Id") Long Id, HttpSession session, Model model) {
+		Utilisateur user = service.findById(Id);
+		Utilisateur usersession = (Utilisateur) session.getAttribute("Utilisateur");
+		if ("Administrateur".equals((usersession.getRang()))){
+			model.addAttribute("user", user);
+			return"uppuser";
+		} else if (!usersession.getIdUtilisateur().equals(user.getIdUtilisateur())) {
+			model.addAttribute("user", user);
+			return "profiluser";	
+		} else if (usersession.getIdUtilisateur().equals(user.getIdUtilisateur()))
+		model.addAttribute("user", user);
+		return "uppMdp";
+	}
+	
+	
+
 	@RequestMapping(value = "/disconnect")
 	public String endSessionHandlingMethod(SessionStatus status, HttpSession session) {
 		session.invalidate();
